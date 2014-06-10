@@ -1,0 +1,7 @@
+Organización:
+  ☐ Realizar un diagrama de clases que describa la aplicación completa.
+Naves:
+  ☐ Implementar modelo nave y sus subclases
+  ☐ Relacionar naves con planetas
+Recursos:
+  ✔ Terminar vista de recursos desde donde se pueden cambiar los porcentajes de producción @done (14-06-10 01:27)

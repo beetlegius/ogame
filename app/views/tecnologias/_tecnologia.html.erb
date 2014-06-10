@@ -1,0 +1,53 @@
+<tr>
+
+	<td class="l">
+		<%= image_tag "tecnologias/#{tecnologia.class.name.tableize.singularize}.gif" %>
+	</td>
+
+	<td class="l">
+		<%= link_to tecnologia.class.model_name.human, '#' %> (Nivel <%= tecnologia.nivel %>)<br />
+
+		<%= t "tecnologias.#{tecnologia.class.name.tableize.singularize}.descripcion" %><br />
+
+		<b>Requiere:</b>
+		<% if tecnologia.metal.costo > 0 %>
+			Metal: <b><%= content_tag :span, number_with_delimiter(tecnologia.metal.costo), class: (current_planeta.puede_pagar?(tecnologia.metal.costo, nil, nil, nil) ? :verde : :rojo) %></b>
+		<% end %>
+		<% if tecnologia.cristal.costo > 0 %>
+			Cristal: <b><%= content_tag :span, number_with_delimiter(tecnologia.cristal.costo), class: (current_planeta.puede_pagar?(nil, tecnologia.cristal.costo, nil, nil) ? :verde : :rojo) %></b>
+		<% end %>
+		<% if tecnologia.deuterio.costo > 0 %>
+			Deuterio: <b><%= content_tag :span, number_with_delimiter(tecnologia.deuterio.costo), class: (current_planeta.puede_pagar?(nil, nil, tecnologia.deuterio.costo, nil) ? :verde : :rojo) %></b>
+		<% end %>
+		<% if tecnologia.energia.costo > 0 %>
+			Energía: <b><%= content_tag :span, number_with_delimiter(tecnologia.energia.costo), class: (current_planeta.puede_pagar?(nil, nil, nil, tecnologia.energia.costo) ? :verde : :rojo) %></b>
+		<% end %>
+
+		<br />
+
+		Tiempo: <%= ChronicDuration.output tecnologia.duracion_expansion(current_planeta), format: :short %>
+
+		<% if !tecnologia.puede_costearse?(current_planeta) %>
+			<br />
+			<br />
+			<b>Aún faltan:</b>
+			Metal: <b><%= content_tag :span, costo_faltante(tecnologia.metal.costo, current_planeta.recurso_metal), class: :violeta %></b>
+			Cristal: <b><%= content_tag :span, costo_faltante(tecnologia.cristal.costo, current_planeta.recurso_cristal), class: :violeta %></b>
+			Deuterio: <b><%= content_tag :span, costo_faltante(tecnologia.deuterio.costo, current_planeta.recurso_deuterio), class: :violeta %></b>
+			Energía: <b><%= content_tag :span, costo_faltante(tecnologia.energia.costo, current_planeta.recurso_energia), class: :violeta %></b>
+		<% end %>
+	</td>
+
+	<td class="k">
+		<% if tecnologia.esta_expandiendose? %>
+			<%= tiempo tecnologia %>
+			<%= link_to "Cancelar", [:cancelar, tecnologia.becomes(Tecnologia)], method: :put if tecnologia.puede_cancelar_expansion? %>
+		<% elsif tecnologia.proceso_id %>
+			<%= content_tag :span, 'Actualizando...', class: :violeta %>
+		<% elsif current_planeta.puede_investigar?(tecnologia) %>
+			<%= link_to tecnologia.nivel.zero? ? 'Investigar' : "Ampliar al nivel #{tecnologia.proximo_nivel}", [:expandir, tecnologia.becomes(Tecnologia)], method: :put, class: :verde %>
+		<% else %>
+			<%= content_tag :span, tecnologia.nivel.zero? ? 'Investigar' : "Ampliar al nivel #{tecnologia.proximo_nivel}", class: :rojo unless current_cuenta.tecnologias.any?(&:esta_expandiendose?) %>
+		<% end %>
+	</td>
+</tr>

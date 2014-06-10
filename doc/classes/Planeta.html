@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Planeta</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Planeta 
+            
+                <span class="parent">&lt; 
+                    
+                    ActiveRecord::Base
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/app/models/planeta_rb.html">app/models/planeta.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Cada cuenta puede tener hasta 9 planetas, cada uno se ubica en una posición
+del 1 al 15 dentro de un sistema.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-campos_disponibles-3F">campos_disponibles?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-cantidad_campos_ocupados">cantidad_campos_ocupados</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-colonizar">colonizar</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-colonizar_como_principal">colonizar_como_principal</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-coordenadas_completas">coordenadas_completas</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-esta_disponible-3F">esta_disponible?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-imagen_name">imagen_name</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-nivel_laboratorio">nivel_laboratorio</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-puede_construir-3F">puede_construir?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-puede_construir_en_simultaneo-3F">puede_construir_en_simultaneo?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-puede_expandir-3F">puede_expandir?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-puede_investigar-3F">puede_investigar?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-tecnologias_disponibles">tecnologias_disponibles</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_label">to_label</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="Campos.html">
+              Campos
+            </a>
+          
+        </li>
+      
+        <li>
+          
+            <a href="Temperatura.html">
+              Temperatura
+            </a>
+          
+        </li>
+      
+        <li>
+          
+            <a href="Puntos.html">
+              Puntos
+            </a>
+          
+        </li>
+      
+        <li>
+          
+            <a href="Recursos.html">
+              Recursos
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">NOMBRES</td>
+            <td>=</td>
+            <td class="attr-value">%w(Aitedrin Aonadrain Aibeciar Aoligin Eladha Eomiyan Iviise Unoral Ongwin Ealar Aideca Iaroane Otunal Iwedeth Eumam Ibacu Iwociar Uhinin Auceise Ituved Illakaf Ececine Eodadean Arodi Aiyolin Alwyn Morian Ievirind Ovvin Aeveara Autorind Gideth Aunedoc Easolain Adalon Inikir utyn Eunelle Emaarc Autefel Eusoand Eseme Ealiyam Ayachan Aehador Airirel Arilad Aedoine Eumedar Usuta)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">CAMPOS_PLANETA_PRINCIPAL</td>
+            <td>=</td>
+            <td class="attr-value">163</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-campos_disponibles-3F">
+            
+              <b>campos_disponibles?</b>()
+            
+            <a href="../classes/Planeta.html#method-i-campos_disponibles-3F" name="method-i-campos_disponibles-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-campos_disponibles-3F_source')" id="l_method-i-campos_disponibles-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-campos_disponibles-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">campos_disponibles?</span>
+  <span class="ruby-identifier">cantidad_campos_ocupados</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">cantidad_campos</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-cantidad_campos_ocupados">
+            
+              <b>cantidad_campos_ocupados</b>()
+            
+            <a href="../classes/Planeta.html#method-i-cantidad_campos_ocupados" name="method-i-cantidad_campos_ocupados" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Indica si el planeta dispone de campos</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-cantidad_campos_ocupados_source')" id="l_method-i-cantidad_campos_ocupados_source">show</a>
+                
+              </p>
+              <div id="method-i-cantidad_campos_ocupados_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cantidad_campos_ocupados</span>
+  <span class="ruby-identifier">edificios</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">sum</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:nivel</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-colonizar">
+            
+              <b>colonizar</b>(cuenta)
+            
+            <a href="../classes/Planeta.html#method-i-colonizar" name="method-i-colonizar" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-colonizar_source')" id="l_method-i-colonizar_source">show</a>
+                
+              </p>
+              <div id="method-i-colonizar_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">colonizar</span>(<span class="ruby-identifier">cuenta</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cuenta</span> = <span class="ruby-identifier">cuenta</span>
+
+  <span class="ruby-identifier">set_temperaturas</span>
+  <span class="ruby-identifier">set_campos</span>
+  <span class="ruby-identifier">save!</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-colonizar_como_principal">
+            
+              <b>colonizar_como_principal</b>(cuenta)
+            
+            <a href="../classes/Planeta.html#method-i-colonizar_como_principal" name="method-i-colonizar_como_principal" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>MÉTODOS PÚBLICOS</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-colonizar_como_principal_source')" id="l_method-i-colonizar_como_principal_source">show</a>
+                
+              </p>
+              <div id="method-i-colonizar_como_principal_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">colonizar_como_principal</span>(<span class="ruby-identifier">cuenta</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">es_principal</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cuenta</span> = <span class="ruby-identifier">cuenta</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cantidad_campos</span> = <span class="ruby-constant">CAMPOS_PLANETA_PRINCIPAL</span>
+
+  <span class="ruby-identifier">set_temperaturas</span>
+  <span class="ruby-identifier">save!</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-coordenadas_completas">
+            
+              <b>coordenadas_completas</b>()
+            
+            <a href="../classes/Planeta.html#method-i-coordenadas_completas" name="method-i-coordenadas_completas" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>ALIAS E IMPRESIONES</p>
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="Planeta.html#method-i-to_s">to_s</a>
+            </div>
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-coordenadas_completas_source')" id="l_method-i-coordenadas_completas_source">show</a>
+                
+              </p>
+              <div id="method-i-coordenadas_completas_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">coordenadas_completas</span>
+  <span class="ruby-node">&quot;#{galaxia.coordenada}:#{sistema.coordenada}:#{coordenada}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-esta_disponible-3F">
+            
+              <b>esta_disponible?</b>()
+            
+            <a href="../classes/Planeta.html#method-i-esta_disponible-3F" name="method-i-esta_disponible-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-esta_disponible-3F_source')" id="l_method-i-esta_disponible-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-esta_disponible-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">esta_disponible?</span>
+  <span class="ruby-operator">!</span><span class="ruby-identifier">cuenta</span>.<span class="ruby-identifier">present?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-imagen_name">
+            
+              <b>imagen_name</b>()
+            
+            <a href="../classes/Planeta.html#method-i-imagen_name" name="method-i-imagen_name" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-imagen_name_source')" id="l_method-i-imagen_name_source">show</a>
+                
+              </p>
+              <div id="method-i-imagen_name_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">imagen_name</span>
+  <span class="ruby-identifier">temperatura_maxima</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">%</span> <span class="ruby-number">26</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-nivel_laboratorio">
+            
+              <b>nivel_laboratorio</b>()
+            
+            <a href="../classes/Planeta.html#method-i-nivel_laboratorio" name="method-i-nivel_laboratorio" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-nivel_laboratorio_source')" id="l_method-i-nivel_laboratorio_source">show</a>
+                
+              </p>
+              <div id="method-i-nivel_laboratorio_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">nivel_laboratorio</span>
+  <span class="ruby-identifier">laboratorio</span>.<span class="ruby-identifier">nivel</span> <span class="ruby-comment"># por ahora es así, una vez que esté disponible la red de investigación intergaláctica este cálculo cambiará</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puede_construir-3F">
+            
+              <b>puede_construir?</b>()
+            
+            <a href="../classes/Planeta.html#method-i-puede_construir-3F" name="method-i-puede_construir-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puede_construir-3F_source')" id="l_method-i-puede_construir-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-puede_construir-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">puede_construir?</span>
+  <span class="ruby-identifier">cuenta</span>.<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">campos_disponibles?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">puede_construir_en_simultaneo?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puede_construir_en_simultaneo-3F">
+            
+              <b>puede_construir_en_simultaneo?</b>()
+            
+            <a href="../classes/Planeta.html#method-i-puede_construir_en_simultaneo-3F" name="method-i-puede_construir_en_simultaneo-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puede_construir_en_simultaneo-3F_source')" id="l_method-i-puede_construir_en_simultaneo-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-puede_construir_en_simultaneo-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 116</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">puede_construir_en_simultaneo?</span>
+  <span class="ruby-identifier">edificios</span>.<span class="ruby-identifier">select</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:esta_expandiendose?</span>).<span class="ruby-identifier">count</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">universo</span>.<span class="ruby-identifier">cantidad_construcciones_en_simultaneo</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puede_expandir-3F">
+            
+              <b>puede_expandir?</b>(elemento)
+            
+            <a href="../classes/Planeta.html#method-i-puede_expandir-3F" name="method-i-puede_expandir-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>:reek: FeatureEnvy: { enabled: false }</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puede_expandir-3F_source')" id="l_method-i-puede_expandir-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-puede_expandir-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">puede_expandir?</span>(<span class="ruby-identifier">elemento</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">elemento</span>.<span class="ruby-identifier">puede_expandirse?</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">elemento</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Edificio</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">puede_investigar?</span>(<span class="ruby-identifier">elemento</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">elemento</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Tecnologia</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puede_investigar-3F">
+            
+              <b>puede_investigar?</b>(tecnologia)
+            
+            <a href="../classes/Planeta.html#method-i-puede_investigar-3F" name="method-i-puede_investigar-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>:reek: FeatureEnvy: { enabled: false }</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puede_investigar-3F_source')" id="l_method-i-puede_investigar-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-puede_investigar-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">puede_investigar?</span>(<span class="ruby-identifier">tecnologia</span>)
+  <span class="ruby-identifier">cuenta</span>.<span class="ruby-identifier">puede_investigar_en_simultaneo?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">tecnologias_disponibles</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">tecnologia</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">tecnologia</span>.<span class="ruby-identifier">puede_expandirse?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">puede_pagar?</span>(<span class="ruby-identifier">tecnologia</span>.<span class="ruby-identifier">metal</span>, <span class="ruby-identifier">tecnologia</span>.<span class="ruby-identifier">cristal</span>, <span class="ruby-identifier">tecnologia</span>.<span class="ruby-identifier">deuterio</span>, <span class="ruby-identifier">tecnologia</span>.<span class="ruby-identifier">energia</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-tecnologias_disponibles">
+            
+              <b>tecnologias_disponibles</b>()
+            
+            <a href="../classes/Planeta.html#method-i-tecnologias_disponibles" name="method-i-tecnologias_disponibles" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-tecnologias_disponibles_source')" id="l_method-i-tecnologias_disponibles_source">show</a>
+                
+              </p>
+              <div id="method-i-tecnologias_disponibles_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tecnologias_disponibles</span>
+  <span class="ruby-identifier">cuenta</span>.<span class="ruby-identifier">tecnologias</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">tecnologia</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nivel_laboratorio</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">tecnologia</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">nivel_laboratorio_requerido</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">tecnologia</span>.<span class="ruby-identifier">cumple_requisitos?</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_label">
+            
+              <b>to_label</b>()
+            
+            <a href="../classes/Planeta.html#method-i-to_label" name="method-i-to_label" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_label_source')" id="l_method-i-to_label_source">show</a>
+                
+              </p>
+              <div id="method-i-to_label_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/planeta.rb, line 128</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_label</span>
+  <span class="ruby-identifier">label</span> = <span class="ruby-node">&quot;#{nombre} [#{coordenadas_completas}]&quot;</span>
+  <span class="ruby-identifier">label</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; (principal)&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">es_principal?</span>
+  <span class="ruby-identifier">label</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>to_s</b>()
+            
+            <a href="../classes/Planeta.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+            <div class="aka">
+              Alias for: <a href="Planeta.html#method-i-coordenadas_completas">coordenadas_completas</a>
+            </div>
+          
+          
+          
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

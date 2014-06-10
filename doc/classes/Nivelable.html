@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Nivelable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Nivelable 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/app/models/concerns/nivelable_rb.html">app/models/concerns/nivelable.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Nivelable/ClassMethods.html">Nivelable::ClassMethods</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-cancelar_expansion-21">cancelar_expansion!</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-completar_expansion-21">completar_expansion!</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-cristal">cristal</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-deuterio">deuterio</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-energia">energia</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-esta_expandiendose-3F">esta_expandiendose?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-expandir-21">expandir!</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-metal">metal</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-proximo_nivel">proximo_nivel</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-puede_cancelar_expansion-3F">puede_cancelar_expansion?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-puntos">puntos</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-tiempo_restante">tiempo_restante</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-cancelar_expansion-21">
+            
+              <b>cancelar_expansion!</b>(planeta)
+            
+            <a href="../classes/Nivelable.html#method-i-cancelar_expansion-21" name="method-i-cancelar_expansion-21" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-cancelar_expansion-21_source')" id="l_method-i-cancelar_expansion-21_source">show</a>
+                
+              </p>
+              <div id="method-i-cancelar_expansion-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cancelar_expansion!</span>(<span class="ruby-identifier">planeta</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">Excepciones</span><span class="ruby-operator">::</span><span class="ruby-constant">Nivelable</span><span class="ruby-operator">::</span><span class="ruby-constant">FalloCancelacion</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">puede_cancelar_expansion?</span>
+
+  <span class="ruby-identifier">planeta</span>.<span class="ruby-identifier">devolver!</span> <span class="ruby-identifier">metal</span>, <span class="ruby-identifier">cristal</span>, <span class="ruby-identifier">deuterio</span>
+  <span class="ruby-identifier">proceso</span>.<span class="ruby-identifier">try</span> <span class="ruby-value">:destroy</span>
+
+  <span class="ruby-identifier">update!</span> <span class="ruby-identifier">fecha_actualizacion</span><span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">proceso_id</span><span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-completar_expansion-21">
+            
+              <b>completar_expansion!</b>()
+            
+            <a href="../classes/Nivelable.html#method-i-completar_expansion-21" name="method-i-completar_expansion-21" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-completar_expansion-21_source')" id="l_method-i-completar_expansion-21_source">show</a>
+                
+              </p>
+              <div id="method-i-completar_expansion-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">completar_expansion!</span>
+  <span class="ruby-identifier">before_completar_expansion</span>
+  <span class="ruby-identifier">update!</span> <span class="ruby-identifier">nivel</span><span class="ruby-operator">:</span> <span class="ruby-identifier">nivel</span>.<span class="ruby-identifier">next</span>, <span class="ruby-identifier">fecha_actualizacion</span><span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">proceso_id</span><span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">after_completar_expansion</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-cristal">
+            
+              <b>cristal</b>()
+            
+            <a href="../classes/Nivelable.html#method-i-cristal" name="method-i-cristal" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-cristal_source')" id="l_method-i-cristal_source">show</a>
+                
+              </p>
+              <div id="method-i-cristal_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cristal</span>
+  <span class="ruby-constant">Cristal</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">propietario</span><span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-deuterio">
+            
+              <b>deuterio</b>()
+            
+            <a href="../classes/Nivelable.html#method-i-deuterio" name="method-i-deuterio" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-deuterio_source')" id="l_method-i-deuterio_source">show</a>
+                
+              </p>
+              <div id="method-i-deuterio_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">deuterio</span>
+  <span class="ruby-constant">Deuterio</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">propietario</span><span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-energia">
+            
+              <b>energia</b>()
+            
+            <a href="../classes/Nivelable.html#method-i-energia" name="method-i-energia" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-energia_source')" id="l_method-i-energia_source">show</a>
+                
+              </p>
+              <div id="method-i-energia_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">energia</span>
+  <span class="ruby-constant">Energia</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">propietario</span><span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-esta_expandiendose-3F">
+            
+              <b>esta_expandiendose?</b>()
+            
+            <a href="../classes/Nivelable.html#method-i-esta_expandiendose-3F" name="method-i-esta_expandiendose-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-esta_expandiendose-3F_source')" id="l_method-i-esta_expandiendose-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-esta_expandiendose-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">esta_expandiendose?</span>
+  <span class="ruby-identifier">proceso_id</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">fecha_actualizacion</span>.<span class="ruby-identifier">present?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-expandir-21">
+            
+              <b>expandir!</b>(planeta)
+            
+            <a href="../classes/Nivelable.html#method-i-expandir-21" name="method-i-expandir-21" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-expandir-21_source')" id="l_method-i-expandir-21_source">show</a>
+                
+              </p>
+              <div id="method-i-expandir-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">expandir!</span>(<span class="ruby-identifier">planeta</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">Excepciones</span><span class="ruby-operator">::</span><span class="ruby-constant">Nivelable</span><span class="ruby-operator">::</span><span class="ruby-constant">FalloExpansion</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">planeta</span>.<span class="ruby-identifier">puede_expandir?</span>(<span class="ruby-keyword">self</span>)
+
+  <span class="ruby-identifier">planeta</span>.<span class="ruby-identifier">pagar!</span> <span class="ruby-identifier">metal</span>, <span class="ruby-identifier">cristal</span>, <span class="ruby-identifier">deuterio</span>
+  <span class="ruby-identifier">tiempo</span> = <span class="ruby-identifier">duracion_expansion</span>(<span class="ruby-identifier">planeta</span>)
+  <span class="ruby-identifier">proceso</span> = <span class="ruby-identifier">delay</span>(<span class="ruby-identifier">run_at</span><span class="ruby-operator">:</span> <span class="ruby-identifier">tiempo</span>.<span class="ruby-identifier">seconds</span>.<span class="ruby-identifier">from_now</span>).<span class="ruby-identifier">completar_expansion!</span>
+
+  <span class="ruby-identifier">update!</span> <span class="ruby-identifier">fecha_actualizacion</span><span class="ruby-operator">:</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tiempo</span>, <span class="ruby-identifier">proceso_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">proceso</span>.<span class="ruby-identifier">id</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-metal">
+            
+              <b>metal</b>()
+            
+            <a href="../classes/Nivelable.html#method-i-metal" name="method-i-metal" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-metal_source')" id="l_method-i-metal_source">show</a>
+                
+              </p>
+              <div id="method-i-metal_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">metal</span>
+  <span class="ruby-constant">Metal</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">propietario</span><span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-proximo_nivel">
+            
+              <b>proximo_nivel</b>()
+            
+            <a href="../classes/Nivelable.html#method-i-proximo_nivel" name="method-i-proximo_nivel" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-proximo_nivel_source')" id="l_method-i-proximo_nivel_source">show</a>
+                
+              </p>
+              <div id="method-i-proximo_nivel_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">proximo_nivel</span>
+  <span class="ruby-identifier">nivel</span>.<span class="ruby-identifier">next</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puede_cancelar_expansion-3F">
+            
+              <b>puede_cancelar_expansion?</b>()
+            
+            <a href="../classes/Nivelable.html#method-i-puede_cancelar_expansion-3F" name="method-i-puede_cancelar_expansion-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puede_cancelar_expansion-3F_source')" id="l_method-i-puede_cancelar_expansion-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-puede_cancelar_expansion-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">puede_cancelar_expansion?</span>
+  <span class="ruby-identifier">esta_expandiendose?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">tiempo_restante</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">5</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puntos">
+            
+              <b>puntos</b>()
+            
+            <a href="../classes/Nivelable.html#method-i-puntos" name="method-i-puntos" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puntos_source')" id="l_method-i-puntos_source">show</a>
+                
+              </p>
+              <div id="method-i-puntos_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">puntos</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-number">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">nivel</span>.<span class="ruby-identifier">zero?</span>
+
+  (<span class="ruby-number">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">nivel</span>).<span class="ruby-identifier">inject</span>(<span class="ruby-number">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">suma</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span> <span class="ruby-identifier">suma</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">metal</span>.<span class="ruby-identifier">costo</span>(<span class="ruby-identifier">index</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">cristal</span>.<span class="ruby-identifier">costo</span>(<span class="ruby-identifier">index</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">deuterio</span>.<span class="ruby-identifier">costo</span>(<span class="ruby-identifier">index</span>) }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-tiempo_restante">
+            
+              <b>tiempo_restante</b>()
+            
+            <a href="../classes/Nivelable.html#method-i-tiempo_restante" name="method-i-tiempo_restante" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-tiempo_restante_source')" id="l_method-i-tiempo_restante_source">show</a>
+                
+              </p>
+              <div id="method-i-tiempo_restante_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/concerns/nivelable.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tiempo_restante</span>
+  <span class="ruby-identifier">ahora</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+  (<span class="ruby-identifier">fecha_actualizacion</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">ahora</span>).<span class="ruby-identifier">round</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">fecha_actualizacion</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">fecha_actualizacion</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ahora</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

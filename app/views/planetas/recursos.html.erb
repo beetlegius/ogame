@@ -1,0 +1,195 @@
+<%= simple_form_for current_planeta do |f| %>
+	<table width="600">
+		<tbody>
+			<tr>
+				<td class="c" colspan="5">Producción de recursos en el planeta "<%= current_planeta.nombre %>"</td>
+			</tr>
+			<tr>
+				<th height="22">&nbsp;</th>
+				<th width="60">Metal</th>
+				<th width="60">Cristal</th>
+				<th width="60">Deuterio</th>
+				<th width="60">Energía</th>
+			</tr>
+			<tr>
+				<th style="text-align:right" height="22">Ingresos básicos</th>
+				<th><%= number_with_delimiter current_planeta.produccion_metal_base %></th>
+				<th><%= number_with_delimiter current_planeta.produccion_cristal_base %></th>
+				<th><%= number_with_delimiter current_planeta.produccion_deuterio_base %></th>
+				<th>0</td>
+			</tr>
+			<tr>
+				<th style="text-align:right" height="22">Mina de metal (nivel <%= current_planeta.mina_metal.nivel %>) </th>
+				<th><%= number_with_delimiter current_planeta.mina_metal.produccion_activa_por_hora %></th>
+				<th>0</th>
+				<th>0</th>
+				<th><%= number_with_delimiter -current_planeta.mina_metal.consumo_energia %></th>
+				<th>
+					<%= f.simple_fields_for :mina_metal do |builder| %>
+						<%= builder.input :porcentaje_produccion, collection: Edificio::PORCENTAJES_PRODUCCION, label: false, include_blank: false, label_method: proc { |porcentaje| number_to_percentage porcentaje } %>
+					<% end %>
+				</th>
+			</tr>
+			<tr>
+				<th style="text-align:right" height="22">Mina de cristal (nivel <%= current_planeta.mina_cristal.nivel %>) </th>
+				<th>0</th>
+				<th><%= number_with_delimiter current_planeta.mina_cristal.produccion_activa_por_hora %></th>
+				<th>0</th>
+				<th><%= number_with_delimiter -current_planeta.mina_cristal.consumo_energia %></th>
+				<th>
+					<%= f.simple_fields_for :mina_cristal do |builder| %>
+						<%= builder.input :porcentaje_produccion, collection: Edificio::PORCENTAJES_PRODUCCION, label: false, include_blank: false, label_method: proc { |porcentaje| number_to_percentage porcentaje } %>
+					<% end %>
+				</th>
+			</tr>
+			<tr>
+				<th style="text-align:right" height="22">Sintetizador de deuterio (nivel <%= current_planeta.mina_deuterio.nivel %>) </th>
+				<th>0</th>
+				<th>0</th>
+				<th><%= number_with_delimiter current_planeta.mina_deuterio.produccion_activa_por_hora %></th>
+				<th><%= number_with_delimiter -current_planeta.mina_deuterio.consumo_energia %></th>
+				<th>
+				  <%= f.simple_fields_for :mina_deuterio do |builder| %>
+						<%= builder.input :porcentaje_produccion, collection: Edificio::PORCENTAJES_PRODUCCION, label: false, include_blank: false, label_method: proc { |porcentaje| number_to_percentage porcentaje } %>
+					<% end %>
+				</th>
+			</tr>
+			<tr>
+				<th style="text-align:right" height="22">Planta de energía solar (nivel <%= current_planeta.planta_energia.nivel %>) </th>
+				<th>0</th>
+				<th>0</th>
+				<th>0</th>
+				<th><%= number_with_delimiter current_planeta.planta_energia.produccion %></th>
+				<th>
+					<%= f.simple_fields_for :planta_energia do |builder| %>
+						<%= builder.input :porcentaje_produccion, collection: Edificio::PORCENTAJES_PRODUCCION, label: false, include_blank: false, label_method: proc { |porcentaje| number_to_percentage porcentaje } %>
+					<% end %>
+				</th>
+			</tr>
+			<tr>
+				<th style="text-align:right" height="22">Capacidad de los almacenes</th>
+				<th>100k</th>
+				<th>100k</th>
+				<th>100k</th>
+				<td class="k">-</td>
+				<th><%= f.button :submit, 'Calcular' %></th>
+			</tr>
+			<tr>
+				<th style="text-align:right" height="22">Suma</th>
+				<th class="verde"><%= number_with_delimiter (current_planeta.produccion_metal_base + current_planeta.mina_metal.produccion_activa_por_hora).round %></th>
+				<th class="verde"><%= number_with_delimiter (current_planeta.produccion_cristal_base + current_planeta.mina_cristal.produccion_activa_por_hora).round %></th>
+				<th class="verde"><%= number_with_delimiter (current_planeta.produccion_deuterio_base + current_planeta.mina_deuterio.produccion_activa_por_hora).round %></th>
+				<th class="<%= current_planeta.recurso_energia_disponible >= 0 ? :verde : :rojo %>"><%= number_with_delimiter current_planeta.recurso_energia_disponible %></th>
+			</tr>
+		</tbody>
+	</table>
+	<!--
+	<br />
+	<table width="600">
+		<tbody>
+			<tr>
+				<td class="c" colspan="4">Producción extendida</td>
+			</tr>
+			<tr>
+				<td class="c">&nbsp;</td>
+				<th>Diaria</th>
+				<th>Semanal</th>
+				<th>Mensual</th>
+			</tr>
+			<tr>
+				<th style="text-align:right">Metal</th>
+				<th><font color="#00ff00">9.264</font></th>
+				<th><font color="#00ff00">64.848</font></th>
+				<th><font color="#00ff00">277.920</font></th>
+			</tr>
+			<tr>
+				<th style="text-align:right">Cristal</th>
+				<th><font color="#00ff00">2.424</font></th>
+				<th><font color="#00ff00">16.968</font></th>
+				<th><font color="#00ff00">72.720</font></th>
+			</tr>
+			<tr>
+				<th style="text-align:right">Deuterio</th>
+				<th><font color="#00ff00">840</font></th>
+				<th><font color="#00ff00">5.880</font></th>
+				<th><font color="#00ff00">25.200</font></th>
+			</tr>
+		</tbody>
+	</table>
+
+	<br />
+	<table width="600">
+		<tbody>
+			<tr>
+				<td class="c" colspan="3">Estado de los almacenes</td>
+			</tr>
+			<tr>
+				<th style="text-align:right">Metal</th>
+				<th>9d 06h 49m 25s</th>
+				<th width="400">
+					<div style="width:100%;border:1px solid #FFFFFF">
+						<div style="width:13%;background-color:#006600">
+							13%
+						</div>
+					</div>
+				</th>
+			</tr>
+			<tr>
+				<th style="text-align:right">Cristal</th>
+				<th>37d 21h 05m 06s</th>
+				<th>
+					<div style="width:100%;border:1px solid #FFFFFF">
+						<div style="width:8%;background-color:#006600">
+							8%
+						</div>
+					</div>
+				</th>
+			</tr>
+			<tr>
+				<th style="text-align:right">Deuterio</th>
+				<th>116d 15h 16m 00s</th>
+				<th>
+					<div style="width:100%;border:1px solid #FFFFFF">
+						<div style="width:2%;background-color:#006600">
+							2%
+						</div>
+					</div>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+
+	<br />
+	<table width="600">
+		<tbody>
+			<tr>
+				<td class="c" colspan="4">Producción total de 1 planetas</td>
+			</tr>
+			<tr>
+				<td class="c">&nbsp;</td>
+				<th>Diaria</th>
+				<th>Semanal</th>
+				<th>Mensual</th>
+			</tr>
+			<tr>
+				<th style="text-align:right">Metal</th>
+				<th><font color="#00ff00">9.264</font></th>
+				<th><font color="#00ff00">64.848</font></th>
+				<th><font color="#00ff00">277.920</font></th>
+			</tr>
+			<tr>
+				<th style="text-align:right">Cristal</th>
+				<th><font color="#00ff00">2.424</font></th>
+				<th><font color="#00ff00">16.968</font></th>
+				<th><font color="#00ff00">72.720</font></th>
+			</tr>
+			<tr>
+				<th style="text-align:right">Deuterio</th>
+				<th><font color="#00ff00">840</font></th>
+				<th><font color="#00ff00">5.880</font></th>
+				<th><font color="#00ff00">25.200</font></th>
+			</tr>
+		</tbody>
+	</table>
+	-->
+<% end %>

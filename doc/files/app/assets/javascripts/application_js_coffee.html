@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>application.js.coffee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            application.js.coffee
+        </h1>
+        <ul class="files">
+            <li>app/assets/javascripts/application.js.coffee</li>
+            <li>Last modified: 2014-05-26 11:42:06 -0300</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>#= require jquery #= require jquery_ujs #= require turbolinks #= require
+jquery.countdown #= require jquery.countdown-es #= require_self</p>
+
+<p>ready = -&gt;</p>
+
+<pre><code>tamano = $(window).innerHeight() - $(&quot;#header_top&quot;).height() - 40
+
+$(&quot;#content&quot;).css(&#39;height&#39;, tamano)
+
+$.each $(&quot;[data-countdown]&quot;), (i, elemento) -&gt;
+      $(elemento).countdown({ until: $(elemento).attr(&#39;datetime&#39;), compact: true, onTick: monitorear_countdown })
+
+$(&quot;form.seleccionar&quot;).on &#39;change&#39;, -&gt;
+      $(this).submit()</code></pre>
+
+<p>monitorear_countdown = (periodo) -&gt;</p>
+
+<pre><code>cuenta = $.grep periodo, (elemento, i) -&gt;
+        elemento != 0
+
+if $.isEmptyObject(cuenta)
+        setTimeout -&gt;
+        location.reload()
+  , 5000</code></pre>
+
+<p>$(document).ready(ready) $(document).on(&#39;page:load&#39;, ready)</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+
+    </div>
+  </body>
+</html>

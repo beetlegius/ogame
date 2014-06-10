@@ -1,0 +1,15 @@
+---
+FeatureEnvy:
+  exclude:
+  - change
+TooManyStatements:
+  exclude:
+  - change
+UncommunicativeVariableName:
+  exclude:
+  - change
+IrresponsibleModule:
+  exclude:
+  - !ruby/regexp /Create/
+  - Ogame::Application
+  - !ruby/regexp /Excepciones/

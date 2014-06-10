@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>application_js_coffee.html</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            application_js_coffee.html
+        </h1>
+        <ul class="files">
+            <li>doc/files/app/assets/javascripts/application_js_coffee.html</li>
+            <li>Last modified: 2014-05-31 18:09:57 -0300</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN”</p>
+
+<pre><code>&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</code></pre>
+
+<p>&lt;html xmlns=“<a
+href="http://www.w3.org/1999/xhtml">www.w3.org/1999/xhtml</a>”
+xml:lang=“en” lang=“en”&gt; &lt;head&gt;</p>
+
+<pre><code>&lt;title&gt;application.js.coffee&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../../../css/reset.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&gt;</code></pre>
+
+<p>&lt;link rel=“stylesheet” href=“../../../../css/main.css” type=“text/css”
+media=“screen” /&gt; &lt;link rel=“stylesheet”
+href=“../../../../css/github.css” type=“text/css” media=“screen” /&gt;
+&lt;script src=“../../../../js/jquery-1.3.2.min.js” type=“text/javascript”
+charset=“utf-8”&gt;&lt;/script&gt; &lt;script
+src=“../../../../js/jquery-effect.js” type=“text/javascript”
+charset=“utf-8”&gt;&lt;/script&gt; &lt;script src=“../../../../js/main.js”
+type=“text/javascript” charset=“utf-8”&gt;&lt;/script&gt; &lt;script
+src=“../../../../js/highlight.pack.js” type=“text/javascript”
+charset=“utf-8”&gt;&lt;/script&gt;</p>
+
+<p>&lt;/head&gt;</p>
+
+<p>&lt;body&gt;</p>
+
+<pre><code>&lt;div class=&quot;banner&quot;&gt;
+
+    &lt;h1&gt;
+        application.js.coffee
+    &lt;/h1&gt;
+    &lt;ul class=&quot;files&quot;&gt;
+        &lt;li&gt;app/assets/javascripts/application.js.coffee&lt;/li&gt;
+        &lt;li&gt;Last modified: 2014-05-26 11:42:06 -0300&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;bodyContent&quot;&gt;
+    &lt;div id=&quot;content&quot;&gt;
+
+&lt;div class=&quot;description&quot;&gt;</code></pre>
+
+<p>&lt;p&gt;#= require jquery #= require jquery_ujs #= require turbolinks #=
+require jquery.countdown #= require jquery.countdown-es #=
+require_self&lt;/p&gt;</p>
+
+<p>&lt;p&gt;ready = -&amp;gt;&lt;/p&gt;</p>
+
+<p>&lt;pre&gt;&lt;code&gt;tamano = $(window).innerHeight() -
+$(&amp;quot;#header_top&amp;quot;).height() - 40</p>
+
+<p>$(&amp;quot;#content&amp;quot;).css(&amp;#39;height&amp;#39;, tamano)</p>
+
+<p>$.each $(&amp;<a href="data-countdown">quot;</a>&amp;quot;), (i, elemento)
+-&amp;gt;</p>
+
+<pre><code>$(elemento).countdown({ until: $(elemento).attr(&amp;#39;datetime&amp;#39;), compact: true, onTick: monitorear_countdown })</code></pre>
+
+<p>$(&amp;quot;form.seleccionar&amp;quot;).on &amp;#39;change&amp;#39;,
+-&amp;gt;</p>
+
+<pre><code>$(this).submit()&lt;/code&gt;&lt;/pre&gt;</code></pre>
+
+<p>&lt;p&gt;monitorear_countdown = (periodo) -&amp;gt;&lt;/p&gt;</p>
+
+<p>&lt;pre&gt;&lt;code&gt;cuenta = $.grep periodo, (elemento, i) -&amp;gt;</p>
+
+<pre><code>elemento != 0</code></pre>
+
+<p>if $.isEmptyObject(cuenta)</p>
+
+<pre><code>      setTimeout -&amp;gt;
+      location.reload()
+, 5000&lt;/code&gt;&lt;/pre&gt;</code></pre>
+
+<p>&lt;p&gt;$(document).ready(ready)
+$(document).on(&amp;#39;page:load&amp;#39;, ready)&lt;/p&gt;</p>
+
+<pre><code>  &lt;/div&gt;
+
+  &lt;!-- Methods --&gt;
+            &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+
+<p>&lt;/html&gt;</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+
+    </div>
+  </body>
+</html>

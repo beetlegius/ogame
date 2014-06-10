@@ -1,0 +1,44 @@
+<div id='header_top'>
+	<center>
+		<table class="header">
+			<tr class="header">
+				<td class="header">
+					<table class="header">
+						<tr class="header">
+							<td class="header"><%= image_tag "planetas/#{current_planeta.imagen_name}.jpg", class: :planeta %></td>
+							<td class="header" align="right">
+								<%= form_tag seleccionar_planetas_path, class: :seleccionar do %>
+									<%= select_tag :id, options_from_collection_for_select(current_cuenta.planetas, :id, :to_label, current_planeta.id) %>
+								<% end %>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td class="header">
+					<table class='header'>
+						<tr class='header'>
+							<td align="center" width="85" class='header'><%= image_tag 'recursos/metal.gif' %></td>
+				 			<td align="center" width="85" class='header'><%= image_tag 'recursos/cristal.gif' %></td>
+							<td align="center" width="85" class='header'><%= image_tag 'recursos/deuterio.gif' %></td>
+							<td align="center" width="85" class='header'><%= image_tag 'recursos/energia.gif' %></td>
+						</tr>
+
+						<tr class='header'>
+							<td align="center" class="header resources" width="85"><i><b>Metal</b></i></td>
+							<td align="center" class="header resources" width="85"><i><b>Cristal</b></i></td>
+							<td align="center" class="header resources" width="85"><i><b>Deuterio</b></i></td>
+							<td align="center" class="header resources" width="85"><i><b>Energía</b></i></td>
+						</tr>
+						
+						<tr class='header'>
+							<td align="center" class='header' width="90"><%= number_with_delimiter current_planeta.recurso_metal %></td>
+							<td align="center" class='header' width="90"><%= number_with_delimiter current_planeta.recurso_cristal %></td>
+							<td align="center" class='header' width="90"><%= number_with_delimiter current_planeta.recurso_deuterio %></td>
+							<td align="center" class='header <%= :rojo if current_planeta.energia_negativa? %>' width="90"><%= number_with_delimiter current_planeta.recurso_energia_disponible %>/<%= number_with_delimiter current_planeta.recurso_energia %></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</center>
+</div>

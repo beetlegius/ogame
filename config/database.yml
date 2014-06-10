@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: 123456
+  pool: 5
+
+development:
+  <<: *default
+  database: ogame
+
+test:
+  <<: *default
+  database: ogame_test

@@ -1,0 +1,35 @@
+<div id='leftmenu'>
+
+  <center>
+    <div id='menu'>
+
+    <table width="110" cellspacing="0" cellpadding="0" style="text-align:center">
+      <tr><td class="info-menu"><%= image_tag 'skin/info-skin.jpg' %></td></tr>
+
+      <tr><td><%= link_to t_menu(:vision_general), current_cuenta %></td></tr>
+      <tr><td><%= link_to t_menu(:edificios), edificios_path %></td></tr>
+      <tr><td><%= link_to t_menu(:recursos), recursos_path %></td></tr>
+      <tr><td><%= link_to t_menu(:investigacion), tecnologias_path %></td></tr>
+      <tr><td><%= link_to t_menu(:hangar), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:flota), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:tecnologia), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:galaxia), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:defensa), '#' %></td></tr>
+
+      <tr><td class="info-menu"><%= image_tag 'skin/info-help.jpg' %></td></tr>
+
+      <tr><td><%= link_to t_menu(:alianzas), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:estadisticas), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:buscar), '#' %></td></tr>
+
+      <tr><td class="info-menu"><%= image_tag 'skin/user-menu.jpg' %></td></tr>
+
+      <tr><td><%= link_to t_menu(:mensajes), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:notas), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:lista_de_companeros), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:salir), '#' %></td></tr>
+
+    </table>
+  </center>
+
+</div>

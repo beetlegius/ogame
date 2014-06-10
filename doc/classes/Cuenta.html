@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Cuenta</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Cuenta 
+            
+                <span class="parent">&lt; 
+                    
+                    ActiveRecord::Base
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/app/models/cuenta_rb.html">app/models/cuenta.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Las cuentas son la relación entre los jugadores y los universos. Pueden
+tener solo una por universo.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-colonizar">colonizar</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-esta_protegida-3F">esta_protegida?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-puede_atacar_a-3F">puede_atacar_a?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-puede_colonizar-3F">puede_colonizar?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-puede_investigar_en_simultaneo-3F">puede_investigar_en_simultaneo?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-puntos">puntos</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-colonizar">
+            
+              <b>colonizar</b>(planeta)
+            
+            <a href="../classes/Cuenta.html#method-i-colonizar" name="method-i-colonizar" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-colonizar_source')" id="l_method-i-colonizar_source">show</a>
+                
+              </p>
+              <div id="method-i-colonizar_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cuenta.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">colonizar</span>(<span class="ruby-identifier">planeta</span>)
+  <span class="ruby-identifier">planeta</span>.<span class="ruby-identifier">colonizar</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">puede_colonizar?</span> <span class="ruby-identifier">planeta</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-esta_protegida-3F">
+            
+              <b>esta_protegida?</b>()
+            
+            <a href="../classes/Cuenta.html#method-i-esta_protegida-3F" name="method-i-esta_protegida-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-esta_protegida-3F_source')" id="l_method-i-esta_protegida-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-esta_protegida-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cuenta.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">esta_protegida?</span>
+  <span class="ruby-identifier">puntos</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">universo</span>.<span class="ruby-identifier">puntos_protegidos</span> 
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puede_atacar_a-3F">
+            
+              <b>puede_atacar_a?</b>(una_cuenta)
+            
+            <a href="../classes/Cuenta.html#method-i-puede_atacar_a-3F" name="method-i-puede_atacar_a-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>SI LA CUENTA ESTÁ PROTEGIDA, PUEDO ATACARLA SI EL 20% DE MIS PUNTOS NO
+SUPERAN EL PUNTAJE DE ESA CUENTA Y VICEVERSA</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puede_atacar_a-3F_source')" id="l_method-i-puede_atacar_a-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-puede_atacar_a-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cuenta.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">puede_atacar_a?</span>(<span class="ruby-identifier">una_cuenta</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">una_cuenta</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span>  
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">una_cuenta</span>.<span class="ruby-identifier">esta_protegida?</span>
+
+  <span class="ruby-identifier">puntos_contrincante</span> = <span class="ruby-identifier">una_cuenta</span>.<span class="ruby-identifier">puntos</span>
+  <span class="ruby-identifier">puntos</span> <span class="ruby-operator">*</span> <span class="ruby-number">0.2</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">puntos_contrincante</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">puntos_contrincante</span> <span class="ruby-operator">*</span> <span class="ruby-number">0.2</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">puntos</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puede_colonizar-3F">
+            
+              <b>puede_colonizar?</b>(planeta)
+            
+            <a href="../classes/Cuenta.html#method-i-puede_colonizar-3F" name="method-i-puede_colonizar-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puede_colonizar-3F_source')" id="l_method-i-puede_colonizar-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-puede_colonizar-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cuenta.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">puede_colonizar?</span>(<span class="ruby-identifier">planeta</span>)
+  <span class="ruby-identifier">planeta</span>.<span class="ruby-identifier">esta_disponible?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">planetas</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">universo</span>.<span class="ruby-identifier">cantidad_planetas_por_cuenta</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puede_investigar_en_simultaneo-3F">
+            
+              <b>puede_investigar_en_simultaneo?</b>()
+            
+            <a href="../classes/Cuenta.html#method-i-puede_investigar_en_simultaneo-3F" name="method-i-puede_investigar_en_simultaneo-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>MÉTODOS PÚBLICOS</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puede_investigar_en_simultaneo-3F_source')" id="l_method-i-puede_investigar_en_simultaneo-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-puede_investigar_en_simultaneo-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cuenta.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">puede_investigar_en_simultaneo?</span>
+  <span class="ruby-identifier">tecnologias</span>.<span class="ruby-identifier">select</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:esta_expandiendose?</span>).<span class="ruby-identifier">count</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">universo</span>.<span class="ruby-identifier">cantidad_investigaciones_en_simultaneo</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puntos">
+            
+              <b>puntos</b>()
+            
+            <a href="../classes/Cuenta.html#method-i-puntos" name="method-i-puntos" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puntos_source')" id="l_method-i-puntos_source">show</a>
+                
+              </p>
+              <div id="method-i-puntos_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/cuenta.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">puntos</span>
+  <span class="ruby-identifier">planetas</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">sum</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:puntos</span>) <span class="ruby-operator">/</span> <span class="ruby-number">1000</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

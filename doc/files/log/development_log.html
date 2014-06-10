@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>development.log</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            development.log
+        </h1>
+        <ul class="files">
+            <li>log/development.log</li>
+            <li>Last modified: 2014-05-31 18:13:44 -0300</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>[1m[36mDelayed::Backend::ActiveRecord::Job Load (77.1ms)[0m  [1mUPDATE
+“delayed_jobs” SET locked_at = &#39;2014-05-31 21:13:39.079329&#39;,
+locked_by = &#39;delayed_job.0 host:notebook pid:5367&#39; WHERE id IN
+(SELECT  “delayed_jobs”.“id” FROM “delayed_jobs”  WHERE ((run_at &lt;=
+&#39;2014-05-31 21:13:39.060052&#39; AND (locked_at IS NULL OR locked_at
+&lt; &#39;2014-05-31 17:13:39.060104&#39;) OR locked_by =
+&#39;delayed_job.0 host:notebook pid:5367&#39;) AND failed_at IS NULL) 
+ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *[0m
+[1m[35mUniverso Load (0.2ms)[0m  SELECT  “universos”.* FROM “universos” 
+WHERE “universos”.“id” = $1 LIMIT 1  [[“id”, 1]] [1m[36m (0.2ms)[0m 
+[1mBEGIN[0m [1m[35mSQL (0.6ms)[0m  UPDATE “delayed_jobs” SET
+“attempts” = $1, “last_error” = $2, “locked_at” = $3, “locked_by” = $4,
+“run_at” = $5, “updated_at” = $6 WHERE “delayed_jobs”.“id” = 1 
+[[“attempts”, 1], [“last_error”, “undefined method
+`configurar_without_delay!&#39; for
+#&lt;Universo:0x007f1defadfb60&gt;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/activemodel-4.1.1/lib/active_model/attribute_methods.rb:435:in
+`method_missing&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/activerecord-4.1.1/lib/active_record/attribute_methods.rb:206:in
+`method_missing&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/performable_method.rb:26:in
+`perform&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/backend/base.rb:105:in
+`block in
+invoke_job&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in
+`block in
+initialize&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in
+`execute&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in
+`run_callbacks&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/backend/base.rb:102:in
+`invoke_job&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:207:in
+`block (2 levels) in
+run&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/2.1.0/timeout.rb:91:in
+`block in
+timeout&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/2.1.0/timeout.rb:101:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/2.1.0/timeout.rb:101:in
+`timeout&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:207:in
+`block in
+run&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/2.1.0/benchmark.rb:294:in
+`realtime&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:206:in
+`run&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:274:in
+`block in
+reserve_and_run_one_job&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in
+`block in
+initialize&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in
+`execute&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in
+`run_callbacks&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:274:in
+`reserve_and_run_one_job&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:190:in
+`block in
+work_off&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:189:in
+`times&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:189:in
+`work_off&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:154:in
+`block (4 levels) in
+start&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/2.1.0/benchmark.rb:294:in
+`realtime&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:153:in
+`block (3 levels) in
+start&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in
+`block in
+initialize&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in
+`execute&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in
+`run_callbacks&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:152:in
+`block (2 levels) in
+start&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:151:in
+`loop&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:151:in
+`block in
+start&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/plugins/clear_locks.rb:7:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/plugins/clear_locks.rb:7:in
+`block (2 levels) in
+&lt;class:ClearLocks&gt;&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in
+`block (2 levels) in
+add&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:60:in
+`block in
+initialize&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:78:in
+`block in
+add&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:65:in
+`execute&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/lifecycle.rb:38:in
+`run_callbacks&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/worker.rb:150:in
+`start&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/command.rb:104:in
+`run&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/command.rb:92:in
+`block in
+run_process&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/daemons-1.1.9/lib/daemons/application.rb:255:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/daemons-1.1.9/lib/daemons/application.rb:255:in
+`block in
+start_proc&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/daemons-1.1.9/lib/daemons/daemonize.rb:82:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/daemons-1.1.9/lib/daemons/daemonize.rb:82:in
+`call_as_daemon&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/daemons-1.1.9/lib/daemons/application.rb:259:in
+`start_proc&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/daemons-1.1.9/lib/daemons/application.rb:296:in
+`start&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/daemons-1.1.9/lib/daemons/controller.rb:70:in
+`run&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/daemons-1.1.9/lib/daemons.rb:197:in
+`block in
+run_proc&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/daemons-1.1.9/lib/daemons/cmdline.rb:109:in
+`call&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/daemons-1.1.9/lib/daemons/cmdline.rb:109:in
+`catch_exceptions&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/daemons-1.1.9/lib/daemons.rb:196:in
+`run_proc&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/command.rb:90:in
+`run_process&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/command.rb:83:in
+`block in
+daemonize&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/command.rb:81:in
+`times&#39;n/home/gius/.rbenv/versions/2.1.2/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.1/lib/delayed/command.rb:81:in
+`daemonize&#39;nbin/delayed_job:5:in `&lt;main&gt;&#39;”], [“locked_at”,
+nil], [“locked_by”, nil], [“run_at”, “2014-05-31 21:13:45.225480”],
+[“updated_at”, “2014-05-31 21:13:39.230700”]] [1m[36m (8.3ms)[0m 
+[1mCOMMIT[0m [1m[35mDelayed::Backend::ActiveRecord::Job Load
+(9.2ms)[0m  UPDATE “delayed_jobs” SET locked_at = &#39;2014-05-31
+21:13:39.244149&#39;, locked_by = &#39;delayed_job.0 host:notebook
+pid:5367&#39; WHERE id IN (SELECT  “delayed_jobs”.“id” FROM “delayed_jobs” 
+WHERE ((run_at &lt;= &#39;2014-05-31 21:13:39.243346&#39; AND (locked_at IS
+NULL OR locked_at &lt; &#39;2014-05-31 17:13:39.243392&#39;) OR locked_by =
+&#39;delayed_job.0 host:notebook pid:5367&#39;) AND failed_at IS NULL) 
+ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *
+[1m[36mTecnologiaEspionaje Load (0.2ms)[0m  [1mSELECT  “tecnologias”.*
+FROM “tecnologias”  WHERE “tecnologias”.“type” IN
+(&#39;TecnologiaEspionaje&#39;) AND “tecnologias”.“id” = $1 LIMIT 1[0m 
+[[“id”, 1]] [1m[35m (0.2ms)[0m  BEGIN [1m[36mCuenta Load (0.2ms)[0m 
+[1mSELECT  “cuentas”.* FROM “cuentas”  WHERE “cuentas”.“id” = $1 LIMIT
+1[0m  [[“id”, 1]] [1m[35mSQL (0.3ms)[0m  UPDATE “tecnologias” SET
+“fecha_actualizacion” = $1, “nivel” = $2, “proceso_id” = $3, “updated_at” =
+$4 WHERE “tecnologias”.“type” IN (&#39;TecnologiaEspionaje&#39;) AND
+“tecnologias”.“id” = 1  [[“fecha_actualizacion”, nil], [“nivel”, 4],
+[“proceso_id”, nil], [“updated_at”, “2014-05-31 21:13:39.342964”]]
+[1m[36m (8.4ms)[0m  [1mCOMMIT[0m [1m[35m (0.1ms)[0m  BEGIN
+[1m[36mSQL (0.2ms)[0m  [1mDELETE FROM “delayed_jobs” WHERE
+“delayed_jobs”.“id” = $1[0m  [[“id”, 39]] [1m[35m (8.9ms)[0m  COMMIT
+[1m[36mDelayed::Backend::ActiveRecord::Job Load (9.1ms)[0m  [1mUPDATE
+“delayed_jobs” SET locked_at = &#39;2014-05-31 21:13:39.366701&#39;,
+locked_by = &#39;delayed_job.0 host:notebook pid:5367&#39; WHERE id IN
+(SELECT  “delayed_jobs”.“id” FROM “delayed_jobs”  WHERE ((run_at &lt;=
+&#39;2014-05-31 21:13:39.365772&#39; AND (locked_at IS NULL OR locked_at
+&lt; &#39;2014-05-31 17:13:39.365806&#39;) OR locked_by =
+&#39;delayed_job.0 host:notebook pid:5367&#39;) AND failed_at IS NULL) 
+ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *[0m
+[1m[35mMinaCristal Load (0.3ms)[0m  SELECT  “edificios”.* FROM
+“edificios”  WHERE “edificios”.“type” IN (&#39;MinaCristal&#39;) AND
+“edificios”.“id” = $1 LIMIT 1  [[“id”, 3564]] [1m[36mPlaneta Load
+(0.3ms)[0m  [1mSELECT  “planetas”.* FROM “planetas”  WHERE
+“planetas”.“id” = $1 LIMIT 1[0m  [[“id”, 275]] [1m[35mMinaMetal Load
+(0.3ms)[0m  SELECT  “edificios”.* FROM “edificios”  WHERE
+“edificios”.“type” IN (&#39;MinaMetal&#39;) AND “edificios”.“planeta_id” =
+$1 LIMIT 1  [[“planeta_id”, 275]] [1m[36mPlaneta Load (0.2ms)[0m 
+[1mSELECT  “planetas”.* FROM “planetas”  WHERE “planetas”.“id” = $1 LIMIT
+1[0m  [[“id”, 275]] [1m[35mPlantaEnergia Load (0.2ms)[0m  SELECT 
+“edificios”.* FROM “edificios”  WHERE “edificios”.“type” IN
+(&#39;PlantaEnergia&#39;) AND “edificios”.“planeta_id” = $1 LIMIT 1 
+[[“planeta_id”, 275]] [1m[36mMinaCristal Load (0.2ms)[0m  [1mSELECT 
+“edificios”.* FROM “edificios”  WHERE “edificios”.“type” IN
+(&#39;MinaCristal&#39;) AND “edificios”.“planeta_id” = $1 LIMIT 1[0m 
+[[“planeta_id”, 275]] [1m[35mPlaneta Load (0.2ms)[0m  SELECT 
+“planetas”.* FROM “planetas”  WHERE “planetas”.“id” = $1 LIMIT 1  [[“id”,
+275]] [1m[36mPlantaEnergia Load (0.2ms)[0m  [1mSELECT  “edificios”.*
+FROM “edificios”  WHERE “edificios”.“type” IN (&#39;PlantaEnergia&#39;) AND
+“edificios”.“planeta_id” = $1 LIMIT 1[0m  [[“planeta_id”, 275]] [1m[35m
+(0.2ms)[0m  SELECT COUNT(*) FROM “edificios”  WHERE “edificios”.“type” IN
+(&#39;Mina&#39;, &#39;MinaCristal&#39;, &#39;MinaMetal&#39;) AND
+“edificios”.“planeta_id” = $1 AND (nivel &gt;= 1)  [[“planeta_id”, 275]]
+[1m[36mMinaMetal Load (0.2ms)[0m  [1mSELECT  “edificios”.* FROM
+“edificios”  WHERE “edificios”.“type” IN (&#39;MinaMetal&#39;) AND
+“edificios”.“planeta_id” = $1 LIMIT 1[0m  [[“planeta_id”, 275]]
+[1m[35mMinaCristal Load (0.2ms)[0m  SELECT  “edificios”.* FROM
+“edificios”  WHERE “edificios”.“type” IN (&#39;MinaCristal&#39;) AND
+“edificios”.“planeta_id” = $1 LIMIT 1  [[“planeta_id”, 275]]
+[1m[36mMinaDeuterio Load (0.2ms)[0m  [1mSELECT  “edificios”.* FROM
+“edificios”  WHERE “edificios”.“type” IN (&#39;MinaDeuterio&#39;) AND
+“edificios”.“planeta_id” = $1 LIMIT 1[0m  [[“planeta_id”, 275]]
+[1m[35mMinaDeuterio Load (0.2ms)[0m  SELECT  “edificios”.* FROM
+“edificios”  WHERE “edificios”.“type” IN (&#39;MinaDeuterio&#39;) AND
+“edificios”.“planeta_id” = $1 LIMIT 1  [[“planeta_id”, 275]]
+[1m[36mPlaneta Load (0.2ms)[0m  [1mSELECT  “planetas”.* FROM “planetas”
+WHERE “planetas”.“id” = $1 LIMIT 1[0m  [[“id”, 275]] [1m[35m (0.1ms)[0m
+BEGIN [1m[36mSistema Load (0.2ms)[0m  [1mSELECT  “sistemas”.* FROM
+“sistemas”  WHERE “sistemas”.“id” = $1 LIMIT 1[0m  [[“id”, 19]]
+[1m[35mPlaneta Exists (0.5ms)[0m  SELECT  1 AS one FROM “planetas” 
+WHERE (“planetas”.“coordenada” = 5 AND “planetas”.“id” != 275 AND
+“planetas”.“sistema_id” = 19) LIMIT 1 [1m[36mSQL (0.2ms)[0m  [1mUPDATE
+“planetas” SET “cantidad_cristal” = $1, “cantidad_metal” = $2,
+“ultima_actualizacion_recursos” = $3, “updated_at” = $4 WHERE
+“planetas”.“id” = 275[0m  [[“cantidad_cristal”, 27136], [“cantidad_metal”,
+106061], [“ultima_actualizacion_recursos”, “2014-05-31 21:13:39.533396”],
+[“updated_at”, “2014-05-31 21:13:39.555775”]] [1m[35m (29.1ms)[0m 
+COMMIT [1m[36m (0.1ms)[0m  [1mBEGIN[0m [1m[35mSQL (0.4ms)[0m 
+UPDATE “edificios” SET “fecha_actualizacion” = $1, “nivel” = $2,
+“proceso_id” = $3, “updated_at” = $4 WHERE “edificios”.“type” IN
+(&#39;MinaCristal&#39;) AND “edificios”.“id” = 3564 
+[[“fecha_actualizacion”, nil], [“nivel”, 4], [“proceso_id”, nil],
+[“updated_at”, “2014-05-31 21:13:39.589411”]] [1m[36m (7.0ms)[0m 
+[1mCOMMIT[0m [1m[35m (0.1ms)[0m  BEGIN [1m[36mSQL (0.2ms)[0m 
+[1mDELETE FROM “delayed_jobs” WHERE “delayed_jobs”.“id” = $1[0m  [[“id”,
+38]] [1m[35m (9.3ms)[0m  COMMIT
+[1m[36mDelayed::Backend::ActiveRecord::Job Load (1.2ms)[0m  [1mUPDATE
+“delayed_jobs” SET locked_at = &#39;2014-05-31 21:13:39.611183&#39;,
+locked_by = &#39;delayed_job.0 host:notebook pid:5367&#39; WHERE id IN
+(SELECT  “delayed_jobs”.“id” FROM “delayed_jobs”  WHERE ((run_at &lt;=
+&#39;2014-05-31 21:13:39.610359&#39; AND (locked_at IS NULL OR locked_at
+&lt; &#39;2014-05-31 17:13:39.610390&#39;) OR locked_by =
+&#39;delayed_job.0 host:notebook pid:5367&#39;) AND failed_at IS NULL) 
+ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *[0m
+[1m[35mDelayed::Backend::ActiveRecord::Job Load (0.8ms)[0m  UPDATE
+“delayed_jobs” SET locked_at = &#39;2014-05-31 21:13:39.614255&#39;,
+locked_by = &#39;delayed_job.0 host:notebook pid:5367&#39; WHERE id IN
+(SELECT  “delayed_jobs”.“id” FROM “delayed_jobs”  WHERE ((run_at &lt;=
+&#39;2014-05-31 21:13:39.613549&#39; AND (locked_at IS NULL OR locked_at
+&lt; &#39;2014-05-31 17:13:39.613578&#39;) OR locked_by =
+&#39;delayed_job.0 host:notebook pid:5367&#39;) AND failed_at IS NULL) 
+ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *
+[1m[36mDelayed::Backend::ActiveRecord::Job Load (1.6ms)[0m  [1mUPDATE
+“delayed_jobs” SET locked_at = &#39;2014-05-31 21:13:39.628277&#39;,
+locked_by = &#39;delayed_job.1 host:notebook pid:5373&#39; WHERE id IN
+(SELECT  “delayed_jobs”.“id” FROM “delayed_jobs”  WHERE ((run_at &lt;=
+&#39;2014-05-31 21:13:39.608886&#39; AND (locked_at IS NULL OR locked_at
+&lt; &#39;2014-05-31 17:13:39.608934&#39;) OR locked_by =
+&#39;delayed_job.1 host:notebook pid:5373&#39;) AND failed_at IS NULL) 
+ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *[0m
+[1m[36mDelayed::Backend::ActiveRecord::Job Load (3.9ms)[0m  [1mUPDATE
+“delayed_jobs” SET locked_at = &#39;2014-05-31 21:13:39.716561&#39;,
+locked_by = &#39;delayed_job.2 host:notebook pid:5379&#39; WHERE id IN
+(SELECT  “delayed_jobs”.“id” FROM “delayed_jobs”  WHERE ((run_at &lt;=
+&#39;2014-05-31 21:13:39.676246&#39; AND (locked_at IS NULL OR locked_at
+&lt; &#39;2014-05-31 17:13:39.676288&#39;) OR locked_by =
+&#39;delayed_job.2 host:notebook pid:5379&#39;) AND failed_at IS NULL) 
+ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *[0m
+[1m[36mDelayed::Backend::ActiveRecord::Job Load (0.8ms)[0m  [1mUPDATE
+“delayed_jobs” SET locked_at = &#39;2014-05-31 21:13:44.616735&#39;,
+locked_by = &#39;delayed_job.0 host:notebook pid:5367&#39; WHERE id IN
+(SELECT  “delayed_jobs”.“id” FROM “delayed_jobs”  WHERE ((run_at &lt;=
+&#39;2014-05-31 21:13:44.616165&#39; AND (locked_at IS NULL OR locked_at
+&lt; &#39;2014-05-31 17:13:44.616210&#39;) OR locked_by =
+&#39;delayed_job.0 host:notebook pid:5367&#39;) AND failed_at IS NULL) 
+ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *[0m
+[1m[35mDelayed::Backend::ActiveRecord::Job Load (0.8ms)[0m  UPDATE
+“delayed_jobs” SET locked_at = &#39;2014-05-31 21:13:44.639737&#39;,
+locked_by = &#39;delayed_job.1 host:notebook pid:5373&#39; WHERE id IN
+(SELECT  “delayed_jobs”.“id” FROM “delayed_jobs”  WHERE ((run_at &lt;=
+&#39;2014-05-31 21:13:44.638912&#39; AND (locked_at IS NULL OR locked_at
+&lt; &#39;2014-05-31 17:13:44.638960&#39;) OR locked_by =
+&#39;delayed_job.1 host:notebook pid:5373&#39;) AND failed_at IS NULL) 
+ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *
+[1m[35mSQL (0.9ms)[0m  UPDATE “delayed_jobs” SET “locked_by” = NULL,
+“locked_at” = NULL WHERE “delayed_jobs”.“locked_by” = &#39;delayed_job.2
+host:notebook pid:5379&#39;</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+
+    </div>
+  </body>
+</html>

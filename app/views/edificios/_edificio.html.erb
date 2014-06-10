@@ -1,0 +1,54 @@
+<tr>
+
+	<td class="l">
+		<%= image_tag "edificios/#{edificio.class.name.tableize.singularize}.gif" %>
+	</td>
+
+	<td class="l">
+		<%= link_to edificio.class.model_name.human, '#' %> (Nivel <%= edificio.nivel %>)<br />
+
+		<%= t "edificios.#{edificio.class.name.tableize.singularize}.descripcion" %><br />
+
+		<b>Requiere:</b>
+		<% if edificio.metal.costo > 0 %>
+			Metal: <b><%= content_tag :span, number_with_delimiter(edificio.metal.costo), class: (current_planeta.puede_pagar?(edificio.metal, nil, nil, nil) ? :verde : :rojo) %></b>
+		<% end %>
+		<% if edificio.cristal.costo > 0 %>
+			Cristal: <b><%= content_tag :span, number_with_delimiter(edificio.cristal.costo), class: (current_planeta.puede_pagar?(nil, edificio.cristal.costo, nil, nil) ? :verde : :rojo) %></b>
+		<% end %>
+		<% if edificio.deuterio.costo > 0 %>
+			Deuterio: <b><%= content_tag :span, number_with_delimiter(edificio.deuterio.costo), class: (current_planeta.puede_pagar?(nil, nil, edificio.deuterio.costo, nil) ? :verde : :rojo) %></b>
+		<% end %>
+		<% if edificio.energia.costo > 0 %>
+			Energía: <b><%= content_tag :span, number_with_delimiter(edificio.energia.costo), class: (current_planeta.puede_pagar?(nil, nil, nil, edificio.energia.costo) ? :verde : :rojo) %></b>
+		<% end %>
+
+		<br />
+
+		Tiempo: <%= ChronicDuration.output edificio.duracion_expansion(current_planeta), format: :short %>
+
+		<% if !edificio.puede_costearse?(current_planeta) %>
+			<br />
+			<br />
+			<b>Aún faltan:</b>
+			Metal: <b><%= content_tag :span, costo_faltante(edificio.metal.costo, current_planeta.recurso_metal), class: :violeta %></b>
+			Cristal: <b><%= content_tag :span, costo_faltante(edificio.cristal.costo, current_planeta.recurso_cristal), class: :violeta %></b>
+			Deuterio: <b><%= content_tag :span, costo_faltante(edificio.deuterio.costo, current_planeta.recurso_deuterio), class: :violeta %></b>
+			Energía: <b><%= content_tag :span, costo_faltante(edificio.energia.costo, current_planeta.recurso_energia), class: :violeta %></b>
+		<% end %>
+	</td>
+
+	<td class="k">
+		<% if edificio.esta_expandiendose? %>
+			<%= tiempo edificio %>
+			<%= link_to "Cancelar", [:cancelar, edificio.becomes(Edificio)], method: :put if edificio.puede_cancelar_expansion? %>
+		<% elsif edificio.proceso_id %>
+			<%= content_tag :span, 'Actualizando...', class: :violeta %>
+		<% elsif edificio.puede_expandirse? %>
+			<%= link_to edificio.nivel.zero? ? 'Construir' : "Ampliar al nivel #{edificio.proximo_nivel}", [:expandir, edificio.becomes(Edificio)], method: :put, class: :verde %>
+		<% else %>
+			<%= content_tag :span, edificio.nivel.zero? ? 'Construir' : "Ampliar al nivel #{edificio.proximo_nivel}", class: :rojo unless current_planeta.edificios.any?(&:esta_expandiendose?) %>
+		<% end %>
+	</td>
+
+</tr>

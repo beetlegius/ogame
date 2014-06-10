@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>cargar_rake.html</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            cargar_rake.html
+        </h1>
+        <ul class="files">
+            <li>doc/files/lib/tasks/cargar_rake.html</li>
+            <li>Last modified: 2014-05-31 18:09:58 -0300</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN”</p>
+
+<pre><code>&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</code></pre>
+
+<p>&lt;html xmlns=“<a
+href="http://www.w3.org/1999/xhtml">www.w3.org/1999/xhtml</a>”
+xml:lang=“en” lang=“en”&gt; &lt;head&gt;</p>
+
+<pre><code>&lt;title&gt;cargar.rake&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../../../css/reset.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&gt;</code></pre>
+
+<p>&lt;link rel=“stylesheet” href=“../../../css/main.css” type=“text/css”
+media=“screen” /&gt; &lt;link rel=“stylesheet”
+href=“../../../css/github.css” type=“text/css” media=“screen” /&gt;
+&lt;script src=“../../../js/jquery-1.3.2.min.js” type=“text/javascript”
+charset=“utf-8”&gt;&lt;/script&gt; &lt;script
+src=“../../../js/jquery-effect.js” type=“text/javascript”
+charset=“utf-8”&gt;&lt;/script&gt; &lt;script src=“../../../js/main.js”
+type=“text/javascript” charset=“utf-8”&gt;&lt;/script&gt; &lt;script
+src=“../../../js/highlight.pack.js” type=“text/javascript”
+charset=“utf-8”&gt;&lt;/script&gt;</p>
+
+<p>&lt;/head&gt;</p>
+
+<p>&lt;body&gt;</p>
+
+<pre><code>&lt;div class=&quot;banner&quot;&gt;
+
+    &lt;h1&gt;
+        cargar.rake
+    &lt;/h1&gt;
+    &lt;ul class=&quot;files&quot;&gt;
+        &lt;li&gt;lib/tasks/cargar.rake&lt;/li&gt;
+        &lt;li&gt;Last modified: 2014-05-26 17:47:10 -0300&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;bodyContent&quot;&gt;
+    &lt;div id=&quot;content&quot;&gt;
+
+&lt;div class=&quot;description&quot;&gt;</code></pre>
+
+<p>&lt;p&gt;def crear_universo(nombre, cantidad_galaxias, cantidad_sistemas,
+cantidad_planetas_por_cuenta)&lt;/p&gt;</p>
+
+<p>&lt;pre&gt;<code>universo = Universo.create! nombre: nombre,
+cantidad_galaxias: cantidad_galaxias, cantidad_sistemas: cantidad_sistemas,
+cantidad_planetas_por_cuenta: cantidad_planetas_por_cuenta puts universo
+return universo</code>&lt;/pre&gt;</p>
+
+<p>&lt;p&gt;end&lt;/p&gt;</p>
+
+<p>&lt;p&gt;def crear_jugador(nombre)&lt;/p&gt;</p>
+
+<p>&lt;pre&gt;<code>jugador = Jugador.create! nombre: nombre puts jugador
+return jugador</code>&lt;/pre&gt;</p>
+
+<p>&lt;p&gt;end&lt;/p&gt;</p>
+
+<p>&lt;p&gt;task cargar: :environment do&lt;/p&gt;</p>
+
+<p>&lt;pre&gt;<code>universo = crear_universo &amp;#39;Andromeda&amp;#39;, 9,
+499, 9</code>&lt;/pre&gt;</p>
+
+<p>&lt;p&gt;end&lt;/p&gt;</p>
+
+<p>&lt;p&gt;task cuentas: :environment do&lt;/p&gt;</p>
+
+<p>&lt;pre&gt;&lt;code&gt;universo = Universo.first holyman = crear_jugador
+&amp;#39;Holyman&amp;#39; gius = crear_jugador &amp;#39;Gius&amp;#39;
+sxadvi = crear_jugador &amp;#39;Sxadvi&amp;#39; vassili = crear_jugador
+&amp;#39;Vassili&amp;#39;</p>
+
+<p>universo.cuentas.create! [</p>
+
+<pre><code>{ jugador: holyman },
+{ jugador: gius },
+{ jugador: sxadvi },
+{ jugador: vassili }</code></pre>
+
+<p>]&lt;/code&gt;&lt;/pre&gt;</p>
+
+<p>&lt;p&gt;end&lt;/p&gt;</p>
+
+<pre><code>  &lt;/div&gt;
+
+  &lt;!-- Methods --&gt;
+            &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+
+<p>&lt;/html&gt;</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+
+    </div>
+  </body>
+</html>

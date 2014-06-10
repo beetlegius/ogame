@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>CreateDelayedJobs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            CreateDelayedJobs 
+            
+                <span class="parent">&lt; 
+                    
+                    ActiveRecord::Migration
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/db/migrate/20140524204055_create_delayed_jobs_rb.html">db/migrate/20140524204055_create_delayed_jobs.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-change">change</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-change">
+            
+              <b>change</b>()
+            
+            <a href="../classes/CreateDelayedJobs.html#method-i-change" name="method-i-change" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-change_source')" id="l_method-i-change_source">show</a>
+                
+              </p>
+              <div id="method-i-change_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File db/migrate/20140524204055_create_delayed_jobs.rb, line 2</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">change</span>
+  <span class="ruby-identifier">create_table</span> <span class="ruby-value">:delayed_jobs</span>, <span class="ruby-identifier">force</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">integer</span>  <span class="ruby-value">:priority</span>, <span class="ruby-identifier">default</span><span class="ruby-operator">:</span> <span class="ruby-number">0</span>, <span class="ruby-identifier">null</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span> <span class="ruby-comment"># Allows some jobs to jump to the front of the queue</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">integer</span>  <span class="ruby-value">:attempts</span>, <span class="ruby-identifier">default</span><span class="ruby-operator">:</span> <span class="ruby-number">0</span>, <span class="ruby-identifier">null</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span> <span class="ruby-comment"># Provides for retries, but still fail eventually.</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">text</span>     <span class="ruby-value">:handler</span>, <span class="ruby-identifier">null</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>                 <span class="ruby-comment"># YAML-encoded string of the object that will do work</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">text</span>     <span class="ruby-value">:last_error</span>                              <span class="ruby-comment"># reason for last failure (See Note below)</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">datetime</span> <span class="ruby-value">:run_at</span>                                  <span class="ruby-comment"># When to run. Could be Time.zone.now for immediately, or sometime in the future.</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">datetime</span> <span class="ruby-value">:locked_at</span>                               <span class="ruby-comment"># Set when a client is working on this object</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">datetime</span> <span class="ruby-value">:failed_at</span>                               <span class="ruby-comment"># Set when all retries have failed (actually, by default, the record is deleted instead)</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span>   <span class="ruby-value">:locked_by</span>                               <span class="ruby-comment"># Who is working on this object (if locked)</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span>   <span class="ruby-value">:queue</span>                                   <span class="ruby-comment"># The name of the queue this job is in</span>
+    <span class="ruby-identifier">t</span>.<span class="ruby-identifier">timestamps</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">add_index</span> <span class="ruby-value">:delayed_jobs</span>, [<span class="ruby-value">:priority</span>, <span class="ruby-value">:run_at</span>], <span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-value">:delayed_jobs_priority</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

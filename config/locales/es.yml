@@ -1,0 +1,384 @@
+es:
+  menu:
+    vision_general: "Visión general"
+    edificios: "Edificios"
+    recursos: "Recursos"
+    investigacion: "Investigación"
+    hangar: "Hangar"
+    flota: "Flota"
+    tecnologia: "Tecnología"
+    galaxia: "Galaxia"
+    defensa: "Defensa"
+    alianzas: "Alianzas"
+    estadisticas: "Estadísticas"
+    buscar: "Buscar"
+    mensajes: "Mensajes"
+    notas: "Notas"
+    lista_de_companeros: "Lista de compañeros"
+    salir: "Salir"
+  tecnologias:
+    tecnologia_computacion:
+      descripcion: "Cuanto más elevado sea el nivel de tecnología de computación, más flotas podrás controlar simultáneamente. Cada nivel adicional de esta tecnología, aumenta el numero de flotas en 1."
+    tecnologia_energia:
+      descripcion: "Entendiendo la tecnología de diferentes tipos de energía, muchas investigaciones nuevas y avanzadas pueden ser adaptadas. La tecnología de energía es de gran importancia para un laboratorio de investigación moderno."
+    tecnologia_laser:
+      descripcion: ""
+    tecnologia_ionica:
+      descripcion: ""
+    tecnologia_hiperespacio:
+      descripcion: ""
+    tecnologia_plasma:
+      descripcion: ""
+    tecnologia_combustion:
+      descripcion: ""
+    tecnologia_impulso:
+      descripcion: ""
+    tecnologia_propulsor_hiperespacial:
+      descripcion: ""
+    tecnologia_espionaje:
+      descripcion: ""
+    tecnologia_red_investigacion:
+      descripcion: ""
+    tecnologia_graviton:
+      descripcion: ""
+    tecnologia_militar:
+      descripcion: ""
+    tecnologia_defensa:
+      descripcion: ""
+    tecnologia_blindaje:
+      descripcion: ""
+  edificios:
+    mina_metal:
+      descripcion: "Las minas de metal proveen los recursos básicos de un imperio emergente, y permiten la construcción de edificios y naves."
+    mina_cristal:
+      descripcion: "Los cristales son el recurso principal usado para construir circuitos electrónicos y ciertas aleaciones."
+    mina_deuterio:
+      descripcion: "El deuterio se usa como combustible para naves, y se recolecta en el mar profundo. Es una sustancia muy escasa, y por ello, relativamente cara."
+    planta_energia:
+      descripcion: "Las plantas de energía solar convierten energía fotónica en energía eléctrica, para su uso en casi todos los edificios y estructuras."
+    planta_fusion:
+      descripcion: "Un reactor de fusión nuclear que produce un átomo de helio a partir de dos átomos de deuterio usando una presión extremadamente alta y una elevadísima temperatura."
+    fabrica_robots:
+      descripcion: "Las fábricas de robots proporcionan unidades baratas y de fácil construcción que pueden ser usadas para mejorar o construir cualquier estructura planetaria. Cada nivel de mejora de la fábrica aumenta la eficiencia y el numero de unidades robóticas que ayudan en la construcción."
+    fabrica_nanobots:
+      descripcion: "La fábrica de nanobots es la última evolución de la robótica. Cada mejora proporciona nanobots más y más eficientes que incrementan la velocidad de construcción."
+    hangar:
+      descripcion: "El hangar es el lugar donde se construyen naves y estructuras de defensa planetaria."
+    almacen_metal:
+      descripcion: "Almacén de metal sin procesar."
+    almacen_cristal:
+      descripcion: "Almacén de cristal sin procesar."
+    almacen_deuterio:
+      descripcion: "Contenedores enormes para almacenar deuterio."
+    laboratorio:
+      descripcion: "Se necesita un laboratorio de investigación para conducir la investigación en nuevas tecnologías."
+    silo:
+      descripcion: "El silo es un lugar de almacenamiento y lanzamiento de misiles planetarios."
+  confirmacion: "¿Está seguro?"
+  notice:
+    create: "El elemento ha sido agregado."
+    update: "Se guardaron los cambios."
+    update_masivo: "Se guardaron los cambios de todos los elementos"
+    destroy: "El elemento ha sido eliminado."
+    sesion_iniciada: "Has iniciado sesión"
+    reordenar: "Los elementos se han reordenado"
+  alert:
+    debe_autenticarse: "Primero debe autenticarse para tener acceso."
+    sesion_no_iniciada: "El usuario y/o la contraseña no son válidos. Por favor reintente!"
+    no_se_puede_eliminar: "No se puede eliminar"
+  unauthorized:
+    manage:
+      all: "Su usuario no está autorizado para realizar esa acción."
+  date:
+    abbr_day_names:
+    - dom
+    - lun
+    - mar
+    - mié
+    - jue
+    - vie
+    - sáb
+    abbr_month_names:
+    -
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - domingo
+    - lunes
+    - martes
+    - miércoles
+    - jueves
+    - viernes
+    - sábado
+    formats:
+      default: '%d/%m/%Y'
+      long: '%A, %d de %B de %Y'
+      short: '%d de %b'
+    month_names:
+    -
+    - enero
+    - febrero
+    - marzo
+    - abril
+    - mayo
+    - junio
+    - julio
+    - agosto
+    - septiembre
+    - octubre
+    - noviembre
+    - diciembre
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: cerca de 1 hora
+        other: cerca de %{count} horas
+      about_x_months:
+        one: cerca de 1 mes
+        other: cerca de %{count} meses
+      about_x_years:
+        one: cerca de 1 año
+        other: cerca de %{count} años
+      almost_x_years:
+        one: casi 1 año
+        other: casi %{count} años
+      half_a_minute: medio minuto
+      less_than_x_minutes:
+        one: menos de 1 minuto
+        other: menos de %{count} minutos
+      less_than_x_seconds:
+        one: menos de 1 segundo
+        other: menos de %{count} segundos
+      over_x_years:
+        one: más de 1 año
+        other: más de %{count} años
+      x_days:
+        one: 1 día
+        other: '%{count} días'
+      x_minutes:
+        one: 1 minuto
+        other: '%{count} minutos'
+      x_months:
+        one: 1 mes
+        other: '%{count} meses'
+      x_seconds:
+        one: 1 segundo
+        other: '%{count} segundos'
+    prompts:
+      day: Día
+      hour: Hora
+      minute: Minuto
+      month: Mes
+      second: Segundos
+      year: Año
+  errors: &errors
+    format: '%{attribute} %{message}'
+    messages:
+      accepted: debe ser aceptado
+      blank: no puede estar en blanco
+      confirmation: no coincide con la confirmación
+      empty: no puede estar vacío
+      equal_to: debe ser igual a %{count}
+      even: debe ser un número par
+      exclusion: está reservado
+      greater_than: debe ser mayor que %{count}
+      greater_than_or_equal_to: debe ser mayor o igual que %{count}
+      inclusion: no está incluido en la lista
+      invalid: es inválido
+      less_than: debe ser menor que %{count}
+      less_than_or_equal_to: debe ser menor o igual que %{count}
+      not_a_number: no es un número
+      not_an_integer: debe ser un entero
+      odd: debe ser un número non
+      record_invalid: 'La validación falló: %{errors}'
+      taken: ya ha sido tomado
+      too_long:
+        one: es demasiado largo (máximo 1 caracter)
+        other: es demasiado largo (máximo %{count} caracteres)
+      too_short:
+        one: es demasiado corto (mínimo 1 caracter)
+        other: es demasiado corto (mínimo %{count} caracteres)
+      wrong_length:
+        one: longitud errónea (debe ser de 1 caracter)
+        other: longitud errónea (debe ser de %{count} caracteres)
+      fallo_expansion: "%{expandible} no puede expandirse en este momento"
+      fallo_cancelacion: "%{expandible} ya no puede cancelar su expansión"
+      universo_no_disponible: "El universo no está disponible."
+    template:
+      body: 'Revise que los siguientes campos sean válidos:'
+      header:
+        one: '%{model} no pudo guardarse debido a 1 error'
+        other: '%{model} no pudo guardarse debido a %{count} errores'
+  helpers:
+    select:
+      prompt: Por favor selecciona
+    submit:
+      create: "Agregar %{model}"
+      submit: "Guardar %{model}"
+      update: "Actualizar %{model}"
+  number:
+    currency:
+      format:
+        delimiter: .
+        format: '%u%n'
+        precision: 2
+        separator: ','
+        significant: false
+        strip_insignificant_zeros: false
+        unit: $
+    format:
+      delimiter: .
+      precision: 2
+      separator: ','
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: '%n %u'
+        units:
+          billion: mil millones
+          million: millón
+          quadrillion: mil billones
+          thousand: mil
+          trillion: billón
+          unit: ''
+      format:
+        delimiter: ','
+        separator: '.'
+        precision: 5
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ','
+        strip_insignificant_zeros: true
+    precision:
+      format:
+        delimiter: ','
+  support:
+    array:
+      last_word_connector: ' y '
+      two_words_connector: ' y '
+      words_connector: ', '
+  time:
+    am: am
+    formats:
+      default: '%a, %d de %b de %Y a las %H:%M:%S %Z'
+      long: '%A, %d de %B de %Y a las %I:%M %p'
+      short: '%d de %b a las %H:%M hrs'
+      fecha: '%D | %H:%M'
+      server: '%A %d de %B %H:%M:%S'
+    pm: pm
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    errors:
+      <<: *errors
+    models:
+      mina_metal: "Mina de metal"
+      mina_cristal: "Mina de cristal"
+      mina_deuterio: "Sintetizador de deuterio"
+      planta_energia: "Planta de energía solar"
+      planta_fusion: "Planta de fusión"
+      fabrica_robots: "Fábrica de robots"
+      fabrica_nanobots: "Fábrica de nanobots"
+      hangar: "Hangar"
+      almacen_metal: "Almacén de metal"
+      almacen_cristal: "Almacén de cristal"
+      almacen_deuterio: "Contenedor de deuterio"
+      laboratorio: "Laboratorio de investigación"
+      silo: "Silo"
+      base_lunar: "Base lunar"
+      sensor_phalanx: "Sensor Phalanx"
+      salto_cuantico: "Salto cuántico"
+
+      tecnologia_computacion: "Tecnología de computación"
+      tecnologia_energia: "Tecnología de energía"
+      tecnologia_laser: "Tecnología de láser"
+      tecnologia_ionica: "Tecnología íónica"
+      tecnologia_hiperespacio: "Tecnología de hiperespacio"
+      tecnologia_plasma: "Tecnología de plasma"
+      tecnologia_combustion: "Motor de combustión"
+      tecnologia_impulso: "Motor de impulso"
+      tecnologia_propulsor_hiperespacial: "Propulsor hiperespacial"
+      tecnologia_espionaje: "Tecnología de espionaje"
+      tecnologia_red_investigacion: "Red de investigación intergaláctica"
+      tecnologia_graviton: "Tecnología de gravitón"
+      tecnologia_militar: "Tecnología militar"
+      tecnologia_defensa: "Tecnología de defensa"
+      tecnologia_blindaje: "Tecnología de blindaje"
+    attributes:
+      usuario:
+        rol: "Rol"
+        password: "Contraseña"
+        password_confirmation: "Confirmación"
+      senador:
+        bio: "Biografía"
+        codigo_video: "Video (código)"
+        bio_imagen: "Imagen"
+        remove_bio_imagen: "Eliminar imagen"
+      novedad:
+        titulo: "Título"
+        portada_titulo: "Título (portada)"
+        bajada: "Bajada"
+        portada_bajada: "Bajada (portada)"
+        contenido: "Contenido"
+        imagen: "Imagen"
+        remove_imagen: "Eliminar imagen"
+        se_muestra_en_portada: "¿Se muestra en la portada?"
+      deseo:
+        titulo: "Título"
+        descripcion: "Descripción"
+        contenido: "Contenido"
+        imagen: "Imagen"
+        remove_imagen: "Eliminar imagen"
+      pagina:
+        titulo: "Título"
+        contenido: "Contenido"
+        imagen: "Imagen"
+        remove_imagen: "Eliminar imagen"
+      enlace:
+        nombre: "Nombre"
+        url: "URL"
+      proyecto:
+        titulo: "Título"
+        objeto: "Objeto"
+        fundamento: "Fundamento"
+        imagen: "Imagen"
+        remove_imagen: "Eliminar imagen"
+        documento: "Documento"
+        remove_documento: "Eliminar documento"
+        persona_nombre: "Nombre"
+        persona_apellido: "Apellido"
+        persona_telefono: "Teléfono"
+        persona_email: "Correo electrónico"
+  distance:
+    centi: "cm"
+    unit: "m"
+    thousand: "km"

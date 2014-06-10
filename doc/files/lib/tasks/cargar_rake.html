@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>cargar.rake</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            cargar.rake
+        </h1>
+        <ul class="files">
+            <li>lib/tasks/cargar.rake</li>
+            <li>Last modified: 2014-05-26 17:47:10 -0300</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>def crear_universo(nombre, cantidad_galaxias, cantidad_sistemas,
+cantidad_planetas_por_cuenta)</p>
+
+<pre><code>universo = Universo.create! nombre: nombre, cantidad_galaxias: cantidad_galaxias, cantidad_sistemas: cantidad_sistemas, cantidad_planetas_por_cuenta: cantidad_planetas_por_cuenta
+puts universo
+return universo</code></pre>
+
+<p>end</p>
+
+<p>def crear_jugador(nombre)</p>
+
+<pre><code>jugador = Jugador.create! nombre: nombre
+puts jugador
+return jugador</code></pre>
+
+<p>end</p>
+
+<p>task cargar: :environment do</p>
+
+<pre><code>universo = crear_universo &#39;Andromeda&#39;, 9, 499, 9</code></pre>
+
+<p>end</p>
+
+<p>task cuentas: :environment do</p>
+
+<pre><code>universo = Universo.first
+holyman = crear_jugador &#39;Holyman&#39;
+gius = crear_jugador &#39;Gius&#39;
+sxadvi = crear_jugador &#39;Sxadvi&#39;
+vassili = crear_jugador &#39;Vassili&#39;
+
+universo.cuentas.create! [
+        { jugador: holyman },
+        { jugador: gius },
+        { jugador: sxadvi },
+        { jugador: vassili }
+]</code></pre>
+
+<p>end</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+
+    </div>
+  </body>
+</html>

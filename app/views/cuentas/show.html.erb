@@ -1,0 +1,33 @@
+<table width="519">
+  <tr>
+  	<td class="c" colspan="3">
+  		<%= link_to "Planeta \"#{current_planeta.nombre}\"", edificios_path %> (<%= current_cuenta.jugador.nombre %>)
+  	</td>
+  </tr>
+
+  <tr>
+  	<th>Hora del servidor</th>
+  	<th colspan="2"><%= fecha(Time.now, format: :server).humanize %></th>
+  </tr>
+
+  <tr>
+  	<th></th>
+  	<th colspan="2"><%= image_tag "planetas/#{current_planeta.imagen_name}.jpg" %></th>
+  </tr>
+  <tr>
+    <th>Diámetro</th>
+    <th colspan="2"><%= number_to_human current_planeta.diametro, units: :distance %> (<%= current_planeta.cantidad_campos_ocupados %> / <%= current_planeta.cantidad_campos %>)</th>
+  </tr>
+  <tr>
+    <th>Temperatura</th>
+    <th colspan="2">aprox. <%= current_planeta.temperatura_minima %>°C hasta <%= current_planeta.temperatura_maxima %>°C</th>
+  </tr>
+  <tr>
+    <th>Posición</th>
+    <th colspan="2"><%= link_to current_planeta.coordenadas_completas, '#galaxia' %></a></th>
+  </tr>
+  <tr>
+    <th>Puntos</th>
+    <th colspan="2">3 (Lugar <a href="game.php?page=statistics&range=161">161</a> de 247)</th>
+  </tr>
+</table>

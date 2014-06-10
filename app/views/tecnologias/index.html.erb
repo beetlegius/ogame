@@ -1,0 +1,9 @@
+<% if @tecnologias.empty? %>
+	<p>Para investigar primero tienes que construir el laboratorio de investigación!</p>
+<% else %>
+	<table width="569">
+		<tr><td class="c" colspan="3">Tecnologías</td></tr>
+		<%= render @tecnologias %>
+	</table>
+
+<% end %>
