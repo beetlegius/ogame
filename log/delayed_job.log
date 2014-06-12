@@ -1,0 +1,78 @@
+I, [2014-06-09T21:41:27.778827 #11004]  INFO -- : 2014-06-09T21:41:27-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Starting job worker
+I, [2014-06-09T21:41:27.889754 #11004]  INFO -- : 2014-06-09T21:41:27-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job PlantaEnergia#completar_expansion! (id=4) RUNNING
+I, [2014-06-09T21:41:28.072795 #11004]  INFO -- : 2014-06-09T21:41:28-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job PlantaEnergia#completar_expansion! (id=4) COMPLETED after 0.1829
+I, [2014-06-09T21:41:28.075039 #11004]  INFO -- : 2014-06-09T21:41:28-0300: [Worker(delayed_job.0 host:notebook pid:11004)] 1 jobs processed at 3.3800 j/s, 0 failed
+I, [2014-06-09T21:41:28.233598 #11010]  INFO -- : 2014-06-09T21:41:28-0300: [Worker(delayed_job.1 host:notebook pid:11010)] Starting job worker
+I, [2014-06-09T21:41:28.345134 #11016]  INFO -- : 2014-06-09T21:41:28-0300: [Worker(delayed_job.2 host:notebook pid:11016)] Starting job worker
+I, [2014-06-09T21:44:23.495613 #11010]  INFO -- : 2014-06-09T21:44:23-0300: [Worker(delayed_job.1 host:notebook pid:11010)] Job PlantaEnergia#completar_expansion! (id=5) RUNNING
+I, [2014-06-09T21:44:23.663125 #11010]  INFO -- : 2014-06-09T21:44:23-0300: [Worker(delayed_job.1 host:notebook pid:11010)] Job PlantaEnergia#completar_expansion! (id=5) COMPLETED after 0.1672
+I, [2014-06-09T21:44:23.667609 #11010]  INFO -- : 2014-06-09T21:44:23-0300: [Worker(delayed_job.1 host:notebook pid:11010)] 1 jobs processed at 4.0506 j/s, 0 failed
+I, [2014-06-09T21:44:38.283831 #11004]  INFO -- : 2014-06-09T21:44:38-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job MinaMetal#completar_expansion! (id=6) RUNNING
+I, [2014-06-09T21:44:38.354132 #11004]  INFO -- : 2014-06-09T21:44:38-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job MinaMetal#completar_expansion! (id=6) COMPLETED after 0.0700
+I, [2014-06-09T21:44:38.358636 #11004]  INFO -- : 2014-06-09T21:44:38-0300: [Worker(delayed_job.0 host:notebook pid:11004)] 1 jobs processed at 8.9758 j/s, 0 failed
+I, [2014-06-10T00:03:41.347597 #11004]  INFO -- : 2014-06-10T00:03:41-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job MinaCristal#completar_expansion! (id=7) RUNNING
+I, [2014-06-10T00:03:41.429713 #11004]  INFO -- : 2014-06-10T00:03:41-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job MinaCristal#completar_expansion! (id=7) COMPLETED after 0.0818
+I, [2014-06-10T00:03:41.435796 #11004]  INFO -- : 2014-06-10T00:03:41-0300: [Worker(delayed_job.0 host:notebook pid:11004)] 1 jobs processed at 7.6080 j/s, 0 failed
+I, [2014-06-10T00:05:16.558351 #11004]  INFO -- : 2014-06-10T00:05:16-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job PlantaEnergia#completar_expansion! (id=8) RUNNING
+I, [2014-06-10T00:05:16.630097 #11004]  INFO -- : 2014-06-10T00:05:16-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job PlantaEnergia#completar_expansion! (id=8) COMPLETED after 0.0714
+I, [2014-06-10T00:05:16.634737 #11004]  INFO -- : 2014-06-10T00:05:16-0300: [Worker(delayed_job.0 host:notebook pid:11004)] 1 jobs processed at 8.7202 j/s, 0 failed
+I, [2014-06-10T00:05:36.648788 #11016]  INFO -- : 2014-06-10T00:05:36-0300: [Worker(delayed_job.2 host:notebook pid:11016)] Job MinaMetal#completar_expansion! (id=9) RUNNING
+I, [2014-06-10T00:05:36.877057 #11016]  INFO -- : 2014-06-10T00:05:36-0300: [Worker(delayed_job.2 host:notebook pid:11016)] Job MinaMetal#completar_expansion! (id=9) COMPLETED after 0.2279
+I, [2014-06-10T00:05:36.882049 #11016]  INFO -- : 2014-06-10T00:05:36-0300: [Worker(delayed_job.2 host:notebook pid:11016)] 1 jobs processed at 3.2886 j/s, 0 failed
+I, [2014-06-10T01:16:53.597807 #11004]  INFO -- : 2014-06-10T01:16:53-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job MinaMetal#completar_expansion! (id=10) RUNNING
+I, [2014-06-10T01:16:53.691336 #11004]  INFO -- : 2014-06-10T01:16:53-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job MinaMetal#completar_expansion! (id=10) COMPLETED after 0.0932
+I, [2014-06-10T01:16:53.695914 #11004]  INFO -- : 2014-06-10T01:16:53-0300: [Worker(delayed_job.0 host:notebook pid:11004)] 1 jobs processed at 8.2251 j/s, 0 failed
+I, [2014-06-10T01:17:08.732642 #11004]  INFO -- : 2014-06-10T01:17:08-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job PlantaEnergia#completar_expansion! (id=11) RUNNING
+I, [2014-06-10T01:17:08.826518 #11004]  INFO -- : 2014-06-10T01:17:08-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job PlantaEnergia#completar_expansion! (id=11) COMPLETED after 0.0936
+I, [2014-06-10T01:17:08.831149 #11004]  INFO -- : 2014-06-10T01:17:08-0300: [Worker(delayed_job.0 host:notebook pid:11004)] 1 jobs processed at 8.2561 j/s, 0 failed
+I, [2014-06-10T01:17:18.846168 #11010]  INFO -- : 2014-06-10T01:17:18-0300: [Worker(delayed_job.1 host:notebook pid:11010)] Job MinaDeuterio#completar_expansion! (id=12) RUNNING
+I, [2014-06-10T01:17:18.939141 #11010]  INFO -- : 2014-06-10T01:17:18-0300: [Worker(delayed_job.1 host:notebook pid:11010)] Job MinaDeuterio#completar_expansion! (id=12) COMPLETED after 0.0924
+I, [2014-06-10T01:17:18.944267 #11010]  INFO -- : 2014-06-10T01:17:18-0300: [Worker(delayed_job.1 host:notebook pid:11010)] 1 jobs processed at 8.5829 j/s, 0 failed
+I, [2014-06-10T01:20:04.010358 #11004]  INFO -- : 2014-06-10T01:20:04-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job MinaCristal#completar_expansion! (id=13) RUNNING
+I, [2014-06-10T01:20:04.126330 #11004]  INFO -- : 2014-06-10T01:20:04-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job MinaCristal#completar_expansion! (id=13) COMPLETED after 0.1156
+I, [2014-06-10T01:20:04.131100 #11004]  INFO -- : 2014-06-10T01:20:04-0300: [Worker(delayed_job.0 host:notebook pid:11004)] 1 jobs processed at 7.1038 j/s, 0 failed
+I, [2014-06-10T01:20:34.048253 #11016]  INFO -- : 2014-06-10T01:20:34-0300: [Worker(delayed_job.2 host:notebook pid:11016)] Job PlantaEnergia#completar_expansion! (id=14) RUNNING
+I, [2014-06-10T01:20:34.119071 #11016]  INFO -- : 2014-06-10T01:20:34-0300: [Worker(delayed_job.2 host:notebook pid:11016)] Job PlantaEnergia#completar_expansion! (id=14) COMPLETED after 0.0705
+I, [2014-06-10T01:20:34.123949 #11016]  INFO -- : 2014-06-10T01:20:34-0300: [Worker(delayed_job.2 host:notebook pid:11016)] 1 jobs processed at 10.4396 j/s, 0 failed
+I, [2014-06-10T01:20:54.161108 #11016]  INFO -- : 2014-06-10T01:20:54-0300: [Worker(delayed_job.2 host:notebook pid:11016)] Job MinaDeuterio#completar_expansion! (id=15) RUNNING
+I, [2014-06-10T01:20:54.265869 #11016]  INFO -- : 2014-06-10T01:20:54-0300: [Worker(delayed_job.2 host:notebook pid:11016)] Job MinaDeuterio#completar_expansion! (id=15) COMPLETED after 0.1044
+I, [2014-06-10T01:20:54.270741 #11016]  INFO -- : 2014-06-10T01:20:54-0300: [Worker(delayed_job.2 host:notebook pid:11016)] 1 jobs processed at 7.8620 j/s, 0 failed
+I, [2014-06-10T01:21:09.204145 #11010]  INFO -- : 2014-06-10T01:21:09-0300: [Worker(delayed_job.1 host:notebook pid:11010)] Job MinaDeuterio#completar_expansion! (id=16) RUNNING
+I, [2014-06-10T01:21:09.278595 #11010]  INFO -- : 2014-06-10T01:21:09-0300: [Worker(delayed_job.1 host:notebook pid:11010)] Job MinaDeuterio#completar_expansion! (id=16) COMPLETED after 0.0743
+I, [2014-06-10T01:21:09.281371 #11010]  INFO -- : 2014-06-10T01:21:09-0300: [Worker(delayed_job.1 host:notebook pid:11010)] 1 jobs processed at 9.2904 j/s, 0 failed
+I, [2014-06-10T01:24:44.410205 #11004]  INFO -- : 2014-06-10T01:24:44-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job MinaCristal#completar_expansion! (id=17) RUNNING
+I, [2014-06-10T01:24:44.495704 #11004]  INFO -- : 2014-06-10T01:24:44-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job MinaCristal#completar_expansion! (id=17) COMPLETED after 0.0854
+I, [2014-06-10T01:24:44.497861 #11004]  INFO -- : 2014-06-10T01:24:44-0300: [Worker(delayed_job.0 host:notebook pid:11004)] 1 jobs processed at 9.6315 j/s, 0 failed
+I, [2014-06-10T01:44:00.520230 #11016]  INFO -- : 2014-06-10T01:44:00-0300: [Worker(delayed_job.2 host:notebook pid:11016)] Job MinaMetal#completar_expansion! (id=18) RUNNING
+I, [2014-06-10T01:44:00.583867 #11016]  INFO -- : 2014-06-10T01:44:00-0300: [Worker(delayed_job.2 host:notebook pid:11016)] Job MinaMetal#completar_expansion! (id=18) COMPLETED after 0.0634
+I, [2014-06-10T01:44:00.595533 #11016]  INFO -- : 2014-06-10T01:44:00-0300: [Worker(delayed_job.2 host:notebook pid:11016)] 1 jobs processed at 10.1922 j/s, 0 failed
+I, [2014-06-10T01:44:10.547521 #11004]  INFO -- : 2014-06-10T01:44:10-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job PlantaEnergia#completar_expansion! (id=19) RUNNING
+I, [2014-06-10T01:44:10.663375 #11004]  INFO -- : 2014-06-10T01:44:10-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job PlantaEnergia#completar_expansion! (id=19) COMPLETED after 0.1155
+I, [2014-06-10T01:44:10.667899 #11004]  INFO -- : 2014-06-10T01:44:10-0300: [Worker(delayed_job.0 host:notebook pid:11004)] 1 jobs processed at 7.0078 j/s, 0 failed
+I, [2014-06-10T01:44:20.582098 #11010]  INFO -- : 2014-06-10T01:44:20-0300: [Worker(delayed_job.1 host:notebook pid:11010)] Job PlantaEnergia#completar_expansion! (id=20) RUNNING
+I, [2014-06-10T01:44:20.697815 #11010]  INFO -- : 2014-06-10T01:44:20-0300: [Worker(delayed_job.1 host:notebook pid:11010)] Job PlantaEnergia#completar_expansion! (id=20) COMPLETED after 0.1154
+I, [2014-06-10T01:44:20.702537 #11010]  INFO -- : 2014-06-10T01:44:20-0300: [Worker(delayed_job.1 host:notebook pid:11010)] 1 jobs processed at 6.8838 j/s, 0 failed
+I, [2014-06-10T01:44:50.663118 #11016]  INFO -- : 2014-06-10T01:44:50-0300: [Worker(delayed_job.2 host:notebook pid:11016)] Job MinaDeuterio#completar_expansion! (id=21) RUNNING
+I, [2014-06-10T01:44:50.745759 #11016]  INFO -- : 2014-06-10T01:44:50-0300: [Worker(delayed_job.2 host:notebook pid:11016)] Job MinaDeuterio#completar_expansion! (id=21) COMPLETED after 0.0824
+I, [2014-06-10T01:44:50.748390 #11016]  INFO -- : 2014-06-10T01:44:50-0300: [Worker(delayed_job.2 host:notebook pid:11016)] 1 jobs processed at 9.2691 j/s, 0 failed
+I, [2014-06-10T01:45:05.743107 #11004]  INFO -- : 2014-06-10T01:45:05-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job PlantaEnergia#completar_expansion! (id=22) RUNNING
+I, [2014-06-10T01:45:05.859289 #11004]  INFO -- : 2014-06-10T01:45:05-0300: [Worker(delayed_job.0 host:notebook pid:11004)] Job PlantaEnergia#completar_expansion! (id=22) COMPLETED after 0.1158
+I, [2014-06-10T01:45:05.863932 #11004]  INFO -- : 2014-06-10T01:45:05-0300: [Worker(delayed_job.0 host:notebook pid:11004)] 1 jobs processed at 7.0743 j/s, 0 failed
+I, [2014-06-10T23:03:48.809588 #7932]  INFO -- : 2014-06-10T23:03:48-0300: [Worker(delayed_job.0 host:notebook pid:7932)] Starting job worker
+I, [2014-06-10T23:03:49.248487 #7938]  INFO -- : 2014-06-10T23:03:49-0300: [Worker(delayed_job.1 host:notebook pid:7938)] Starting job worker
+I, [2014-06-10T23:03:49.345628 #7944]  INFO -- : 2014-06-10T23:03:49-0300: [Worker(delayed_job.2 host:notebook pid:7944)] Starting job worker
+I, [2014-06-10T23:03:53.942584 #7932]  INFO -- : 2014-06-10T23:03:53-0300: [Worker(delayed_job.0 host:notebook pid:7932)] Job Universo#configurar_without_delay (id=1) RUNNING
+I, [2014-06-10T23:04:25.212107 #7932]  INFO -- : 2014-06-10T23:04:25-0300: [Worker(delayed_job.0 host:notebook pid:7932)] Job Universo#configurar_without_delay (id=1) COMPLETED after 31.2693
+I, [2014-06-10T23:04:25.215187 #7932]  INFO -- : 2014-06-10T23:04:25-0300: [Worker(delayed_job.0 host:notebook pid:7932)] 1 jobs processed at 0.0319 j/s, 0 failed
+I, [2014-06-10T23:06:19.762074 #7944]  INFO -- : 2014-06-10T23:06:19-0300: [Worker(delayed_job.2 host:notebook pid:7944)] Error while reserving job: PG::UnableToSend: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+: UPDATE "delayed_jobs" SET locked_at = '2014-06-11 02:06:19.758229', locked_by = 'delayed_job.2 host:notebook pid:7944' WHERE id IN (SELECT  "delayed_jobs"."id" FROM "delayed_jobs"  WHERE ((run_at <= '2014-06-11 02:06:19.756909' AND (locked_at IS NULL OR locked_at < '2014-06-10 22:06:19.757003') OR locked_by = 'delayed_job.2 host:notebook pid:7944') AND failed_at IS NULL)  ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *
+I, [2014-06-10T23:06:19.762532 #7938]  INFO -- : 2014-06-10T23:06:19-0300: [Worker(delayed_job.1 host:notebook pid:7938)] Error while reserving job: PG::UnableToSend: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+: UPDATE "delayed_jobs" SET locked_at = '2014-06-11 02:06:19.758392', locked_by = 'delayed_job.1 host:notebook pid:7938' WHERE id IN (SELECT  "delayed_jobs"."id" FROM "delayed_jobs"  WHERE ((run_at <= '2014-06-11 02:06:19.757048' AND (locked_at IS NULL OR locked_at < '2014-06-10 22:06:19.757123') OR locked_by = 'delayed_job.1 host:notebook pid:7938') AND failed_at IS NULL)  ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *
+I, [2014-06-10T23:06:20.320130 #7932]  INFO -- : 2014-06-10T23:06:20-0300: [Worker(delayed_job.0 host:notebook pid:7932)] Error while reserving job: PG::UnableToSend: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+: UPDATE "delayed_jobs" SET locked_at = '2014-06-11 02:06:20.316788', locked_by = 'delayed_job.0 host:notebook pid:7932' WHERE id IN (SELECT  "delayed_jobs"."id" FROM "delayed_jobs"  WHERE ((run_at <= '2014-06-11 02:06:20.315519' AND (locked_at IS NULL OR locked_at < '2014-06-10 22:06:20.315622') OR locked_by = 'delayed_job.0 host:notebook pid:7932') AND failed_at IS NULL)  ORDER BY priority ASC, run_at ASC LIMIT 1 FOR UPDATE) RETURNING *
