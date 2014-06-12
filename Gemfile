@@ -16,15 +16,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
-	# Pruebas
 	gem 'better_errors'
-	gem 'flay'
-	gem 'binding_of_caller'
 	gem 'hirb'
-	gem 'lol_dba'
 	gem 'rails_best_practices'
 	gem 'reek'
-	gem 'smusher'
 
   gem 'spring'
   gem 'quiet_assets'
@@ -33,7 +28,6 @@ end
 
 gem 'sorcery'
 gem 'cancan'
-gem 'friendly_id'
 gem 'simple_form'
 
 gem 'bootstrap-sass'
@@ -41,7 +35,6 @@ gem 'font-awesome-rails'
 
 group :production do
   gem 'unicorn'
-  gem 'rack-cache', require: 'rack/cache'
   gem 'exception_notification'
 end
 
@@ -49,9 +42,6 @@ gem 'capistrano'
 gem 'capistrano-rbenv'
 gem 'capistrano-rails'
 gem 'capistrano-bundler'
-
-gem 'dragonfly'
-gem 'unf'
 
 gem 'chronic_duration'
 

@@ -38,6 +38,10 @@ class Planeta < ActiveRecord::Base
   has_one :laboratorio
   has_one :silo
 
+  has_many :naves, -> { order(:orden) }
+  has_one :carga_chica
+  has_one :carga_grande
+
   accepts_nested_attributes_for :mina_metal, :mina_cristal, :mina_deuterio, :planta_energia
 
   delegate :galaxia, to: :sistema
@@ -148,7 +152,7 @@ class Planeta < ActiveRecord::Base
     self.ultima_actualizacion_recursos = Time.now
   end
 
-  # :reek:TooManyStatements: { max_statements: 13 }
+  # :reek:TooManyStatements: { max_statements: 20 }
   def configurar
     create_mina_metal! orden: 1
     create_mina_cristal! orden: 2
@@ -163,6 +167,9 @@ class Planeta < ActiveRecord::Base
     create_almacen_deuterio! orden: 11
     create_laboratorio! orden: 12
     create_silo! orden: 13
+
+    create_carga_chica! orden: 1
+    create_carga_grande! orden: 2
   end
 
 end

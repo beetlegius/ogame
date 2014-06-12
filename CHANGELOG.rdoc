@@ -1,0 +1,15 @@
+== CHANGELOG
+
+0.0.1 (11 Junio 2014)
+
+* Motor inicial
+
+* Universos
+* Galaxias
+* Sistemas solares
+* Planetas
+
+* Edificios
+* Tecnologías
+
+* Recursos

@@ -33,6 +33,10 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'fabrica_robots', 'fabricas_robots'
   inflect.irregular 'fabrica_nanobots', 'fabricas_nanobots'
   inflect.irregular 'luna', 'lunas'
+
+  inflect.irregular 'nave', 'naves'
+  inflect.irregular 'carga_chica', 'cargas_chicas'
+  inflect.irregular 'carga_grande', 'cargas_grandes'
 end
 
 # These inflection rules are supported but not enabled by default:

@@ -1,28 +1,15 @@
-== README
+La versión original de Ogame realizada íntegramente en Ruby on Rails.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby <tt>2.1</tt>
+* Rails <tt>4.1</tt>
 
-Things you may want to cover:
+1.- Clonar la aplicación
+2.- Configurar config/database.yml (por defecto creará ogame y ogame_test en postgresql)
+3.- Crear y migrar la base de datos (rake db:create db:migrate)
+4.- Correr script de inicialización (rake cargar)
+5.- Correr script de cuentas (rake cuentas)
+6.- Correr la aplicación
 
-* Ruby version
+== DESARROLLO
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+La aplicación está en desarrollo, por lo tanto todo tipo de colaboración es bien recibida.

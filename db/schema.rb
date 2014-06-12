@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526120408) do
+ActiveRecord::Schema.define(version: 20140611015236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,14 +83,25 @@ ActiveRecord::Schema.define(version: 20140526120408) do
 
   add_index "lunas", ["planeta_id"], name: "index_lunas_on_planeta_id", using: :btree
 
+  create_table "naves", force: true do |t|
+    t.integer  "cantidad",   default: 0
+    t.string   "type"
+    t.integer  "orden"
+    t.integer  "planeta_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "naves", ["planeta_id"], name: "index_naves_on_planeta_id", using: :btree
+
   create_table "planetas", force: true do |t|
     t.string   "nombre"
     t.integer  "temperatura_minima"
     t.integer  "temperatura_maxima"
     t.integer  "coordenada"
-    t.integer  "cantidad_metal",                default: 0
-    t.integer  "cantidad_cristal",              default: 0
-    t.integer  "cantidad_deuterio",             default: 0
+    t.float    "cantidad_metal",                default: 0.0
+    t.float    "cantidad_cristal",              default: 0.0
+    t.float    "cantidad_deuterio",             default: 0.0
     t.integer  "cantidad_campos"
     t.datetime "ultima_actualizacion_recursos"
     t.boolean  "es_principal",                  default: false
