@@ -2,8 +2,7 @@
 
 La versión original de Ogame realizada íntegramente en Ruby on Rails.
 
-* Ruby <tt>2.1</tt>
-* Rails <tt>4.1</tt>
+<tt>Ruby 2.1</tt> & <tt>Rails 4.1</tt>
 
 1.- Clonar la aplicación
 2.- Configurar config/database.yml (por defecto creará ogame y ogame_test en postgresql)
