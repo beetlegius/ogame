@@ -4,7 +4,7 @@ module Temperatura
   DIFERENCIA_TEMPERATURAS = 40
 
   def calcular_temperatura_minima
-    case coordenada
+    case numero_planeta
     when 1..3 then rand(100..120)
     when 4..6 then rand(60..90)
     when 7..9 then rand(30..60)

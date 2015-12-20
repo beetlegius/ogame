@@ -47,6 +47,10 @@ class Edificio < ActiveRecord::Base
   #### ALIAS E IMPRESIONES
   ##############################################################################
 
+  def tipo
+    self.class.model_name.to_s.underscore
+  end
+
   def to_s
     self.class.model_name.human
   end

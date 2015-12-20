@@ -15,7 +15,7 @@ module Campos
   end
 
   def set_campos
-    self.cantidad_campos = case coordenada
+    self.cantidad_campos = case numero_planeta
     when 1..3 then calcular_campos(40..70)
     when 4..6 then calcular_campos(120..310)
     when 7..9 then calcular_campos(105..195)

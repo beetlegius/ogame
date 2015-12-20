@@ -3,10 +3,11 @@ class EdificiosController < ApplicationController
   load_and_authorize_resource through: :current_planeta
 
   def index
-    @edificios = @edificios.select(&:cumple_requisitos?)
+    @edificios = current_planeta.edificios#@edificios.select(&:cumple_requisitos?)
   end
 
   def expandir
+    @edificio = current_planeta.send params[:tipo]
   	@edificio.expandir! current_planeta
   	redirect_to edificios_path, notice: notice
   end
