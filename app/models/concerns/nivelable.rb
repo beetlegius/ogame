@@ -71,9 +71,10 @@ module Nivelable
 
     planeta.pagar! metal, cristal, deuterio
     tiempo = duracion_expansion(planeta)
-    proceso = delay(run_at: tiempo.seconds.from_now).completar_expansion!
+    #proceso = delay(run_at: tiempo.seconds.from_now).completar_expansion!(planeta)
+    #update! fecha_actualizacion: Time.now + tiempo, proceso_id: proceso.id
+    completar_expansion!(planeta)
 
-    update! fecha_actualizacion: Time.now + tiempo, proceso_id: proceso.id
   end
 
   def cancelar_expansion!(planeta)
@@ -85,10 +86,19 @@ module Nivelable
     update! fecha_actualizacion: nil, proceso_id: nil
   end
 
-  def completar_expansion!
+  def metodo_nivel
+    "nivel_#{tipo}".to_sym
+  end
+
+  def completar_expansion!(planeta)
     before_completar_expansion
-    update! nivel: nivel.next, fecha_actualizacion: nil, proceso_id: nil
+    subir_nivel! planeta
     after_completar_expansion
+  end
+
+  def subir_nivel!(planeta)
+    planeta.subir_nivel! tipo
+    #update! nivel: nivel.next, fecha_actualizacion: nil, proceso_id: nil
   end
 
   private

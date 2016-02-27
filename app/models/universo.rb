@@ -5,11 +5,13 @@ class Universo < ActiveRecord::Base
   #### CONFIGURACIONES Y RELACIONES
   ##############################################################################
 
+  GALAXIAS_POR_UNIVERSO = 9
+  SISTEMAS_POR_GALAXIAS = 499
+  PLANETAS_POR_SISTEMAS = 15
+
   after_create :configurar
 
-  has_many :galaxias
-  has_many :sistemas, through: :galaxias
-  has_many :planetas, through: :sistemas
+  has_many :planetas
 
   has_many :cuentas
 	has_many :jugadores, through: :cuentas
@@ -29,7 +31,24 @@ class Universo < ActiveRecord::Base
   end
 
   def esta_lleno?
-    planetas.libre.count < cantidad_planetas_por_cuenta
+    false #planetas.libre.count < cantidad_planetas_por_cuenta
+  end
+
+  def coordenadas_random
+    galaxia = rand(GALAXIAS_POR_UNIVERSO) + 1
+    sistema = rand(SISTEMAS_POR_GALAXIAS) + 1
+    planeta = rand(PLANETAS_POR_SISTEMAS) + 1
+    { numero_galaxia: galaxia, numero_sistema: sistema, numero_planeta: planeta }
+  end
+
+  def coordenadas_libres
+    coord = coordenadas_random
+    planeta = planetas.where(coordenadas_random).first
+    planeta.nil? ? coord : coordenadas_libres
+  end
+
+  def crear_planeta_libre!
+    planetas.create!(coordenadas_libres)
   end
 
   ##############################################################################
@@ -46,10 +65,7 @@ class Universo < ActiveRecord::Base
   private
 
   def configurar
-    cantidad_galaxias.times do |index|
-      galaxias.create! coordenada: index.next
-    end
   end
-  handle_asynchronously :configurar
+  #handle_asynchronously :configurar
 
 end

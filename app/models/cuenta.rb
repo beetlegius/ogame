@@ -47,6 +47,7 @@ class Cuenta < ActiveRecord::Base
     tecnologias.select(&:esta_expandiendose?).count < universo.cantidad_investigaciones_en_simultaneo
   end
 
+  # EN VEZ DE PLANETA, DEBE RECIBIR COORDENADA, LOS PLANETAS SE CREAN AL COLONIZARSE
   def colonizar(planeta)
     planeta.colonizar(self) if puede_colonizar? planeta
   end
@@ -84,27 +85,27 @@ class Cuenta < ActiveRecord::Base
   private
 
   def asociar_planeta
-    planeta = universo.planetas.libre.sample
+    planeta = universo.crear_planeta_libre!
     planeta.colonizar_como_principal(self) if puede_colonizar? planeta
   end
 
   # :reek:TooManyStatements: { max_statements: 15 }
   def configurar
-    create_tecnologia_espionaje! orden: 1
-    create_tecnologia_computacion! orden: 2
-    create_tecnologia_militar! orden: 3
-    create_tecnologia_defensa! orden: 4
-    create_tecnologia_blindaje! orden: 5
-    create_tecnologia_energia! orden: 6
-    create_tecnologia_hiperespacio! orden: 7
-    create_tecnologia_combustion! orden: 8
-    create_tecnologia_impulso! orden: 9
-    create_tecnologia_propulsor_hiperespacial! orden: 10
-    create_tecnologia_laser! orden: 11
-    create_tecnologia_ionica! orden: 12
-    create_tecnologia_plasma! orden: 13
-    create_tecnologia_red_investigacion! orden: 14
-    create_tecnologia_graviton! orden: 15
+    create_tecnologia_espionaje!                orden: 1
+    create_tecnologia_computacion!              orden: 2
+    create_tecnologia_militar!                  orden: 3
+    create_tecnologia_defensa!                  orden: 4
+    create_tecnologia_blindaje!                 orden: 5
+    create_tecnologia_energia!                  orden: 6
+    create_tecnologia_hiperespacio!             orden: 7
+    create_tecnologia_combustion!               orden: 8
+    create_tecnologia_impulso!                  orden: 9
+    create_tecnologia_propulsor_hiperespacial!  orden: 10
+    create_tecnologia_laser!                    orden: 11
+    create_tecnologia_ionica!                   orden: 12
+    create_tecnologia_plasma!                   orden: 13
+    create_tecnologia_red_investigacion!        orden: 14
+    create_tecnologia_graviton!                 orden: 15
   end
 
   def espacio_disponible

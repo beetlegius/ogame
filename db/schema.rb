@@ -99,20 +99,36 @@ ActiveRecord::Schema.define(version: 20140611015236) do
     t.integer  "temperatura_minima"
     t.integer  "temperatura_maxima"
     t.integer  "coordenada"
+    t.integer  "numero_galaxia"
+    t.integer  "numero_sistema"
+    t.integer  "numero_planeta"
+    t.integer  "nivel_mina_metal",              default: 0
+    t.integer  "nivel_mina_cristal",            default: 0
+    t.integer  "nivel_mina_deuterio",           default: 0
+    t.integer  "nivel_planta_energia",          default: 0
+    t.integer  "nivel_planta_fusion",           default: 0
+    t.integer  "nivel_fabrica_robots",          default: 0
+    t.integer  "nivel_fabrica_nanobots",        default: 0
+    t.integer  "nivel_hangar",                  default: 0
+    t.integer  "nivel_almacen_metal",           default: 0
+    t.integer  "nivel_almacen_cristal",         default: 0
+    t.integer  "nivel_almacen_deuterio",        default: 0
+    t.integer  "nivel_laboratorio",             default: 0
+    t.integer  "nivel_silo",                    default: 0
     t.float    "cantidad_metal",                default: 0.0
     t.float    "cantidad_cristal",              default: 0.0
     t.float    "cantidad_deuterio",             default: 0.0
     t.integer  "cantidad_campos"
     t.datetime "ultima_actualizacion_recursos"
     t.boolean  "es_principal",                  default: false
-    t.integer  "sistema_id"
+    t.integer  "universo_id"
     t.integer  "cuenta_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "planetas", ["cuenta_id"], name: "index_planetas_on_cuenta_id", using: :btree
-  add_index "planetas", ["sistema_id"], name: "index_planetas_on_sistema_id", using: :btree
+  add_index "planetas", ["universo_id"], name: "index_planetas_on_universo_id", using: :btree
 
   create_table "sistemas", force: true do |t|
     t.integer  "coordenada"

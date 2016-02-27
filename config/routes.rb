@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :edificios, only: :index do # edificios
-  	put :expandir, on: :member
+  	get :expandir, on: :collection
   	put :cancelar, on: :member
   end
 

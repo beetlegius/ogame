@@ -45,7 +45,7 @@
 		<% elsif edificio.proceso_id %>
 			<%= content_tag :span, 'Actualizando...', class: :violeta %>
 		<% elsif edificio.puede_expandirse? %>
-			<%= link_to edificio.nivel.zero? ? 'Construir' : "Ampliar al nivel #{edificio.proximo_nivel}", [:expandir, edificio.becomes(Edificio)], method: :put, class: :verde %>
+			<%= link_to edificio.nivel.zero? ? 'Construir' : "Ampliar al nivel #{edificio.proximo_nivel}", expandir_edificios_path(tipo: edificio.tipo), method: :get, class: :verde %>
 		<% else %>
 			<%= content_tag :span, edificio.nivel.zero? ? 'Construir' : "Ampliar al nivel #{edificio.proximo_nivel}", class: :rojo unless current_planeta.edificios.any?(&:esta_expandiendose?) %>
 		<% end %>
