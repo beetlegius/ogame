@@ -1,6 +1,6 @@
 # El sensor phalanx se utiliza para interceptar ataques de los enemigos.
 class SensorPhalanx < Edificio
-		
+
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES
   ##############################################################################
@@ -17,7 +17,7 @@ class SensorPhalanx < Edificio
   ##############################################################################
 
   def puede_expandirse?
-    luna.base_lunar.nivel >= 1 && super
+    propietario.base_lunar.nivel >= 1 && super
   end
 
   ##############################################################################

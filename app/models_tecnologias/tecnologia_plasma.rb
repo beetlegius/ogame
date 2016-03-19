@@ -18,7 +18,7 @@ class TecnologiaPlasma < Tecnologia
   ##############################################################################
 
   def cumple_requisitos?
-    cuenta.tecnologia_energia.nivel >= 8 && cuenta.tecnologia_laser.nivel >= 10 && cuenta.tecnologia_ionica.nivel >= 5 && super
+    propietario.tecnologia_energia.nivel >= 8 && propietario.tecnologia_laser.nivel >= 10 && propietario.tecnologia_ionica.nivel >= 5 && super
   end
 
   ##############################################################################

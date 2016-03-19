@@ -17,7 +17,7 @@ class TecnologiaCombustion < Tecnologia
   ##############################################################################
 
   def cumple_requisitos?
-    cuenta.tecnologia_energia.nivel >= 1 && super
+    propietario.tecnologia_energia.nivel >= 1 && super
   end
 
   ##############################################################################

@@ -17,7 +17,7 @@ class Hangar < Edificio
   ##############################################################################
 
   def cumple_requisitos?
-    planeta.fabrica_robots.nivel >= 2 && super
+    propietario.fabrica_robots.nivel >= 2 && super
   end
 
   ##############################################################################

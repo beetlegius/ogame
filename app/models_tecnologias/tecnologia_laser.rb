@@ -17,7 +17,7 @@ class TecnologiaLaser < Tecnologia
   ##############################################################################
 
   def cumple_requisitos?
-    cuenta.tecnologia_energia.nivel >= 2 && super
+    propietario.tecnologia_energia.nivel >= 2 && super
   end
 
   ##############################################################################

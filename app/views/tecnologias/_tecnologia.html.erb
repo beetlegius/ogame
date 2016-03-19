@@ -41,11 +41,11 @@
 	<td class="k">
 		<% if tecnologia.esta_expandiendose? %>
 			<%= tiempo tecnologia %>
-			<%= link_to "Cancelar", [:cancelar, tecnologia.becomes(Tecnologia)], method: :put if tecnologia.puede_cancelar_expansion? %>
-		<% elsif tecnologia.proceso_id %>
+			<%= link_to "Cancelar", cancelar_tecnologias_path(tipo: tecnologia.tipo), method: :patch if tecnologia.puede_cancelar_expansion? %>
+		<% elsif tecnologia.proceso.present? %>
 			<%= content_tag :span, 'Actualizando...', class: :violeta %>
 		<% elsif current_planeta.puede_investigar?(tecnologia) %>
-			<%= link_to tecnologia.nivel.zero? ? 'Investigar' : "Ampliar al nivel #{tecnologia.proximo_nivel}", [:expandir, tecnologia.becomes(Tecnologia)], method: :put, class: :verde %>
+			<%= link_to tecnologia.nivel.zero? ? 'Investigar' : "Ampliar al nivel #{tecnologia.proximo_nivel}", expandir_tecnologias_path(tipo: tecnologia.tipo), method: :patch, class: :verde %>
 		<% else %>
 			<%= content_tag :span, tecnologia.nivel.zero? ? 'Investigar' : "Ampliar al nivel #{tecnologia.proximo_nivel}", class: :rojo unless current_cuenta.tecnologias.any?(&:esta_expandiendose?) %>
 		<% end %>

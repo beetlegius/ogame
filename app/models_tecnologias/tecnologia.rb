@@ -1,19 +1,21 @@
 # Las cuentas investigan tecnologías, las cuales sirven para mejorar diversas cuestiones.
-class Tecnologia < ActiveRecord::Base
+class Tecnologia
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES
   ##############################################################################
 
+  include ActiveModel::Model
   include Nivelable
 
-  belongs_to :cuenta
+  attr_accessor :propietario, :nivel
+  # belongs_to :cuenta
 
   ##############################################################################
   #### SCOPES Y VALIDACIONES
   ##############################################################################
 
-  validates :cuenta, presence: true
+  validates :propietario, presence: true
 
   ##############################################################################
   #### MÉTODOS PÚBLICOS
@@ -31,6 +33,10 @@ class Tecnologia < ActiveRecord::Base
       @nivel_laboratorio_requerido ||= 1
     end
 
+  end
+
+  def tipo
+    self.class.model_name.to_s.underscore
   end
 
   def puede_expandirse?

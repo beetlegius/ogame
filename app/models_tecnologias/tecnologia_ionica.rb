@@ -18,7 +18,7 @@ class TecnologiaIonica < Tecnologia
   ##############################################################################
 
   def cumple_requisitos?
-    cuenta.tecnologia_laser.nivel >= 5 && cuenta.tecnologia_energia.nivel >= 4 && super
+    propietario.tecnologia_laser.nivel >= 5 && propietario.tecnologia_energia.nivel >= 4 && super
   end
 
   ##############################################################################

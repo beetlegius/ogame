@@ -16,8 +16,23 @@ ActiveRecord::Schema.define(version: 20140611015236) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cuentas", force: true do |t|
+  create_table "cuentas", force: :cascade do |t|
     t.date     "fecha_registro"
+    t.integer  "nivel_tecnologia_blindaje",                default: 0
+    t.integer  "nivel_tecnologia_combustion",              default: 0
+    t.integer  "nivel_tecnologia_computacion",             default: 0
+    t.integer  "nivel_tecnologia_defensa",                 default: 0
+    t.integer  "nivel_tecnologia_energia",                 default: 0
+    t.integer  "nivel_tecnologia_espionaje",               default: 0
+    t.integer  "nivel_tecnologia_graviton",                default: 0
+    t.integer  "nivel_tecnologia_hiperespacio",            default: 0
+    t.integer  "nivel_tecnologia_impulso",                 default: 0
+    t.integer  "nivel_tecnologia_ionica",                  default: 0
+    t.integer  "nivel_tecnologia_laser",                   default: 0
+    t.integer  "nivel_tecnologia_militar",                 default: 0
+    t.integer  "nivel_tecnologia_plasma",                  default: 0
+    t.integer  "nivel_tecnologia_propulsor_hiperespacial", default: 0
+    t.integer  "nivel_tecnologia_red_investigacion",       default: 0
     t.integer  "universo_id"
     t.integer  "jugador_id"
     t.datetime "created_at"
@@ -27,54 +42,32 @@ ActiveRecord::Schema.define(version: 20140611015236) do
   add_index "cuentas", ["jugador_id"], name: "index_cuentas_on_jugador_id", using: :btree
   add_index "cuentas", ["universo_id"], name: "index_cuentas_on_universo_id", using: :btree
 
-  create_table "delayed_jobs", force: true do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",         default: 0, null: false
+    t.integer  "attempts",         default: 0, null: false
+    t.text     "handler",                      null: false
     t.text     "last_error"
     t.datetime "run_at"
     t.datetime "locked_at"
     t.datetime "failed_at"
     t.string   "locked_by"
     t.string   "queue"
+    t.integer  "propietario_id"
+    t.string   "propietario_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  add_index "delayed_jobs", ["propietario_type", "propietario_id"], name: "index_delayed_jobs_on_propietario_type_and_propietario_id", using: :btree
 
-  create_table "edificios", force: true do |t|
-    t.integer  "nivel",                 default: 0
-    t.string   "type"
-    t.datetime "fecha_actualizacion"
-    t.integer  "proceso_id"
-    t.integer  "orden"
-    t.integer  "porcentaje_produccion", default: 100
-    t.integer  "planeta_id"
-    t.integer  "luna_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "edificios", ["luna_id"], name: "index_edificios_on_luna_id", using: :btree
-  add_index "edificios", ["planeta_id"], name: "index_edificios_on_planeta_id", using: :btree
-
-  create_table "galaxias", force: true do |t|
-    t.integer  "coordenada"
-    t.integer  "universo_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "galaxias", ["universo_id"], name: "index_galaxias_on_universo_id", using: :btree
-
-  create_table "jugadores", force: true do |t|
+  create_table "jugadores", force: :cascade do |t|
     t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "lunas", force: true do |t|
+  create_table "lunas", force: :cascade do |t|
     t.string   "nombre"
     t.integer  "planeta_id"
     t.datetime "created_at"
@@ -83,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140611015236) do
 
   add_index "lunas", ["planeta_id"], name: "index_lunas_on_planeta_id", using: :btree
 
-  create_table "naves", force: true do |t|
+  create_table "naves", force: :cascade do |t|
     t.integer  "cantidad",   default: 0
     t.string   "type"
     t.integer  "orden"
@@ -94,33 +87,37 @@ ActiveRecord::Schema.define(version: 20140611015236) do
 
   add_index "naves", ["planeta_id"], name: "index_naves_on_planeta_id", using: :btree
 
-  create_table "planetas", force: true do |t|
+  create_table "planetas", force: :cascade do |t|
     t.string   "nombre"
     t.integer  "temperatura_minima"
     t.integer  "temperatura_maxima"
-    t.integer  "coordenada"
     t.integer  "numero_galaxia"
     t.integer  "numero_sistema"
     t.integer  "numero_planeta"
-    t.integer  "nivel_mina_metal",              default: 0
-    t.integer  "nivel_mina_cristal",            default: 0
-    t.integer  "nivel_mina_deuterio",           default: 0
-    t.integer  "nivel_planta_energia",          default: 0
-    t.integer  "nivel_planta_fusion",           default: 0
-    t.integer  "nivel_fabrica_robots",          default: 0
-    t.integer  "nivel_fabrica_nanobots",        default: 0
-    t.integer  "nivel_hangar",                  default: 0
-    t.integer  "nivel_almacen_metal",           default: 0
-    t.integer  "nivel_almacen_cristal",         default: 0
-    t.integer  "nivel_almacen_deuterio",        default: 0
-    t.integer  "nivel_laboratorio",             default: 0
-    t.integer  "nivel_silo",                    default: 0
-    t.float    "cantidad_metal",                default: 0.0
-    t.float    "cantidad_cristal",              default: 0.0
-    t.float    "cantidad_deuterio",             default: 0.0
+    t.integer  "nivel_mina_metal",                     default: 0
+    t.integer  "nivel_mina_cristal",                   default: 0
+    t.integer  "nivel_mina_deuterio",                  default: 0
+    t.integer  "nivel_planta_energia",                 default: 0
+    t.integer  "nivel_planta_fusion",                  default: 0
+    t.integer  "nivel_fabrica_robots",                 default: 0
+    t.integer  "nivel_fabrica_nanobots",               default: 0
+    t.integer  "nivel_hangar",                         default: 0
+    t.integer  "nivel_almacen_metal",                  default: 0
+    t.integer  "nivel_almacen_cristal",                default: 0
+    t.integer  "nivel_almacen_deuterio",               default: 0
+    t.integer  "nivel_laboratorio",                    default: 0
+    t.integer  "nivel_silo",                           default: 0
+    t.integer  "porcentaje_produccion_mina_metal",     default: 100
+    t.integer  "porcentaje_produccion_mina_cristal",   default: 100
+    t.integer  "porcentaje_produccion_mina_deuterio",  default: 100
+    t.integer  "porcentaje_produccion_planta_energia", default: 100
+    t.integer  "porcentaje_produccion_planta_fusion",  default: 100
+    t.float    "cantidad_metal",                       default: 0.0
+    t.float    "cantidad_cristal",                     default: 0.0
+    t.float    "cantidad_deuterio",                    default: 0.0
     t.integer  "cantidad_campos"
     t.datetime "ultima_actualizacion_recursos"
-    t.boolean  "es_principal",                  default: false
+    t.boolean  "es_principal",                         default: false
     t.integer  "universo_id"
     t.integer  "cuenta_id"
     t.datetime "created_at"
@@ -130,35 +127,14 @@ ActiveRecord::Schema.define(version: 20140611015236) do
   add_index "planetas", ["cuenta_id"], name: "index_planetas_on_cuenta_id", using: :btree
   add_index "planetas", ["universo_id"], name: "index_planetas_on_universo_id", using: :btree
 
-  create_table "sistemas", force: true do |t|
-    t.integer  "coordenada"
-    t.integer  "galaxia_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sistemas", ["galaxia_id"], name: "index_sistemas_on_galaxia_id", using: :btree
-
-  create_table "tecnologias", force: true do |t|
-    t.integer  "nivel",               default: 0
-    t.string   "type"
-    t.datetime "fecha_actualizacion"
-    t.integer  "proceso_id"
-    t.integer  "orden"
-    t.integer  "cuenta_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tecnologias", ["cuenta_id"], name: "index_tecnologias_on_cuenta_id", using: :btree
-
-  create_table "universos", force: true do |t|
+  create_table "universos", force: :cascade do |t|
     t.string   "nombre"
     t.integer  "cantidad_planetas_por_cuenta",           default: 1
     t.integer  "cantidad_construcciones_en_simultaneo",  default: 1
     t.integer  "cantidad_investigaciones_en_simultaneo", default: 1
     t.integer  "cantidad_galaxias",                      default: 1
     t.integer  "cantidad_sistemas",                      default: 1
+    t.integer  "cantidad_planetas",                      default: 1
     t.integer  "cantidad_metal_inicial",                 default: 500
     t.integer  "cantidad_cristal_inicial",               default: 500
     t.integer  "cantidad_deuterio_inicial",              default: 0

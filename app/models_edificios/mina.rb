@@ -5,6 +5,7 @@ class Mina < Edificio
   #### CONFIGURACIONES Y RELACIONES
   ##############################################################################
 
+  attr_accessor :porcentaje_produccion
 
   ##############################################################################
   #### SCOPES Y VALIDACIONES
@@ -44,14 +45,14 @@ class Mina < Edificio
   end
 
   def cantidad_segundos_producidos
-    (Time.now - planeta.ultima_actualizacion_recursos).round
+    (Time.now - propietario.ultima_actualizacion_recursos).round
   end
 
   def indice_energia_disponible
-    return 1 if planeta.recurso_energia_disponible >= 0
+    return 1 if propietario.recurso_energia_disponible >= 0
     return 0 if consumo_energia.zero?
 
-    energia_disponible = consumo_energia.to_f * planeta.recurso_energia.to_f / planeta.recurso_energia_consumida.to_f
+    energia_disponible = consumo_energia.to_f * propietario.recurso_energia.to_f / propietario.recurso_energia_consumida.to_f
 
     energia_disponible.to_f / consumo_energia.to_f
   end

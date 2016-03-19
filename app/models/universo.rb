@@ -5,12 +5,6 @@ class Universo < ActiveRecord::Base
   #### CONFIGURACIONES Y RELACIONES
   ##############################################################################
 
-  GALAXIAS_POR_UNIVERSO = 9
-  SISTEMAS_POR_GALAXIAS = 499
-  PLANETAS_POR_SISTEMAS = 15
-
-  after_create :configurar
-
   has_many :planetas
 
   has_many :cuentas
@@ -31,13 +25,14 @@ class Universo < ActiveRecord::Base
   end
 
   def esta_lleno?
-    false #planetas.libre.count < cantidad_planetas_por_cuenta
+    # false # planetas.libre.count < cantidad_planetas_por_cuenta
+    planetas.libre.count == cantidad_galaxias.next * cantidad_sistemas.next * cantidad_planetas.next
   end
 
   def coordenadas_random
-    galaxia = rand(GALAXIAS_POR_UNIVERSO) + 1
-    sistema = rand(SISTEMAS_POR_GALAXIAS) + 1
-    planeta = rand(PLANETAS_POR_SISTEMAS) + 1
+    galaxia = rand(cantidad_galaxias).next
+    sistema = rand(cantidad_sistemas).next
+    planeta = rand(cantidad_planetas).next
     { numero_galaxia: galaxia, numero_sistema: sistema, numero_planeta: planeta }
   end
 
@@ -63,9 +58,5 @@ class Universo < ActiveRecord::Base
   ##############################################################################
 
   private
-
-  def configurar
-  end
-  #handle_asynchronously :configurar
 
 end

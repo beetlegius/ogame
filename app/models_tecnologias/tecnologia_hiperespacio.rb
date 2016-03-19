@@ -18,7 +18,7 @@ class TecnologiaHiperespacio < Tecnologia
   ##############################################################################
 
   def cumple_requisitos?
-    cuenta.tecnologia_energia.nivel >= 5 && cuenta.tecnologia_defensa.nivel >= 5 && super
+    propietario.tecnologia_energia.nivel >= 5 && propietario.tecnologia_defensa.nivel >= 5 && super
   end
 
   ##############################################################################

@@ -5,6 +5,8 @@ class PlantaEnergia < Edificio
   #### CONFIGURACIONES Y RELACIONES
   ##############################################################################
 
+  attr_accessor :porcentaje_produccion
+  
   establecer_costos metal: 75, cristal: 30
   factor 1.5
 

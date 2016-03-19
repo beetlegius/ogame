@@ -3,7 +3,7 @@ class CreatePlanetas < ActiveRecord::Migration
     create_table :planetas do |t|
       t.string  :nombre
       t.integer :temperatura_minima, :temperatura_maxima
-      t.integer :coordenada
+      # t.integer :coordenada
 
       t.integer :numero_galaxia
       t.integer :numero_sistema
@@ -22,6 +22,12 @@ class CreatePlanetas < ActiveRecord::Migration
       t.integer :nivel_almacen_deuterio,  default: 0
       t.integer :nivel_laboratorio,       default: 0
       t.integer :nivel_silo,              default: 0
+
+      t.integer :porcentaje_produccion_mina_metal,     default: 100
+      t.integer :porcentaje_produccion_mina_cristal,   default: 100
+      t.integer :porcentaje_produccion_mina_deuterio,  default: 100
+      t.integer :porcentaje_produccion_planta_energia, default: 100
+      t.integer :porcentaje_produccion_planta_fusion,  default: 100
 
       t.float   :cantidad_metal,          default: 0
       t.float   :cantidad_cristal,        default: 0

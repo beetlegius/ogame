@@ -23,12 +23,12 @@ module Nivelable
 
   end
 
-  def puede_costearse?(planeta)
-    planeta.puede_pagar? metal, cristal, deuterio, energia
+  def puede_costearse?(expandible)
+    expandible.puede_pagar? metal, cristal, deuterio, energia
   end
 
   def esta_expandiendose?
-    proceso_id && fecha_actualizacion.present?
+    proceso.present?
   end
 
   def puede_cancelar_expansion?
@@ -37,6 +37,7 @@ module Nivelable
 
   def tiempo_restante
     ahora = Time.now
+    fecha_actualizacion = proceso.try(:run_at)
     (fecha_actualizacion - ahora).round if fecha_actualizacion && fecha_actualizacion > ahora
   end
 
@@ -66,46 +67,36 @@ module Nivelable
     Energia.new propietario: self
   end
 
-  def expandir!(planeta)
-    raise Excepciones::Nivelable::FalloExpansion.new(self) unless planeta.puede_expandir?(self)
+  def expandir!(expandible)
+    raise Excepciones::Nivelable::FalloExpansion.new(self) unless expandible.puede_expandir?(self)
 
-    planeta.pagar! metal, cristal, deuterio
-    tiempo = duracion_expansion(planeta)
-    #proceso = delay(run_at: tiempo.seconds.from_now).completar_expansion!(planeta)
-    #update! fecha_actualizacion: Time.now + tiempo, proceso_id: proceso.id
-    completar_expansion!(planeta)
-
+    expandible.pagar! metal, cristal, deuterio
+    proceso = Delayed::Job.enqueue ExpandirJob.new(self), run_at: duracion_expansion(expandible).seconds.from_now, :queue => tipo
+    propietario.procesos << proceso
   end
 
-  def cancelar_expansion!(planeta)
+  def cancelar_expansion!(expandible)
     raise Excepciones::Nivelable::FalloCancelacion.new(self) unless puede_cancelar_expansion?
 
-    planeta.devolver! metal, cristal, deuterio
+    expandible.devolver! metal, cristal, deuterio
     proceso.try :destroy
+  end
 
-    update! fecha_actualizacion: nil, proceso_id: nil
+  def completar_expansion!
+    before_completar_expansion
+    propietario.subir_nivel! self
+    after_completar_expansion
   end
 
   def metodo_nivel
     "nivel_#{tipo}".to_sym
   end
 
-  def completar_expansion!(planeta)
-    before_completar_expansion
-    subir_nivel! planeta
-    after_completar_expansion
-  end
-
-  def subir_nivel!(planeta)
-    planeta.subir_nivel! tipo
-    #update! nivel: nivel.next, fecha_actualizacion: nil, proceso_id: nil
+  def proceso
+    propietario.procesos.detect { |proceso| proceso.queue == tipo }
   end
 
   private
-
-  def proceso
-    Delayed::Job.find(proceso_id) if proceso_id
-  end
 
   def before_completar_expansion
   end

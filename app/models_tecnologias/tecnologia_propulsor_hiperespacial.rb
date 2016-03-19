@@ -18,7 +18,7 @@ class TecnologiaPropulsorHiperespacial < Tecnologia
   ##############################################################################
 
   def cumple_requisitos?
-    cuenta.tecnologia_hiperespacio.nivel >= 3 && super
+    propietario.tecnologia_hiperespacio.nivel >= 3 && super
   end
 
   ##############################################################################

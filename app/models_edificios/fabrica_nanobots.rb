@@ -17,7 +17,7 @@ class FabricaNanobots < Edificio
   ##############################################################################
 
   def cumple_requisitos?
-    planeta.cuenta.tecnologia_computacion.nivel >= 10 && planeta.fabrica_robots.nivel >= 10 && super
+    propietario.cuenta.tecnologia_computacion.nivel >= 10 && propietario.fabrica_robots.nivel >= 10 && super
   end
 
   ##############################################################################

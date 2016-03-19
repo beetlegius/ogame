@@ -1,13 +1,14 @@
 # Edificios Controller
 class EdificiosController < ApplicationController
-  load_and_authorize_resource through: :current_planeta
+  before_action :set_edificio, only: %w(expandir cancelar)
+  # load_and_authorize_resource through: :current_planeta
 
   def index
-    @edificios = current_planeta.edificios#@edificios.select(&:cumple_requisitos?)
+    @edificios = current_planeta.edificios
+    @edificios = @edificios.select(&:cumple_requisitos?)
   end
 
   def expandir
-    @edificio = current_planeta.send params[:tipo]
   	@edificio.expandir! current_planeta
   	redirect_to edificios_path, notice: notice
   end
@@ -15,6 +16,12 @@ class EdificiosController < ApplicationController
   def cancelar
     @edificio.cancelar_expansion! current_planeta
     redirect_to edificios_path, notice: notice
+  end
+
+  private
+
+  def set_edificio
+    @edificio = current_planeta.send(params[:tipo])
   end
 
 end

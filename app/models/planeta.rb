@@ -18,32 +18,17 @@ class Planeta < ActiveRecord::Base
   after_create :configurar
 
   belongs_to :cuenta
-  belongs_to :universo
+  belongs_to :universo, required: true
 
   has_one :luna
 
-  #has_many :edificios, -> { order(:orden) }
-  #has_many :minas, -> { mina.order(:orden).activo }, class_name: 'Edificio'
-  #has_one :mina_metal
-  #has_one :mina_cristal
-  #has_one :mina_deuterio
-  #has_one :planta_energia
-  #has_one :planta_fusion
-  #has_one :fabrica_robots
-  #has_one :fabrica_nanobots
-  #has_one :hangar
-  #has_one :almacen_metal
-  #has_one :almacen_cristal
-  #has_one :almacen_deuterio
-  #has_one :laboratorio
-  #has_one :silo
+  has_many :procesos, class_name: '::Delayed::Job', as: :propietario
 
   has_many :naves, -> { order(:orden) }
   has_one :carga_chica
   has_one :carga_grande
 
   #accepts_nested_attributes_for :mina_metal, :mina_cristal, :mina_deuterio, :planta_energia
-
 
   ##############################################################################
   #### SCOPES Y VALIDACIONES
@@ -85,13 +70,14 @@ class Planeta < ActiveRecord::Base
 
   # Indica si el planeta dispone de campos
   def cantidad_campos_ocupados
-    edificios.to_a.sum(&:nivel)
+    edificios.sum(&:nivel)
   end
 
   def campos_disponibles?
     cantidad_campos_ocupados < cantidad_campos
   end
 
+  # Este método debería morir porque los planetas se crearían al colonizarlos
   def esta_disponible?
     !cuenta.present?
   end
@@ -116,17 +102,15 @@ class Planeta < ActiveRecord::Base
 
   # :reek:FeatureEnvy: { enabled: false }
   def puede_investigar?(tecnologia)
-    cuenta.puede_investigar_en_simultaneo? && tecnologias_disponibles.include?(tecnologia) && tecnologia.puede_expandirse? && puede_pagar?(tecnologia.metal, tecnologia.cristal, tecnologia.deuterio, tecnologia.energia)
+    cuenta.puede_investigar_en_simultaneo? && tecnologias_disponibles.map(&:tipo).include?(tecnologia.tipo) && tecnologia.puede_expandirse? && puede_pagar?(tecnologia.metal, tecnologia.cristal, tecnologia.deuterio, tecnologia.energia)
   end
 
   def puede_construir_en_simultaneo?
     edificios.select(&:esta_expandiendose?).count < universo.cantidad_construcciones_en_simultaneo
   end
 
-  def subir_nivel!(tipo_edificio)
-    nivel_edificio = "nivel_#{tipo_edificio}"
-    update nivel_edificio => send(nivel_edificio) + 1
-
+  def subir_nivel!(edificio)
+    increment! edificio.metodo_nivel
   end
 
   def edificios
@@ -137,19 +121,19 @@ class Planeta < ActiveRecord::Base
     [mina_metal, mina_cristal, mina_deuterio]
   end
 
-  def mina_metal ;        MinaMetal.new         planeta: self, nivel: nivel_mina_metal        ; end
-  def mina_cristal ;      MinaCristal.new       planeta: self, nivel: nivel_mina_cristal      ; end
-  def mina_deuterio ;     MinaDeuterio.new      planeta: self, nivel: nivel_mina_deuterio     ; end
-  def planta_energia ;    PlantaEnergia.new     planeta: self, nivel: nivel_planta_energia    ; end
-  def planta_fusion ;     PlantaFusion.new      planeta: self, nivel: nivel_planta_fusion     ; end
-  def fabrica_robots ;    FabricaRobots.new     planeta: self, nivel: nivel_fabrica_robots    ; end
-  def fabrica_nanobots ;  FabricaNanobots.new   planeta: self, nivel: nivel_fabrica_nanobots  ; end
-  def hangar ;            Hangar.new            planeta: self, nivel: nivel_hangar            ; end
-  def almacen_metal ;     AlmacenMetal.new      planeta: self, nivel: nivel_almacen_metal     ; end
-  def almacen_cristal ;   AlmacenCristal.new    planeta: self, nivel: nivel_almacen_cristal   ; end
-  def almacen_deuterio ;  AlmacenDeuterio.new   planeta: self, nivel: nivel_almacen_deuterio  ; end
-  def laboratorio ;       Laboratorio.new       planeta: self, nivel: nivel_laboratorio       ; end
-  def silo ;              Silo.new              planeta: self, nivel: nivel_silo              ; end
+  def mina_metal ;        MinaMetal.new         propietario: self, nivel: nivel_mina_metal,     porcentaje_produccion: porcentaje_produccion_mina_metal     ; end
+  def mina_cristal ;      MinaCristal.new       propietario: self, nivel: nivel_mina_cristal,   porcentaje_produccion: porcentaje_produccion_mina_cristal   ; end
+  def mina_deuterio ;     MinaDeuterio.new      propietario: self, nivel: nivel_mina_deuterio,  porcentaje_produccion: porcentaje_produccion_mina_deuterio  ; end
+  def planta_energia ;    PlantaEnergia.new     propietario: self, nivel: nivel_planta_energia, porcentaje_produccion: porcentaje_produccion_planta_energia ; end
+  def planta_fusion ;     PlantaFusion.new      propietario: self, nivel: nivel_planta_fusion,  porcentaje_produccion: porcentaje_produccion_planta_fusion  ; end
+  def fabrica_robots ;    FabricaRobots.new     propietario: self, nivel: nivel_fabrica_robots    ; end
+  def fabrica_nanobots ;  FabricaNanobots.new   propietario: self, nivel: nivel_fabrica_nanobots  ; end
+  def hangar ;            Hangar.new            propietario: self, nivel: nivel_hangar            ; end
+  def almacen_metal ;     AlmacenMetal.new      propietario: self, nivel: nivel_almacen_metal     ; end
+  def almacen_cristal ;   AlmacenCristal.new    propietario: self, nivel: nivel_almacen_cristal   ; end
+  def almacen_deuterio ;  AlmacenDeuterio.new   propietario: self, nivel: nivel_almacen_deuterio  ; end
+  def laboratorio ;       Laboratorio.new       propietario: self, nivel: nivel_laboratorio       ; end
+  def silo ;              Silo.new              propietario: self, nivel: nivel_silo              ; end
 
   ##############################################################################
   #### ALIAS E IMPRESIONES
@@ -178,28 +162,10 @@ class Planeta < ActiveRecord::Base
     self.ultima_actualizacion_recursos = Time.now
   end
 
-  # :reek:TooManyStatements: { max_statements: 20 }
   def configurar
-
-    
-    update  cantidad_metal:     universo.cantidad_metal_inicial, 
-            cantidad_cristal:   universo.cantidad_cristal_inicial, 
+    update! cantidad_metal:     universo.cantidad_metal_inicial,
+            cantidad_cristal:   universo.cantidad_cristal_inicial,
             cantidad_deuterio:  universo.cantidad_deuterio_inicial
-
-
-    #create_mina_metal! orden: 1
-    #create_mina_cristal! orden: 2
-    #create_mina_deuterio! orden: 3
-    #create_planta_energia! orden: 4
-    #create_planta_fusion! orden: 5
-    #create_fabrica_robots! orden: 6
-    #create_fabrica_nanobots! orden: 7
-    #create_hangar! orden: 8
-    #create_almacen_metal! orden: 9
-    #create_almacen_cristal! orden: 10
-    #create_almacen_deuterio! orden: 11
-    #create_laboratorio! orden: 12
-    #create_silo! orden: 13
 
     create_carga_chica! orden: 1
     create_carga_grande! orden: 2

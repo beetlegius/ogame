@@ -18,7 +18,7 @@ class TecnologiaRedInvestigacion < Tecnologia
   ##############################################################################
 
   def cumple_requisitos?
-    cuenta.tecnologia_computacion.nivel >= 8 && cuenta.tecnologia_hiperespacio.nivel >= 8 && super
+    propietario.tecnologia_computacion.nivel >= 8 && propietario.tecnologia_hiperespacio.nivel >= 8 && super
   end
 
   ##############################################################################

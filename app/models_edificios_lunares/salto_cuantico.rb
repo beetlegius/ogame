@@ -1,6 +1,6 @@
 # El salto cuánto sirve para transportar flota de un lugar a otro de la galaxia de manera instantánea.
 class SaltoCuantico < Edificio
-		
+
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES
   ##############################################################################
@@ -17,7 +17,7 @@ class SaltoCuantico < Edificio
   ##############################################################################
 
   def puede_expandirse?
-    luna.planeta.cuenta.tecnologia_hiperespacio >= 7 && luna.base_lunar.nivel >= 1 && super
+    propietario.cuenta.tecnologia_hiperespacio >= 7 && propietario.base_lunar.nivel >= 1 && super
   end
 
   ##############################################################################

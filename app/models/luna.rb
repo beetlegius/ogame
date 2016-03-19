@@ -5,32 +5,44 @@ class Luna < ActiveRecord::Base
   #### CONFIGURACIONES Y RELACIONES
   ##############################################################################
 
-  after_create :configurar
+  belongs_to :planeta, required: true
 
-  belongs_to :planeta
+  has_many :procesos, class_name: '::Delayed::Job', as: :propietario
 
-  has_many :edificios
-  has_one :fabrica_robots
-  has_one :hangar
-  has_one :base_lunar
-  has_one :sensor_phalanx
-  has_one :salto_cuantico
+  delegate :cuenta, :coordenadas_completas, to: :planeta
 
   ##############################################################################
   #### SCOPES Y VALIDACIONES
   ##############################################################################
 
-  validates :planeta, presence: true
 
   ##############################################################################
   #### MÉTODOS PÚBLICOS
   ##############################################################################
 
+  def subir_nivel!(edificio)
+    increment! edificio.metodo_nivel
+  end
+
+  def edificios
+   [ fabrica_robots, hangar, base_lunar, sensor_phalanx, salto_cuantico ]
+  end
+
+  def fabrica_robots ;    FabricaRobots.new     propietario: self, nivel: nivel_fabrica_robots    ; end
+  def hangar ;            Hangar.new            propietario: self, nivel: nivel_hangar            ; end
+  def base_lunar ;        BaseLunar.new         propietario: self, nivel: nivel_base_lunar        ; end
+  def sensor_phalanx ;    SensorPhalanx.new     propietario: self, nivel: nivel_sensor_phalanx    ; end
+  def salto_cuantico ;    SaltoCuantico.new     propietario: self, nivel: nivel_salto_cuantico    ; end
 
   ##############################################################################
   #### ALIAS E IMPRESIONES
   ##############################################################################
 
+  def to_label
+    "#{planeta.nombre} [#{coordenadas_completas}] (Luna)"
+  end
+
+  alias_method :to_s, :coordenadas_completas
 
   ##############################################################################
   #### MÉTODOS PRIVADOS
@@ -38,12 +50,5 @@ class Luna < ActiveRecord::Base
 
   private
 
-  def configurar
-    create_fabrica_robots! orden: 1
-    create_hangar! orden: 2
-    create_base_lunar! orden: 3
-    create_sensor_phalanx! orden: 4
-    create_salto_cuantico! orden: 5
-  end
 
 end

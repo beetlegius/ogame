@@ -18,7 +18,7 @@ class MinaDeuterio < Mina
   ##############################################################################
 
   def produccion_por_hora
-    (10 * nivel * 1.1**nivel * (-0.002 * planeta.temperatura_maxima + 1.28)).round
+    (10 * nivel * 1.1**nivel * (-0.002 * propietario.temperatura_maxima + 1.28)).round
   end
 
   def consumo_energia_base

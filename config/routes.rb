@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
 	resources :tecnologias, only: :index do # investigación
-  	put :expandir, on: :member
-  	put :cancelar, on: :member
+  	patch ':tipo/expandir', action: :expandir, on: :collection, as: :expandir
+  	patch ':tipo/cancelar', action: :cancelar, on: :collection, as: :cancelar
   end
 
   resources :edificios, only: :index do # edificios
-  	get :expandir, on: :collection
-  	put :cancelar, on: :member
+  	patch ':tipo/expandir', action: :expandir, on: :collection, as: :expandir
+  	patch ':tipo/cancelar', action: :cancelar, on: :collection, as: :cancelar
   end
 
   resources :cuentas, only: :show # visión general

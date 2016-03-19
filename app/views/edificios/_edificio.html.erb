@@ -41,11 +41,11 @@
 	<td class="k">
 		<% if edificio.esta_expandiendose? %>
 			<%= tiempo edificio %>
-			<%= link_to "Cancelar", [:cancelar, edificio.becomes(Edificio)], method: :put if edificio.puede_cancelar_expansion? %>
-		<% elsif edificio.proceso_id %>
+			<%= link_to "Cancelar", cancelar_edificios_path(tipo: edificio.tipo), method: :patch if edificio.puede_cancelar_expansion? %>
+		<% elsif edificio.proceso.present? %>
 			<%= content_tag :span, 'Actualizando...', class: :violeta %>
 		<% elsif edificio.puede_expandirse? %>
-			<%= link_to edificio.nivel.zero? ? 'Construir' : "Ampliar al nivel #{edificio.proximo_nivel}", expandir_edificios_path(tipo: edificio.tipo), method: :get, class: :verde %>
+			<%= link_to edificio.nivel.zero? ? 'Construir' : "Ampliar al nivel #{edificio.proximo_nivel}", expandir_edificios_path(tipo: edificio.tipo), method: :patch, class: :verde %>
 		<% else %>
 			<%= content_tag :span, edificio.nivel.zero? ? 'Construir' : "Ampliar al nivel #{edificio.proximo_nivel}", class: :rojo unless current_planeta.edificios.any?(&:esta_expandiendose?) %>
 		<% end %>

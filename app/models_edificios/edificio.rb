@@ -1,5 +1,5 @@
 # Los edificios son fijos en cada planeta.
-class Edificio < ActiveRecord::Base
+class Edificio # < ActiveRecord::Base
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES
@@ -7,33 +7,37 @@ class Edificio < ActiveRecord::Base
 
   PORCENTAJES_PRODUCCION = (0..100).step(10)
 
+  include ActiveModel::Model
   include Nivelable
 
-  belongs_to :planeta
-  belongs_to :luna
+  attr_accessor :propietario, :nivel
+
+  # belongs_to :planeta
+  # belongs_to :luna
 
   ##############################################################################
   #### SCOPES Y VALIDACIONES
   ##############################################################################
 
-  scope :activo, -> { where "nivel >= 1" }
-  scope :mina, -> { where type: [MinaMetal, MinaCristal, MinaDeuterio] }
+  # scope :activo, -> { where "nivel >= 1" }
+  # scope :mina, -> { where type: [MinaMetal, MinaCristal, MinaDeuterio] }
 
   ##############################################################################
   #### MÉTODOS PÚBLICOS
   ##############################################################################
 
   def puede_expandirse?
-    !esta_expandiendose? && planeta.puede_construir? && cumple_requisitos? && planeta.puede_pagar?(metal, cristal, deuterio, energia)
+    !esta_expandiendose? && propietario.puede_construir? && cumple_requisitos? && propietario.puede_pagar?(metal, cristal, deuterio, energia)
   end
 
   def cumple_requisitos?
     true
   end
 
-  def duracion_expansion(planeta)
+  def duracion_expansion(edificable)
     if Rails.env.production?
-      (((metal.costo + cristal.costo).to_f / (2500 * (1 + planeta.fabrica_robots.nivel) * 2**planeta.fabrica_nanobots.nivel)).to_f * 3600).floor
+      # esto deberá moverse al propietario porque por ejemplo en la luna no se pueden hacer nanos, por lo que depende de los edificios que pueda construir el propietario.
+      (((metal.costo + cristal.costo).to_f / (2500 * (1 + edificable.fabrica_robots.nivel) * 2**edificable.try(:fabrica_nanobots).try(:nivel).to_i)).to_f * 3600).floor
     else
       3
     end
@@ -64,7 +68,7 @@ class Edificio < ActiveRecord::Base
   private
 
   def before_completar_expansion
-    planeta.actualizar_recursos!
+    propietario.actualizar_recursos!
   end
 
 end

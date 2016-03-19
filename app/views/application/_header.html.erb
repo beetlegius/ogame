@@ -8,7 +8,7 @@
 							<td class="header"><%= image_tag "planetas/#{current_planeta.imagen_name}.jpg", class: :planeta %></td>
 							<td class="header" align="right">
 								<%= form_tag seleccionar_planetas_path, class: :seleccionar do %>
-									<%= select_tag :id, options_from_collection_for_select(current_cuenta.planetas, :id, :to_label, current_planeta.id) %>
+									<%= select_tag :id, options_from_collection_for_select(current_cuenta.planetas_disponibles, :id, :to_label, current_planeta.id) %>
 								<% end %>
 							</td>
 						</tr>
@@ -29,7 +29,7 @@
 							<td align="center" class="header resources" width="85"><i><b>Deuterio</b></i></td>
 							<td align="center" class="header resources" width="85"><i><b>Energía</b></i></td>
 						</tr>
-						
+
 						<tr class='header'>
 							<td align="center" class='header' width="90"><%= number_with_delimiter current_planeta.recurso_metal %></td>
 							<td align="center" class='header' width="90"><%= number_with_delimiter current_planeta.recurso_cristal %></td>

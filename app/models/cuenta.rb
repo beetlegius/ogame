@@ -6,42 +6,31 @@ class Cuenta < ActiveRecord::Base
   ##############################################################################
 
   after_create :asociar_planeta
-  after_create :configurar
 
-  belongs_to :universo
-  belongs_to :jugador
+  belongs_to :universo, required: true
+  belongs_to :jugador, required: true
 
   has_many :planetas
-  has_many :tecnologias, -> { order(:orden) }
-  has_one :tecnologia_espionaje
-  has_one :tecnologia_computacion
-  has_one :tecnologia_militar
-  has_one :tecnologia_defensa
-  has_one :tecnologia_blindaje
-  has_one :tecnologia_energia
-  has_one :tecnologia_hiperespacio
-  has_one :tecnologia_combustion
-  has_one :tecnologia_impulso
-  has_one :tecnologia_propulsor_hiperespacial
-  has_one :tecnologia_laser
-  has_one :tecnologia_ionica
-  has_one :tecnologia_plasma
-  has_one :tecnologia_red_investigacion
-  has_one :tecnologia_graviton
+  has_many :lunas, through: :planetas
   has_one :planeta_principal, -> { where es_principal: true }, class_name: 'Planeta'
+
+  has_many :procesos, class_name: '::Delayed::Job', as: :propietario
 
   ##############################################################################
   #### SCOPES Y VALIDACIONES
   ##############################################################################
 
   validate :espacio_disponible
-
-  validates :universo, :jugador, presence: true
   validates :jugador, uniqueness: { scope: :universo_id }
 
   ##############################################################################
   #### MÉTODOS PÚBLICOS
   ##############################################################################
+
+  # Queda a revisión
+  def planetas_disponibles
+    planetas + lunas
+  end
 
   def puede_investigar_en_simultaneo?
     tecnologias.select(&:esta_expandiendose?).count < universo.cantidad_investigaciones_en_simultaneo
@@ -73,6 +62,30 @@ class Cuenta < ActiveRecord::Base
     planetas.to_a.sum(&:puntos) / 1000
   end
 
+  def tecnologias
+   [ tecnologia_espionaje, tecnologia_computacion, tecnologia_militar, tecnologia_defensa, tecnologia_blindaje, tecnologia_energia, tecnologia_hiperespacio, tecnologia_combustion, tecnologia_impulso, tecnologia_propulsor_hiperespacial, tecnologia_laser, tecnologia_ionica, tecnologia_plasma, tecnologia_red_investigacion, tecnologia_graviton ]
+  end
+
+  def tecnologia_espionaje ;                   TecnologiaEspionaje.new               propietario: self, nivel: nivel_tecnologia_espionaje               ; end
+  def tecnologia_computacion ;                 TecnologiaComputacion.new             propietario: self, nivel: nivel_tecnologia_computacion             ; end
+  def tecnologia_militar ;                     TecnologiaMilitar.new                 propietario: self, nivel: nivel_tecnologia_militar                 ; end
+  def tecnologia_defensa ;                     TecnologiaDefensa.new                 propietario: self, nivel: nivel_tecnologia_defensa                 ; end
+  def tecnologia_blindaje ;                    TecnologiaBlindaje.new                propietario: self, nivel: nivel_tecnologia_blindaje                ; end
+  def tecnologia_energia ;                     TecnologiaEnergia.new                 propietario: self, nivel: nivel_tecnologia_energia                 ; end
+  def tecnologia_hiperespacio ;                TecnologiaHiperespacio.new            propietario: self, nivel: nivel_tecnologia_hiperespacio            ; end
+  def tecnologia_combustion ;                  TecnologiaCombustion.new              propietario: self, nivel: nivel_tecnologia_combustion              ; end
+  def tecnologia_impulso ;                     TecnologiaImpulso.new                 propietario: self, nivel: nivel_tecnologia_impulso                 ; end
+  def tecnologia_propulsor_hiperespacial ;     TecnologiaPropulsorHiperespacial.new  propietario: self, nivel: nivel_tecnologia_propulsor_hiperespacial ; end
+  def tecnologia_laser ;                       TecnologiaLaser.new                   propietario: self, nivel: nivel_tecnologia_laser                   ; end
+  def tecnologia_ionica ;                      TecnologiaIonica.new                  propietario: self, nivel: nivel_tecnologia_ionica                  ; end
+  def tecnologia_plasma ;                      TecnologiaPlasma.new                  propietario: self, nivel: nivel_tecnologia_plasma                  ; end
+  def tecnologia_red_investigacion ;           TecnologiaRedInvestigacion.new        propietario: self, nivel: nivel_tecnologia_red_investigacion       ; end
+  def tecnologia_graviton ;                    TecnologiaGraviton.new                propietario: self, nivel: nivel_tecnologia_graviton                ; end
+
+  def subir_nivel!(tecnologia)
+    increment! tecnologia.metodo_nivel
+  end
+
   ##############################################################################
   #### ALIAS E IMPRESIONES
   ##############################################################################
@@ -87,25 +100,6 @@ class Cuenta < ActiveRecord::Base
   def asociar_planeta
     planeta = universo.crear_planeta_libre!
     planeta.colonizar_como_principal(self) if puede_colonizar? planeta
-  end
-
-  # :reek:TooManyStatements: { max_statements: 15 }
-  def configurar
-    create_tecnologia_espionaje!                orden: 1
-    create_tecnologia_computacion!              orden: 2
-    create_tecnologia_militar!                  orden: 3
-    create_tecnologia_defensa!                  orden: 4
-    create_tecnologia_blindaje!                 orden: 5
-    create_tecnologia_energia!                  orden: 6
-    create_tecnologia_hiperespacio!             orden: 7
-    create_tecnologia_combustion!               orden: 8
-    create_tecnologia_impulso!                  orden: 9
-    create_tecnologia_propulsor_hiperespacial!  orden: 10
-    create_tecnologia_laser!                    orden: 11
-    create_tecnologia_ionica!                   orden: 12
-    create_tecnologia_plasma!                   orden: 13
-    create_tecnologia_red_investigacion!        orden: 14
-    create_tecnologia_graviton!                 orden: 15
   end
 
   def espacio_disponible

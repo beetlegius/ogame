@@ -17,7 +17,7 @@ class Silo < Edificio
   ##############################################################################
 
   def cumple_requisitos?
-    planeta.hangar.nivel >= 1 && super
+    propietario.hangar.nivel >= 1 && super
   end
 
   ##############################################################################

@@ -18,7 +18,7 @@ class TecnologiaDefensa < Tecnologia
   ##############################################################################
 
   def cumple_requisitos?
-    cuenta.tecnologia_energia.nivel >= 3 && super
+    propietario.tecnologia_energia.nivel >= 3 && super
   end
 
   ##############################################################################
