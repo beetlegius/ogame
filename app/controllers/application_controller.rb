@@ -4,14 +4,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_cuenta, :current_planeta
+  helper_method :current_universo, :current_cuenta, :current_planeta
 
   rescue_from Excepciones::Nivelable::FalloExpansion, with: :mensaje_excepcion
   rescue_from Excepciones::Nivelable::FalloCancelacion, with: :mensaje_excepcion
 
-  def current_cuenta
-    session[:current_cuenta_id] ||= 1
-    @current_cuenta ||= Cuenta.find session[:current_cuenta_id]
+  def current_user
   end
 
   def current_planeta
@@ -22,7 +20,9 @@ class ApplicationController < ActionController::Base
     current_planeta
   end
 
-  def current_user
+  def current_cuenta
+    session[:current_cuenta_id] ||= 1
+    @current_cuenta ||= Cuenta.find session[:current_cuenta_id]
   end
 
   def current_universo

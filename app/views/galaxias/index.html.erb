@@ -1,0 +1,105 @@
+<%= simple_form_for "", url: navegar_path, id: :galaxy_form do |f| %>
+  <table border="1" class="header">
+    <tr class="header">
+      <td class="header">
+        <table class="header">
+          <tr class="header"><td class="c" colspan="3">Galaxia</td></tr>
+          <tr class="header">
+            <td class="g">
+              <%= link_to '<-', navegar_path(numero_galaxia: @numero_galaxia.to_i.pred, numero_sistema: @numero_sistema), class: 'button', method: :post %>
+            </td>
+            <td class="g">
+              <%= f.input :numero_galaxia, input_html: { value: @numero_galaxia, size: 5, maxlength: 3, tabindex: 1 }, label: false %>
+            </td>
+            <td class="g">
+              <%= link_to '->', navegar_path(numero_galaxia: @numero_galaxia.to_i.next, numero_sistema: @numero_sistema), class: 'button', method: :post %>
+            </td>
+          </tr>
+        </table>
+      </td>
+      <td class="header">
+        <table class="header">
+          <tr class="header"><td class="c" colspan="3">Sistema solar</td></tr>
+          <tr class="header">
+            <td class="g">
+              <%= link_to '<-', navegar_path(numero_galaxia: @numero_galaxia, numero_sistema: @numero_sistema.to_i.pred), class: 'button', method: :post %>
+            </td>
+            <td class="g">
+              <%= f.input :numero_sistema, input_html: { value: @numero_sistema, size: 5, maxlength: 3, tabindex: 2 }, label: false %>
+            </td>
+            <td class="g">
+              <%= link_to '->', navegar_path(numero_galaxia: @numero_galaxia, numero_sistema: @numero_sistema.to_i.next), class: 'button', method: :post %>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr class="header">
+      <td class="header" style="background-color:transparent;border:0px;" colspan="2" align="center">
+        <%= f.button :submit, 'Mostrar' %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<table width="569">
+  <tr><td class="c" colspan="8">Sistema solar <%= @numero_galaxia %>:<%= @numero_sistema %></td></tr>
+  <tr>
+    <td class="c">Pos</td>
+    <td class="c">Planeta</td>
+    <td class="c">Nombre (Actividad)</td>
+    <td class="c">Luna</td>
+    <td class="c">Escombros</td>
+    <td class="c">Jugador (Estado)</td>
+    <td class="c">Alianza</td>
+    <td class="c">Acciones</td>
+  </tr>
+  <% for posicion in (1..current_universo.cantidad_planetas) %>
+    <% planeta = @planetas.detect { |planeta| planeta.numero_planeta == posicion } %>
+    <tr>
+      <th width="30"><%= posicion %></th>
+      <th width="30"><%= image_tag "planetas/#{planeta.imagen_name}.jpg", class: 'planeta-mini' if planeta %></th>
+      <th style="white-space: nowrap;" width="130"><%= planeta.nombre if planeta %></th>
+      <th style="white-space: nowrap;" width="30">&nbsp;</th>
+      <th style="white-space: nowrap;" width="30">&nbsp;</th>
+      <th style="white-space: nowrap;" width="150"><%= planeta.cuenta.jugador.nombre if planeta %></th>
+      <th width="80">&nbsp;</th>
+      <th style="white-space: nowrap;" width="125">
+        <% if planeta %>
+          <a href="javascript:void(0)" onclick="javascript:doit(6, 1, 81, 5, 1, 1);" >
+            <img src=http://www.antiogame.com/servers/skins/evolution/img/e.gif alt="Espiar" title="Espiar" border=0>
+          </a>
+          <a href="game.php?page=messages&mode=write&id=630">
+            <img src=http://www.antiogame.com/servers/skins/evolution/img/m.gif alt="Escribir mensaje" title="Escribir mensaje" border=0>
+          </a>
+          <a href="game.php?page=buddy&mode=send&u=630">
+            <img src=http://www.antiogame.com/servers/skins/evolution/img/b.gif alt="Solicitud de compañeros" title="Solicitud de compañeros" border=0>
+          </a>
+        <% end %>
+      </th>
+    </tr>
+  <% end %>
+  <!--
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=2&planettype=0&target_mission=7">2</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=3&planettype=0&target_mission=7">3</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=4&planettype=0&target_mission=7">4</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=5&planettype=0&target_mission=7" tabindex="6">5</a></th><th width=30><a style="cursor: pointer;" onmouseover='return overlib("<table width=240><tr><td class=c colspan=2>Planeta Planeta Principal [1:81:5]</td></tr><tr><th width=80><img src=http://www.antiogame.com/servers/skins/evolution/planeten/small/s_dschjungelplanet05.jpg height=75 width=75 /></th><th align=left><a href=# onclick=&#039javascript:doit(6, 1, 81, 5, 1, 1);&#039 >Espiar</a><br /><br /><a href=game.php?page=fleet&galaxy=1&amp;system=81&amp;planet=5&amp;planettype=1&amp;target_mission=1>Atacar</a><br /><a href=game.php?page=fleet&galaxy=1&system=81&planet=5&planettype=1&target_mission=3>Transportar</a><br /></th></tr></table>", STICKY, MOUSEOFF, DELAY, 750, CENTER, OFFSETX, -40, OFFSETY, -40 );' onmouseout='return nd();'><img src='http://www.antiogame.com/servers/skins/evolution/planeten/small/s_dschjungelplanet05.jpg' height='30' width='30'></a></th><th style="white-space: nowrap;" width="130">Planeta Principal (44min )</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150"><a style="cursor: pointer;" onmouseover='return overlib("<table width=190><tr><td class=c colspan=2>Jugador anita69 en el ranking 263</td></tr><tr><td><a href=game.php?page=messages&mode=write&id=630>Escribir mensaje</a></td></tr><tr><td><a href=game.php?page=buddy&mode=send&u=630>Solicitud de compañeros</a></td></tr><tr><td><a href=game.php?page=statistics&who=player&start=201>Estadísticas</a></td></tr></table>", STICKY, MOUSEOFF, DELAY, 750, CENTER, OFFSETX, -40, OFFSETY, -40 );' onmouseout='return nd();'><span class="noob">anita69 <span style="color:#E6EBFB">(</span> d <span style="color:#E6EBFB">)</span></span></a></th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125><a href="javascript:void(0)" onclick="javascript:doit(6, 1, 81, 5, 1, 1);" ><img src=http://www.antiogame.com/servers/skins/evolution/img/e.gif alt="Espiar" title="Espiar" border=0></a>&nbsp;<a href=game.php?page=messages&mode=write&id=630><img src=http://www.antiogame.com/servers/skins/evolution/img/m.gif alt="Escribir mensaje" title="Escribir mensaje" border=0></a>&nbsp;<a href=game.php?page=buddy&mode=send&u=630 ><img src=http://www.antiogame.com/servers/skins/evolution/img/b.gif alt="Solicitud de compañeros" title="Solicitud de compañeros" border=0></a>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=6&planettype=0&target_mission=7">6</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=7&planettype=0&target_mission=7">7</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=8&planettype=0&target_mission=7">8</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=9&planettype=0&target_mission=7">9</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=10&planettype=0&target_mission=7">10</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=11&planettype=0&target_mission=7">11</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=12&planettype=0&target_mission=7" tabindex="13">12</a></th><th width=30><a style="cursor: pointer;" onmouseover='return overlib("<table width=240><tr><td class=c colspan=2>Planeta Planeta Principal [1:81:12]</td></tr><tr><th width=80><img src=http://www.antiogame.com/servers/skins/evolution/planeten/small/s_wasserplanet08.jpg height=75 width=75 /></th><th align=left><a href=game.php?page=fleet&galaxy=1&system=81&planet=12&planettype=1&target_mission=4>Desplegar</a><br /><a href=game.php?page=fleet&galaxy=1&system=81&planet=12&planettype=1&target_mission=3>Transportar</a><br /></th></tr></table>", STICKY, MOUSEOFF, DELAY, 750, CENTER, OFFSETX, -40, OFFSETY, -40 );' onmouseout='return nd();'><img src='http://www.antiogame.com/servers/skins/evolution/planeten/small/s_wasserplanet08.jpg' height='30' width='30'></a></th><th style="white-space: nowrap;" width="130">Planeta Principal</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150"><a style="cursor: pointer;" onmouseover='return overlib("<table width=190><tr><td class=c colspan=2>Jugador beetlegius en el ranking 150</td></tr><tr><td><a href=game.php?page=statistics&who=player&start=101>Estadísticas</a></td></tr></table>", STICKY, MOUSEOFF, DELAY, 750, CENTER, OFFSETX, -40, OFFSETY, -40 );' onmouseout='return nd();'>beetlegius</a></th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=13&planettype=0&target_mission=7">13</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=14&planettype=0&target_mission=7">14</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+<tr><th width="30"><a href="game.php?page=fleet&galaxy=1&system=81&planet=15&planettype=0&target_mission=7">15</a></th><th width=30>&nbsp;</th><th style="white-space: nowrap;" width="130">&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width=30>&nbsp;</th><th style="white-space: nowrap;" width="150">&nbsp;</th><th width=80>&nbsp;</th><th style="white-space: nowrap;" width=125>&nbsp;</th></tr>
+-->
+<tr>
+  <td class="c" colspan="6">( <%= pluralize @planetas.size, 'planeta' %> )</td>
+  <td class="c" colspan="2">
+    <a href="#" style="cursor: pointer;" onmouseover='return overlib("<table width=240><tr><td class=c colspan=2>Leyenda</td></tr><tr><td width=220>Jugador fuerte</td><td><span class=strong>f</span></td></tr><tr><td width=220>Jugador débil</td><td><span class=noob>d</span></td></tr><tr><td width=220>Modo vacaciones</td><td><span class=vacation>v</span></td></tr><tr><td width=220>Usuario suspendido</td><td><span class=banned>s</span></td></tr><tr><td width=220>Inactivo 7 días</td><td><span class=inactive>i</span></td></tr><tr><td width=220>Inactivo 28 días</td><td><span class=longinactive>I</span></td></tr></table>", STICKY, MOUSEOFF, DELAY, 750, CENTER, OFFSETX, -150, OFFSETY, -150 );' onmouseout='return nd();'>Leyenda</a>
+  </td>
+</tr>
+</table>

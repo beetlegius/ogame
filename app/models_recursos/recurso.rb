@@ -13,8 +13,12 @@ class Recurso
   end
 
 	def costo(nivel = nil)
-		nivel ||= propietario.nivel
-		(costo_base * propietario.class.factor**nivel).floor
+    if propietario.costo_exponencial?
+  		nivel ||= propietario.nivel
+  		(costo_base * propietario.class.factor**nivel).floor
+    else
+      costo_base
+    end
 	end
 
 end

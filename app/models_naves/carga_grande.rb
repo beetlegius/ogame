@@ -4,6 +4,8 @@ class CargaGrande < Nave
   #### CONFIGURACIONES Y RELACIONES
   ##############################################################################
 
+  establecer_costos metal: 6000, cristal: 6000
+  establecer_fuego_rapido sonda_espionaje: 5, satelite_solar: 5
 
   ##############################################################################
   #### SCOPES Y VALIDACIONES
@@ -14,6 +16,9 @@ class CargaGrande < Nave
   #### MÉTODOS PÚBLICOS
   ##############################################################################
 
+  def cumple_requisitos?
+    propietario.hangar.nivel >= 4 && propietario.cuenta.tecnologia_combustion.nivel >= 6 && super
+  end
 
   ##############################################################################
   #### ALIAS E IMPRESIONES
@@ -25,5 +30,9 @@ class CargaGrande < Nave
   ##############################################################################
 
   private
+
+  def configurar
+    establecer_caracteristicas estructura: 12000, escudo: 25, poder: 5, carga: 25000, velocidad: 7500, consumo: 50
+  end
 
 end

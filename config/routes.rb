@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
 
-	resources :tecnologias, only: :index do # investigación
-  	patch ':tipo/expandir', action: :expandir, on: :collection, as: :expandir
+	concern :expandible do
+		patch ':tipo/expandir', action: :expandir, on: :collection, as: :expandir
   	patch ':tipo/cancelar', action: :cancelar, on: :collection, as: :cancelar
-  end
+	end
 
-  resources :edificios, only: :index do # edificios
-  	patch ':tipo/expandir', action: :expandir, on: :collection, as: :expandir
-  	patch ':tipo/cancelar', action: :cancelar, on: :collection, as: :cancelar
-  end
+	# resources :galaxias, only: :index # galaxia
+	get 'galaxias/:numero_galaxia::numero_sistema', to: 'galaxias#index', as: :galaxias
+	post 'galaxias/navegar', to: 'galaxias#navegar', as: :navegar
+
+	resources :defensas, only: :index # defensas
+	resources :naves, path: :hangar, only: :index # naves
+	resources :tecnologias, only: :index, concerns: :expandible # investigación
+  resources :edificios, only: :index, concerns: :expandible # edificios
 
   resources :cuentas, only: :show # visión general
 

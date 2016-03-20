@@ -1,0 +1,46 @@
+<tr>
+
+	<td class="l">
+		<%= image_tag "naves/nave_#{nave.tipo}.gif" %>
+	</td>
+
+	<td class="l">
+		<%= link_to nave.class.model_name.human, '#' %><br />
+
+		<%= t "naves.#{nave.tipo}.resumen" %><br />
+
+		<b>Requiere:</b>
+		<% if nave.metal.costo > 0 %>
+			Metal: <b><%= content_tag :span, number_with_delimiter(nave.metal.costo), class: (current_planeta.puede_pagar?(nave.metal, nil, nil, nil) ? :verde : :rojo) %></b>
+		<% end %>
+		<% if nave.cristal.costo > 0 %>
+			Cristal: <b><%= content_tag :span, number_with_delimiter(nave.cristal.costo), class: (current_planeta.puede_pagar?(nil, nave.cristal.costo, nil, nil) ? :verde : :rojo) %></b>
+		<% end %>
+		<% if nave.deuterio.costo > 0 %>
+			Deuterio: <b><%= content_tag :span, number_with_delimiter(nave.deuterio.costo), class: (current_planeta.puede_pagar?(nil, nil, nave.deuterio.costo, nil) ? :verde : :rojo) %></b>
+		<% end %>
+		<% if nave.energia.costo > 0 %>
+			Energía: <b><%= content_tag :span, number_with_delimiter(nave.energia.costo), class: (current_planeta.puede_pagar?(nil, nil, nil, nave.energia.costo) ? :verde : :rojo) %></b>
+		<% end %>
+
+		<br />
+
+		Tiempo: <%= ChronicDuration.output nave.duracion_expansion(current_planeta), format: :short %>
+
+		<% if !nave.puede_costearse?(current_planeta) %>
+			<br />
+			<br />
+			<b>Aún faltan:</b>
+			Metal: <b><%= content_tag :span, costo_faltante(nave.metal.costo, current_planeta.recurso_metal), class: :violeta %></b>
+			Cristal: <b><%= content_tag :span, costo_faltante(nave.cristal.costo, current_planeta.recurso_cristal), class: :violeta %></b>
+			Deuterio: <b><%= content_tag :span, costo_faltante(nave.deuterio.costo, current_planeta.recurso_deuterio), class: :violeta %></b>
+			Energía: <b><%= content_tag :span, costo_faltante(nave.energia.costo, current_planeta.recurso_energia), class: :violeta %></b>
+		<% end %>
+	</td>
+
+	<td class="k">
+    <%= f.input "cantidad_nave_#{nave.tipo}", label: false %>
+    (Max: 1)
+	</td>
+
+</tr>

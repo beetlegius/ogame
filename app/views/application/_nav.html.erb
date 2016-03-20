@@ -10,24 +10,24 @@
       <tr><td><%= link_to t_menu(:edificios), edificios_path %></td></tr>
       <tr><td><%= link_to t_menu(:recursos), recursos_path %></td></tr>
       <tr><td><%= link_to t_menu(:investigacion), tecnologias_path %></td></tr>
-      <tr><td><%= link_to t_menu(:hangar), '#' %></td></tr>
-      <tr><td><%= link_to t_menu(:flota), '#' %></td></tr>
-      <tr><td><%= link_to t_menu(:tecnologia), '#' %></td></tr>
-      <tr><td><%= link_to t_menu(:galaxia), '#' %></td></tr>
-      <tr><td><%= link_to t_menu(:defensa), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:hangar), naves_path %></td></tr>
+      <tr><td><%= link_to t_menu(:flota), '#', class: 'muted' %></td></tr>
+      <tr><td><%= link_to t_menu(:tecnologia), '#', class: 'muted' %></td></tr>
+      <tr><td><%= link_to t_menu(:galaxia), galaxias_path(numero_galaxia: current_planeta.numero_galaxia, numero_sistema: current_planeta.numero_sistema) %></td></tr>
+      <tr><td><%= link_to t_menu(:defensa), defensas_path %></td></tr>
 
       <tr><td class="info-menu"><%= image_tag 'skin/info-help.jpg' %></td></tr>
 
-      <tr><td><%= link_to t_menu(:alianzas), '#' %></td></tr>
-      <tr><td><%= link_to t_menu(:estadisticas), '#' %></td></tr>
-      <tr><td><%= link_to t_menu(:buscar), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:alianzas), '#', class: 'muted' %></td></tr>
+      <tr><td><%= link_to t_menu(:estadisticas), '#', class: 'muted' %></td></tr>
+      <tr><td><%= link_to t_menu(:buscar), '#', class: 'muted' %></td></tr>
 
       <tr><td class="info-menu"><%= image_tag 'skin/user-menu.jpg' %></td></tr>
 
-      <tr><td><%= link_to t_menu(:mensajes), '#' %></td></tr>
-      <tr><td><%= link_to t_menu(:notas), '#' %></td></tr>
-      <tr><td><%= link_to t_menu(:lista_de_companeros), '#' %></td></tr>
-      <tr><td><%= link_to t_menu(:salir), '#' %></td></tr>
+      <tr><td><%= link_to t_menu(:mensajes), '#', class: 'muted' %></td></tr>
+      <tr><td><%= link_to t_menu(:notas), '#', class: 'muted' %></td></tr>
+      <tr><td><%= link_to t_menu(:lista_de_companeros), '#', class: 'muted' %></td></tr>
+      <tr><td><%= link_to t_menu(:salir), '#', class: 'muted' %></td></tr>
 
     </table>
   </center>

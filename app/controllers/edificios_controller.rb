@@ -1,11 +1,9 @@
 # Edificios Controller
 class EdificiosController < ApplicationController
   before_action :set_edificio, only: %w(expandir cancelar)
-  # load_and_authorize_resource through: :current_planeta
 
   def index
-    @edificios = current_planeta.edificios
-    @edificios = @edificios.select(&:cumple_requisitos?)
+    @edificios = current_planeta.edificios_disponibles
   end
 
   def expandir

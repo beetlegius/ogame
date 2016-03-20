@@ -1,13 +1,13 @@
 <tr>
 
 	<td class="l">
-		<%= image_tag "edificios/#{edificio.class.name.tableize.singularize}.gif" %>
+		<%= image_tag "edificios/#{edificio.tipo}.gif" %>
 	</td>
 
 	<td class="l">
 		<%= link_to edificio.class.model_name.human, '#' %> (Nivel <%= edificio.nivel %>)<br />
 
-		<%= t "edificios.#{edificio.class.name.tableize.singularize}.descripcion" %><br />
+		<%= t "edificios.#{edificio.tipo}.resumen" %><br />
 
 		<b>Requiere:</b>
 		<% if edificio.metal.costo > 0 %>

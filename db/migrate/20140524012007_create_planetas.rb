@@ -29,6 +29,32 @@ class CreatePlanetas < ActiveRecord::Migration
       t.integer :porcentaje_produccion_planta_energia, default: 100
       t.integer :porcentaje_produccion_planta_fusion,  default: 100
 
+      t.integer :cantidad_nave_carga_chica,        default: 0
+      t.integer :cantidad_nave_carga_grande,       default: 0
+      t.integer :cantidad_nave_cazador_ligero,     default: 0
+      t.integer :cantidad_nave_cazador_pesado,     default: 0
+      t.integer :cantidad_nave_crucero,            default: 0
+      t.integer :cantidad_nave_colonizador,        default: 0
+      t.integer :cantidad_nave_reciclador,         default: 0
+      t.integer :cantidad_nave_batalla,            default: 0
+      t.integer :cantidad_nave_sonda_espionaje,    default: 0
+      t.integer :cantidad_nave_bombardero,         default: 0
+      t.integer :cantidad_nave_satelite_solar,     default: 0
+      t.integer :cantidad_nave_destructor,         default: 0
+      t.integer :cantidad_nave_estrella_muerte,    default: 0
+      t.integer :cantidad_nave_acorazado,          default: 0
+
+      t.integer :cantidad_defensa_lanzamisiles,          default: 0
+      t.integer :cantidad_defensa_laser_chico,           default: 0
+      t.integer :cantidad_defensa_laser_grande,          default: 0
+      t.integer :cantidad_defensa_canon_ionico,          default: 0
+      t.integer :cantidad_defensa_canon_gauss,           default: 0
+      t.integer :cantidad_defensa_canon_plasma,          default: 0
+      t.integer :cantidad_defensa_cupula_chica,          default: 0
+      t.integer :cantidad_defensa_cupula_grande,         default: 0
+      t.integer :cantidad_defensa_misil_intercepcion,    default: 0
+      t.integer :cantidad_defensa_misil_interplanetario, default: 0
+
       t.float   :cantidad_metal,          default: 0
       t.float   :cantidad_cristal,        default: 0
       t.float   :cantidad_deuterio,       default: 0

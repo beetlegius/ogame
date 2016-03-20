@@ -9,7 +9,6 @@ class Tecnologia
   include Nivelable
 
   attr_accessor :propietario, :nivel
-  # belongs_to :cuenta
 
   ##############################################################################
   #### SCOPES Y VALIDACIONES
@@ -40,7 +39,7 @@ class Tecnologia
   end
 
   def puede_expandirse?
-    !esta_expandiendose? && cumple_requisitos?
+    !esta_expandiendose? && cumple_requisitos? # hay que agregar que no se esté expandiendo el laboratorio en ningún planeta!
   end
 
   def cumple_requisitos?

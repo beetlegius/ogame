@@ -1,0 +1,11 @@
+<% if @defensas.empty? %>
+	<p>MENSAJE</p>
+<% else %>
+  <%= simple_form_for current_planeta do |f| %>
+    <table width="569">
+    	<tr><td class="c" colspan="3">Defensas</td></tr>
+    	<%= render @defensas, f: f %>
+      <tr><td class="c" colspan="3" align="center"><%= f.button :submit, 'Construir' %></td></tr>
+    </table>
+  <% end %>
+<% end %>

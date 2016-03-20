@@ -1,7 +1,6 @@
 # Tecnologías Controller
 class TecnologiasController < ApplicationController
   before_action :set_tecnologia, only: %w(expandir cancelar)
-  # load_and_authorize_resource through: :current_cuenta
 
   def index
     @tecnologias = current_planeta.tecnologias_disponibles

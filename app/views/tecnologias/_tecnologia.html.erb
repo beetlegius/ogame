@@ -1,13 +1,13 @@
 <tr>
 
 	<td class="l">
-		<%= image_tag "tecnologias/#{tecnologia.class.name.tableize.singularize}.gif" %>
+		<%= image_tag "tecnologias/#{tecnologia.tipo}.gif" %>
 	</td>
 
 	<td class="l">
 		<%= link_to tecnologia.class.model_name.human, '#' %> (Nivel <%= tecnologia.nivel %>)<br />
 
-		<%= t "tecnologias.#{tecnologia.class.name.tableize.singularize}.descripcion" %><br />
+		<%= t "tecnologias.#{tecnologia.tipo}.resumen" %><br />
 
 		<b>Requiere:</b>
 		<% if tecnologia.metal.costo > 0 %>

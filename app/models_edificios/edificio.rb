@@ -1,5 +1,5 @@
 # Los edificios son fijos en cada planeta.
-class Edificio # < ActiveRecord::Base
+class Edificio
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES
@@ -12,15 +12,9 @@ class Edificio # < ActiveRecord::Base
 
   attr_accessor :propietario, :nivel
 
-  # belongs_to :planeta
-  # belongs_to :luna
-
   ##############################################################################
   #### SCOPES Y VALIDACIONES
   ##############################################################################
-
-  # scope :activo, -> { where "nivel >= 1" }
-  # scope :mina, -> { where type: [MinaMetal, MinaCristal, MinaDeuterio] }
 
   ##############################################################################
   #### MÉTODOS PÚBLICOS
