@@ -5,7 +5,11 @@
 	</td>
 
 	<td class="l">
-		<%= link_to nave.class.model_name.human, '#' %><br />
+		<%= link_to nave.class.model_name.human, '#' %>
+		<% if nave.cantidad > 0 %>
+			(<%= pluralize nave.cantidad, 'disponible' %>)
+		<% end %>
+		<br />
 
 		<%= t "naves.#{nave.tipo}.resumen" %><br />
 
@@ -39,8 +43,10 @@
 	</td>
 
 	<td class="k">
-    <%= f.input "cantidad_nave_#{nave.tipo}", label: false %>
-    (Max: 1)
+		<% if current_planeta.puede_fabricar?(nave) %>
+			<%= f.text_field nave.tipo, required: false, size: 10, id: nave.tipo %>
+			<%= link_to "(Max: #{current_planeta.cantidad_maxima_fabricacion nave})", "#agregar", class: 'set-fabricacion', data: { target: "##{nave.tipo}", cantidad: current_planeta.cantidad_maxima_fabricacion(nave) } %>
+		<% end %>
 	</td>
 
 </tr>

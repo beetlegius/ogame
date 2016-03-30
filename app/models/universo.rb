@@ -1,24 +1,26 @@
 # Los universos se pueden configurar. Cada universo posee 9 galaxias.
 class Universo < ActiveRecord::Base
 
-  ##############################################################################
-  #### CONFIGURACIONES Y RELACIONES
-  ##############################################################################
+  # CONFIG
+
+  # CALLBACKS
+
+  # RELATIONS
 
   has_many :planetas
 
   has_many :cuentas
-	has_many :jugadores, through: :cuentas
+  has_many :jugadores, through: :cuentas
 
-  ##############################################################################
-  #### SCOPES Y VALIDACIONES
-  ##############################################################################
+  # SCOPES
 
-	validates :nombre, presence: true, uniqueness: true
+  # VALIDATIONS
 
-  ##############################################################################
-  #### MÉTODOS PÚBLICOS
-  ##############################################################################
+  validates :nombre, presence: true, uniqueness: true
+
+  # CLASS METHODS
+
+  # INSTANCE METHODS
 
   def ranking
     cuentas.to_a.sort_by(&:puntos).reverse
@@ -46,16 +48,12 @@ class Universo < ActiveRecord::Base
     planetas.create!(coordenadas_libres)
   end
 
-  ##############################################################################
-  #### ALIAS E IMPRESIONES
-  ##############################################################################
+  # ALIASES
 
   alias_attribute :to_s, :nombre
   alias_attribute :to_label, :nombre
 
-  ##############################################################################
-  #### MÉTODOS PRIVADOS
-  ##############################################################################
+  # PRIVATE METHODS
 
   private
 

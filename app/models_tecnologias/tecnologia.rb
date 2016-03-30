@@ -50,7 +50,7 @@ class Tecnologia
     if Rails.env.production?
       (3600 * (metal.costo + cristal.costo).to_f / 1000 * (1 + planeta.nivel_laboratorio)).floor
     else
-      3
+      1
     end
   end
 

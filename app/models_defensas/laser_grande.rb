@@ -1,36 +1,32 @@
 class LaserGrande < Defensa
 
-  ##############################################################################
-  #### CONFIGURACIONES Y RELACIONES
-  ##############################################################################
+  # CONFIG
 
   establecer_costos metal: 6000, cristal: 2000
   establecer_fuego_rapido
 
-  ##############################################################################
-  #### SCOPES Y VALIDACIONES
-  ##############################################################################
+  # CALLBACKS
 
+  # RELATIONS
 
-  ##############################################################################
-  #### MÉTODOS PÚBLICOS
-  ##############################################################################
+  # SCOPES
+
+  # VALIDATIONS
+
+  # CLASS METHODS
+
+  # INSTANCE METHODS
 
   def cumple_requisitos?
     propietario.hangar.nivel >= 4 && propietario.cuenta.tecnologia_energia.nivel >= 3 && propietario.cuenta.tecnologia_laser.nivel >= 6 && super
   end
 
-  ##############################################################################
-  #### ALIAS E IMPRESIONES
-  ##############################################################################
+  # ALIASES
 
-
-  ##############################################################################
-  #### MÉTODOS PRIVADOS
-  ##############################################################################
+  # PRIVATE METHODS
 
   private
-
+  
   def configurar
     establecer_caracteristicas estructura: 8000, escudo: 100, poder: 250
   end

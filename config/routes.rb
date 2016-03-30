@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+	concern :fabricable do
+		post :fabricar, on: :collection
+	end
+
 	concern :expandible do
 		patch ':tipo/expandir', action: :expandir, on: :collection, as: :expandir
   	patch ':tipo/cancelar', action: :cancelar, on: :collection, as: :cancelar
@@ -9,8 +13,8 @@ Rails.application.routes.draw do
 	get 'galaxias/:numero_galaxia::numero_sistema', to: 'galaxias#index', as: :galaxias
 	post 'galaxias/navegar', to: 'galaxias#navegar', as: :navegar
 
-	resources :defensas, only: :index # defensas
-	resources :naves, path: :hangar, only: :index # naves
+	resources :defensas, only: :index, concerns: :fabricable # defensas
+	resources :naves, path: :hangar, only: :index, concerns: :fabricable # naves
 	resources :tecnologias, only: :index, concerns: :expandible # investigación
   resources :edificios, only: :index, concerns: :expandible # edificios
 

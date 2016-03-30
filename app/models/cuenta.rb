@@ -1,13 +1,15 @@
 # Las cuentas son la relación entre los jugadores y los universos. Pueden tener solo una por universo.
 class Cuenta < ActiveRecord::Base
 
-  ##############################################################################
-  #### CONFIGURACIONES Y RELACIONES
-  ##############################################################################
+  # CONFIG
 
   include Modulos::Tecnologias
-  
+
+  # CALLBACKS
+
   after_create :asociar_planeta
+
+  # RELATIONS
 
   belongs_to :universo, required: true
   belongs_to :jugador, required: true
@@ -18,16 +20,16 @@ class Cuenta < ActiveRecord::Base
 
   has_many :procesos, class_name: '::Delayed::Job', as: :propietario
 
-  ##############################################################################
-  #### SCOPES Y VALIDACIONES
-  ##############################################################################
+  # SCOPES
+
+  # VALIDATIONS
 
   validate :espacio_disponible
   validates :jugador, uniqueness: { scope: :universo_id }
 
-  ##############################################################################
-  #### MÉTODOS PÚBLICOS
-  ##############################################################################
+  # CLASS METHODS
+
+  # INSTANCE METHODS
 
   # Queda a revisión
   def planetas_disponibles
@@ -68,14 +70,9 @@ class Cuenta < ActiveRecord::Base
     increment! tecnologia.metodo_nivel
   end
 
-  ##############################################################################
-  #### ALIAS E IMPRESIONES
-  ##############################################################################
+  # ALIASES
 
-
-  ##############################################################################
-  #### MÉTODOS PRIVADOS
-  ##############################################################################
+  # PRIVATE METHODS
 
   private
 

@@ -1,13 +1,13 @@
 module Recursos
   extend ActiveSupport::Concern
 
-  def pagar!(metal, cristal, deuterio)
+  def pagar!(metal, cristal, deuterio, cantidad = 1)
     actualizar_recursos!
-    raise unless puede_pagar? metal, cristal, deuterio, nil
+    raise unless puede_pagar? metal, cristal, deuterio, nil, cantidad
     atributos = {
-      cantidad_metal: cantidad_metal - metal.costo,
-      cantidad_cristal: cantidad_cristal - cristal.costo,
-      cantidad_deuterio: cantidad_deuterio - deuterio.costo
+      cantidad_metal: cantidad_metal - metal.costo * cantidad,
+      cantidad_cristal: cantidad_cristal - cristal.costo * cantidad,
+      cantidad_deuterio: cantidad_deuterio - deuterio.costo * cantidad
     }
     update! atributos
   end
@@ -31,8 +31,8 @@ module Recursos
   end
 
   # :reek:LongParameterList: { max_params: 4 }
-  def puede_pagar?(metal, cristal, deuterio, energia)
-    recurso_metal >= metal.try(:costo).to_f && recurso_cristal >= cristal.try(:costo).to_f && recurso_deuterio >= deuterio.try(:costo).to_f && recurso_energia >= energia.try(:costo).to_f
+  def puede_pagar?(metal, cristal, deuterio, energia, cantidad = 1)
+    recurso_metal >= cantidad * metal.try(:costo).to_f && recurso_cristal >= cantidad * cristal.try(:costo).to_f && recurso_deuterio >= cantidad * deuterio.try(:costo).to_f && recurso_energia >= energia.try(:costo).to_f
   end
 
   def recurso_metal

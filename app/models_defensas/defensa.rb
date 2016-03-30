@@ -1,22 +1,21 @@
 class Defensa
 
-  ##############################################################################
-  #### CONFIGURACIONES Y RELACIONES
-  ##############################################################################
+  # CONFIG
 
   include ActiveModel::Model
   include Costeable
 
   attr_accessor :propietario, :cantidad, :estructura, :escudo, :poder
 
-  ##############################################################################
-  #### SCOPES Y VALIDACIONES
-  ##############################################################################
+  # CALLBACKS
 
+  # RELATIONS
 
-  ##############################################################################
-  #### MÉTODOS PÚBLICOS
-  ##############################################################################
+  # SCOPES
+
+  # VALIDATIONS
+
+  # CLASS METHODS
 
   class << self
 
@@ -29,13 +28,19 @@ class Defensa
 
   end
 
+  # INSTANCE METHODS
+
   def initialize(attributes)
     super(attributes)
     configurar
   end
 
   def duracion_expansion(planeta)
-    3
+    # if Rails.env.production?
+    ( (metal.costo + cristal.costo).to_f / 5000 * (2 / (planeta.try(:hangar).try(:nivel).to_f + 1).to_f) * (0.5 ** planeta.try(:fabrica_nanobots).try(:nivel).to_f) * 3600 ).to_f.floor
+    # else
+    #   3
+    # end
   end
 
   def costo_exponencial?
@@ -57,9 +62,7 @@ class Defensa
     "defensas/defensa"
   end
 
-  ##############################################################################
-  #### ALIAS E IMPRESIONES
-  ##############################################################################
+  # ALIASES
 
   def tipo
     self.class.model_name.to_s.underscore
@@ -71,12 +74,10 @@ class Defensa
 
   alias_method :to_label, :to_s
 
-  ##############################################################################
-  #### MÉTODOS PRIVADOS
-  ##############################################################################
+  # PRIVATE METHODS
 
   private
-
+  
   def configurar
   end
 

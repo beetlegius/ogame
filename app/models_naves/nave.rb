@@ -29,13 +29,54 @@ class Nave
 
   end
 
-  def initialize(attributes)
+  def initialize(attributes = {})
     super(attributes)
     configurar
   end
 
+  def fabricar!(cantidad)
+    cantidad = cantidad.to_i
+
+    propietario.pagar! metal, cristal, deuterio, cantidad
+
+    fabricar_unidad! cantidad
+  end
+
+  # Revisar cómo funciona cuando encolo varias naves.
+  # Actualmente todas se construyen en simultáneo
+  def fabricar_unidad!(cantidad_restante)
+    cantidad_restante = cantidad_restante.to_i
+    return if cantidad_restante.zero?
+
+    proceso = Delayed::Job.enqueue FabricarJob.new(propietario.id, propietario.class.name, tipo, cantidad_restante.pred), run_at: duracion_expansion(propietario).seconds.from_now, queue: tipo
+    propietario.procesos << proceso
+  end
+
+  def completar_fabricacion!(cantidad_restante)
+    propietario.sumar_nave! self
+    fabricar_unidad! cantidad_restante
+  end
+
   def duracion_expansion(planeta)
-    3
+    # if Rails.env.production?
+      # ( (metal.costo + cristal.costo).to_f / 5000 * (2 / (planeta.try(:hangar).try(:nivel).to_f + 1).to_f) * (0.5 ** planeta.try(:fabrica_nanobots).try(:nivel).to_f) * 3600 ).to_f.floor
+    # else
+      100
+    # end
+  end
+
+  def tiempo_restante
+    ahora = Time.now
+    fecha_actualizacion = proceso.try(:run_at)
+    (fecha_actualizacion - ahora).round if fecha_actualizacion && fecha_actualizacion > ahora
+  end
+
+  def proceso
+    procesos.first
+  end
+
+  def procesos
+    propietario.procesos.select { |proceso| proceso.queue == tipo }
   end
 
   def costo_exponencial?
@@ -54,6 +95,10 @@ class Nave
 
   def cumple_requisitos?
     true
+  end
+
+  def metodo_cantidad
+    "cantidad_nave_#{tipo}".to_sym
   end
 
   def to_partial_path

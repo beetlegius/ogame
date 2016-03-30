@@ -1,11 +1,33 @@
 <% if @naves.empty? %>
 	<p>MENSAJE</p>
 <% else %>
-  <%= simple_form_for current_planeta do |f| %>
+  <%= simple_form_for :nave, url: fabricar_naves_path do |f| %>
     <table width="569">
     	<tr><td class="c" colspan="3">Hangar</td></tr>
     	<%= render @naves, f: f %>
-      <tr><td class="c" colspan="3" align="center"><%= f.button :submit, 'Construir' %></td></tr>
+      <tr><td class="c" colspan="3" align="center"><%= f.button :submit, 'Fabricar' %></td></tr>
     </table>
   <% end %>
+
+	<% if @procesos.any? %>
+		<br />
+		Producción actual:
+		<div id="bx" class="z"><%= render @procesos.first.payload_object %></div>
+		<br />
+		<table>
+			<tbody>
+				<tr>
+					<th>
+						<select name="auftr" size="10">
+							<% @procesos.each_with_index do |proceso, i| %>
+								<option><%= proceso.payload_object.cantidad_restante.next %> "<%= proceso.payload_object.fabricado.to_label %>" <%= "(En funcionamiento)" if i.zero? %></option>
+							<% end %>
+						</select>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+		<br />
+	 	00h 15m 58s
+	<% end %>
 <% end %>

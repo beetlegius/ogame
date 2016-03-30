@@ -1,4 +1,4 @@
-#= require jquery
+#= require jquery2
 #= require jquery_ujs
 #= require jquery.turbolinks
 #= require turbolinks
@@ -16,6 +16,11 @@ ready = ->
 
   $("form.seleccionar").on 'change', ->
   	$(this).submit()
+
+  $('a.set-fabricacion').on 'click', ->
+    cantidad = $(this).data("cantidad")
+    target = $(this).data("target")
+    input = $(target).val(cantidad)
 
 
 monitorear_countdown = (periodo) ->

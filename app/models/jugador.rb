@@ -1,34 +1,31 @@
 # Los jugadores poseen cuentas en varios universos.
 class Jugador < ActiveRecord::Base
 
-  ##############################################################################
-  #### CONFIGURACIONES Y RELACIONES
-  ##############################################################################
+  # CONFIG
+
+  # CALLBACKS
+
+  # RELATIONS
 
   has_many :cuentas
   has_many :universos, through: :cuentas
 
-  ##############################################################################
-  #### SCOPES Y VALIDACIONES
-  ##############################################################################
+  # SCOPES
+
+  # VALIDATIONS
 
   validates :nombre, presence: true, uniqueness: true
 
-  ##############################################################################
-  #### MÉTODOS PÚBLICOS
-  ##############################################################################
+  # CLASS METHODS
 
+  # INSTANCE METHODS
 
-  ##############################################################################
-  #### ALIAS E IMPRESIONES
-  ##############################################################################
+  # ALIASES
 
   alias_attribute :to_s, :nombre
   alias_attribute :to_label, :nombre
 
-  ##############################################################################
-  #### MÉTODOS PRIVADOS
-  ##############################################################################
+  # PRIVATE METHODS
 
   private
 

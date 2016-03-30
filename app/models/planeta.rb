@@ -1,9 +1,7 @@
 # Cada cuenta puede tener hasta 9 planetas, cada uno se ubica en una posición del 1 al 15 dentro de un sistema.
 class Planeta < ActiveRecord::Base
 
-  ##############################################################################
-  #### CONFIGURACIONES Y RELACIONES
-  ##############################################################################
+  # CONFIG
 
   include Campos
   include Temperatura
@@ -17,8 +15,12 @@ class Planeta < ActiveRecord::Base
   NOMBRES = %w(Aitedrin Aonadrain Aibeciar Aoligin Eladha Eomiyan Iviise Unoral Ongwin Ealar Aideca Iaroane Otunal Iwedeth Eumam Ibacu Iwociar Uhinin Auceise Ituved Illakaf Ececine Eodadean Arodi Aiyolin Alwyn Morian Ievirind Ovvin Aeveara Autorind Gideth Aunedoc Easolain Adalon Inikir utyn Eunelle Emaarc Autefel Eusoand Eseme Ealiyam Ayachan Aehador Airirel Arilad Aedoine Eumedar Usuta)
   CAMPOS_PLANETA_PRINCIPAL = 163
 
+  # CALLBACKS
+
   after_initialize :inicializar
   after_create :configurar
+
+  # RELATIONS
 
   belongs_to :cuenta
   belongs_to :universo, required: true
@@ -27,23 +29,19 @@ class Planeta < ActiveRecord::Base
 
   has_many :procesos, class_name: '::Delayed::Job', as: :propietario
 
-  # has_many :naves, -> { order(:orden) }
-  # has_one :carga_chica
-  # has_one :carga_grande
-
-  ##############################################################################
-  #### SCOPES Y VALIDACIONES
-  ##############################################################################
+  # SCOPES
 
   scope :libre, -> { where cuenta_id: nil }
   scope :ubicacion, -> (galaxia, sistema) { where numero_galaxia: galaxia, numero_sistema: sistema }
 
+  # VALIDATIONS
+
   validates :nombre, presence: true
   validates :numero_planeta, uniqueness: { scope: [:numero_sistema, :numero_galaxia, :universo_id] }
 
-  ##############################################################################
-  #### MÉTODOS PÚBLICOS
-  ##############################################################################
+  # CLASS METHODS
+
+  # INSTANCE METHODS
 
   def colonizar_como_principal(cuenta)
     self.es_principal = true
@@ -100,9 +98,36 @@ class Planeta < ActiveRecord::Base
     defensas.select(&:cumple_requisitos?)
   end
 
-  #def nivel_laboratorio
-  #  laboratorio.nivel # por ahora es así, una vez que esté disponible la red de investigación intergaláctica este cálculo cambiará
-  #end
+  # def nivel_laboratorio
+  #   laboratorio.nivel # por ahora es así, una vez que esté disponible la red de investigación intergaláctica este cálculo cambiará
+  # end
+
+  ##############################################################################
+  ########################### NAVES ############################################
+  ##############################################################################
+
+  def cantidad_maxima_fabricacion(fabricable)
+    cantidad_maxima_metal = recurso_metal / fabricable.metal.costo if fabricable.metal.costo > 0
+    cantidad_maxima_cristal = recurso_cristal / fabricable.cristal.costo if fabricable.cristal.costo > 0
+    cantidad_maxima_deuterio = recurso_deuterio / fabricable.deuterio.costo if fabricable.deuterio.costo > 0
+    [cantidad_maxima_metal, cantidad_maxima_cristal, cantidad_maxima_deuterio].compact.min
+  end
+
+  def puede_fabricar?(fabricable)
+    hangar.proceso.nil? && cantidad_maxima_fabricacion(fabricable) > 0
+  end
+
+  def procesos_de_naves
+    naves.map(&:procesos).flatten.sort_by(&:created_at)
+  end
+
+  def naves_en_fabricacion
+    naves.select { |nave| nave.proceso.present? }
+  end
+
+  ##############################################################################
+  ########################### EDIFICIOS Y TECNOLOGIAS###########################
+  ##############################################################################
 
   # :reek:FeatureEnvy: { enabled: false }
   def puede_expandir?(elemento)
@@ -127,9 +152,11 @@ class Planeta < ActiveRecord::Base
     increment! edificio.metodo_nivel
   end
 
-  ##############################################################################
-  #### ALIAS E IMPRESIONES
-  ##############################################################################
+  def sumar_nave!(nave)
+    increment! nave.metodo_cantidad
+  end
+
+  # ALIASES
 
   def coordenadas_completas
     "#{numero_galaxia}:#{numero_sistema}:#{numero_planeta}"
@@ -143,9 +170,7 @@ class Planeta < ActiveRecord::Base
 
   alias_method :to_s, :coordenadas_completas
 
-  ##############################################################################
-  #### MÉTODOS PRIVADOS
-  ##############################################################################
+  # PRIVATE METHODS
 
   private
 
@@ -158,9 +183,6 @@ class Planeta < ActiveRecord::Base
     update! cantidad_metal:    universo.cantidad_metal_inicial,
             cantidad_cristal:  universo.cantidad_cristal_inicial,
             cantidad_deuterio: universo.cantidad_deuterio_inicial
-
-    # create_carga_chica! orden: 1
-    # create_carga_grande! orden: 2
   end
 
 end

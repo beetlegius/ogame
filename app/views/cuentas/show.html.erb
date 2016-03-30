@@ -24,7 +24,7 @@
   </tr>
   <tr>
     <th>Posición</th>
-    <th colspan="2"><%= link_to current_planeta.coordenadas_completas, '#galaxia' %></a></th>
+    <th colspan="2"><%= link_to current_planeta.coordenadas_completas, galaxias_path(numero_galaxia: current_planeta.numero_galaxia, numero_sistema: current_planeta.numero_sistema) %></a></th>
   </tr>
   <tr>
     <th>Puntos</th>

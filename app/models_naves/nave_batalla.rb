@@ -1,4 +1,4 @@
-class Batalla < Nave
+class NaveBatalla < Nave
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES

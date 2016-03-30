@@ -1,0 +1,89 @@
+BATALLAS
+================================================================================
+
+- Son 6 rondas
+- Cuando mueren todas las unidades de un bando, la batalla termina
+- Si se termina en menos de dos rondas el/los atacantes reciben un reporte de batalla reducido
+- Las naves tienen un 30% de probabilidades de explotar al ser atacadas
+- El fuego rápido contra una nave permite tener la posibilidad de repetir el ataque
+
+
+Por cada ronda
+  Chequear si la batalla debe terminar
+  Restablecer estadísticas (disparos y daño absorbido)
+  Cargar escudos
+  Disparan atacantes y luego defensores
+    Elije un objetivo al azar de entre los defensores
+    Disparar
+      Determinar si la unidad explota o no
+    Recalcula fuego rápido
+  Eliminar unidades explotadas
+
+
+  # a = unidad atacante
+  # b = unidad defensora
+  # aweap = tecnologia militar atacante
+  # absorbed = daño total absorbido por escudos
+  # dm = metal a escombros
+  # dk = cristal a escombros
+  # apower = retorna poder infligido
+  # DefenseInDebris = porcentaje de recursos a escombros para defensas
+  # FleetInDebris = porcentaje de recursos a escombros para naves
+  #
+  #
+  # Cálculo de poder infligido
+  # if (a->obj_type < 200) apower = fleetParam[a->obj_type-100].attack * (10+aweap) / 10;
+  # else apower = defenseParam[a->obj_type-200].attack * (10+aweap) / 10;
+  #
+  #
+  # Si la unidad defensora explotó, retorna el apower.
+  # if (b->exploded) return apower; // Уже взорван.
+  #
+  # Si el escudo del defensor es 0
+  # if (b->shield == 0) {  // Щитов нет.
+  # Si el poder infligido es mayor a la armadura del defensor, la pone en 0, sino le resta el poder a la armadura
+  #     if (apower >= b->hull) b->hull = 0;
+  #     else b->hull -= apower;
+  # }
+  # Si el escudo del defensor no es 0
+  # else { // Отнимаем от щитов, и если хватает урона, то и от брони.
+  # Hace un cálculo medio raro para determinar si el poder infligido es superior al escudo
+  #     prc = (float)b->shieldmax * 0.01;
+  #     depleted = floor ((float)apower / prc);
+  # Si el escudo es menor al daño infligido (o sea que lo rompe todo)
+  #     if (b->shield < (depleted * prc)) {
+  # Acumula el daño en absorbed
+  #         *absorbed += (u64)b->shield;
+  # Calcula el poder infligido restante (poder infligido - escudo)
+  #         adelta = apower - b->shield;
+  # Si el poder infligido restante es mayor a la armadura del defensor, la pone en 0, sino le resta el poder a la armadura y pone el escudo en 0
+  #         if (adelta >= b->hull) b->hull = 0;
+  #         else b->hull -= adelta;
+  #         b->shield = 0;
+  #     }
+  # Si el poder infligido es menor al escudo
+  #     else {
+  # Disminuye el escudo del defensor y acumula el poder infligido en absorbed
+  #         b->shield -= depleted * prc;
+  #         *absorbed += (u64)apower;
+  #     }
+  # }
+  # Si el escudo del defensor está en 0 y la armadura es igual o inferior al 70% de la armadura máxima,
+  # entonces calcula la probabilidad de explotar al defensor
+  # if (b->hull <= b->hullmax * 0.7 && b->shield == 0) {    // Взорвать и отвалить лома.
+  # Si un random es mayor o igual al porcentaje de armadura restante de la nave o la armadura del defensor es 0,
+  # entonces genera los escombros y explota la nave
+  #     if (MyRand (0, 99) >= ((b->hull * 100) / b->hullmax) || b->hull == 0) {
+  #         if (b->obj_type >= 200) {
+  #             *dm += (u64)(ceil(DefensePrice[b->obj_type-200].m * ((float)DefenseInDebris/100.0f)));
+  #             *dk += (u64)(ceil(DefensePrice[b->obj_type-200].k * ((float)DefenseInDebris/100.0f)));
+  #         }
+  #         else {
+  #             *dm += (u64)(ceil(FleetPrice[b->obj_type-100].m * ((float)FleetInDebris/100.0f)));
+  #             *dk += (u64)(ceil(FleetPrice[b->obj_type-100].k * ((float)FleetInDebris/100.0f)));
+  #         }
+  #         b->exploded = 1;
+  #     }
+  # }
+  # Devuelve el poder infligido
+  # return apower;
