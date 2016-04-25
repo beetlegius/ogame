@@ -13,7 +13,7 @@ module Modulos::Naves
     end
 
     def procesos
-      all.map(&:procesos).flatten.sort_by(&:created_at)
+      all.map(&:procesos).flatten.sort_by(&:run_at)
     end
 
     def fabricando

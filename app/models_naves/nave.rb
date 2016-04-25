@@ -42,22 +42,32 @@ class Nave
 
     propietario.pagar! metal, cristal, deuterio, cantidad
 
-    fabricar_unidad! cantidad
+    ultimo_proceso = propietario.naves_ataque.procesos.last
+    if ultimo_proceso
+      fabricante = ultimo_proceso.payload_object.fabricante
+      fabricado = ultimo_proceso.payload_object.fabricado
+
+      hora_finalizacion = ultimo_proceso.run_at + fabricado.duracion_expansion(fabricante) * ultimo_proceso.payload_object.cantidad_restante
+    else
+      hora_finalizacion = Time.now
+    end
+
+    fabricar_unidad! cantidad, hora_finalizacion
   end
 
   # Revisar cómo funciona cuando encolo varias naves.
   # Actualmente todas se construyen en simultáneo
-  def fabricar_unidad!(cantidad_restante)
+  def fabricar_unidad!(cantidad_restante, hora_finalizacion)
     cantidad_restante = cantidad_restante.to_i
     return if cantidad_restante.zero?
 
-    proceso = Delayed::Job.enqueue FabricarJob.new(propietario.id, propietario.class.name, tipo, cantidad_restante.pred), run_at: duracion_expansion(propietario).seconds.from_now, queue: tipo
+    proceso = Delayed::Job.enqueue FabricarJob.new(propietario.id, propietario.class.name, tipo, cantidad_restante.pred), run_at: hora_finalizacion + duracion_expansion(propietario).seconds, queue: tipo
     propietario.procesos << proceso
   end
 
   def completar_fabricacion!(cantidad_restante)
     propietario.sumar_nave! self
-    fabricar_unidad! cantidad_restante
+    fabricar_unidad! cantidad_restante, Time.now
   end
 
   def duracion_expansion(planeta)
