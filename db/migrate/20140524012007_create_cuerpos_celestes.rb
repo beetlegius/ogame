@@ -1,6 +1,6 @@
-class CreatePlanetas < ActiveRecord::Migration
+class CreateCuerposCelestes < ActiveRecord::Migration
   def change
-    create_table :planetas do |t|
+    create_table :cuerpos_celestes do |t|
       t.string  :nombre
       t.integer :temperatura_minima, :temperatura_maxima
       # t.integer :coordenada
@@ -65,7 +65,8 @@ class CreatePlanetas < ActiveRecord::Migration
 
       t.boolean :es_principal, default: false
 
-      t.references :universo, :cuenta, index: true
+      t.string :type
+      t.references :universo, :cuenta, :planeta, index: true
       t.timestamps
     end
   end

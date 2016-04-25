@@ -1,4 +1,4 @@
-class MisilInterplanetario < Defensa
+class MisilInterplanetario < NaveDefensa
 
   # CONFIG
 

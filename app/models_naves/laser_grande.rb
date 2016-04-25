@@ -1,4 +1,4 @@
-class LaserGrande < Defensa
+class LaserGrande < NaveDefensa
 
   # CONFIG
 

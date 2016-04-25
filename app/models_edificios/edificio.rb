@@ -33,7 +33,7 @@ class Edificio
       # esto deberá moverse al propietario porque por ejemplo en la luna no se pueden hacer nanos, por lo que depende de los edificios que pueda construir el propietario.
       (((metal.costo + cristal.costo).to_f / (2500 * (1 + edificable.fabrica_robots.nivel) * 2**edificable.try(:fabrica_nanobots).try(:nivel).to_i)).to_f * 3600).floor
     else
-      1
+      10
     end
   end
 

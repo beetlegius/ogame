@@ -1,4 +1,4 @@
-class EstrellaMuerte < Nave
+class EstrellaMuerte < NaveAtaque
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES

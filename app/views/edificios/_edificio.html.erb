@@ -46,8 +46,10 @@
 			<%= content_tag :span, 'Actualizando...', class: :violeta %>
 		<% elsif edificio.puede_expandirse? %>
 			<%= link_to edificio.nivel.zero? ? 'Construir' : "Ampliar al nivel #{edificio.proximo_nivel}", expandir_edificios_path(tipo: edificio.tipo), method: :patch, class: :verde %>
+		<% elsif !current_planeta.edificios.any?(&:esta_expandiendose?) %>
+			<%= content_tag :span, edificio.nivel.zero? ? 'Construir' : "Ampliar al nivel #{edificio.proximo_nivel}", class: :rojo %>
 		<% else %>
-			<%= content_tag :span, edificio.nivel.zero? ? 'Construir' : "Ampliar al nivel #{edificio.proximo_nivel}", class: :rojo unless current_planeta.edificios.any?(&:esta_expandiendose?) %>
+			-
 		<% end %>
 	</td>
 

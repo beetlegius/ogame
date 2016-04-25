@@ -1,4 +1,4 @@
-class LaserChico < Defensa
+class LaserChico < NaveDefensa
 
   # CONFIG
 

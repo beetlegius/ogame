@@ -16,6 +16,9 @@ class Laboratorio < Edificio
   #### MÉTODOS PÚBLICOS
   ##############################################################################
 
+  def puede_expandirse?
+    super && !propietario.cuenta.tecnologias.any?(&:esta_expandiendose?)
+  end
 
   ##############################################################################
   #### ALIAS E IMPRESIONES

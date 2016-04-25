@@ -1,8 +1,8 @@
-class CanonIonico < Defensa
+class MisilIntercepcion < NaveDefensa
 
   # CONFIG
 
-  establecer_costos metal: 2000, cristal: 6000
+  establecer_costos metal: 8000, deuterio: 2000
   establecer_fuego_rapido
 
   # CALLBACKS
@@ -18,7 +18,7 @@ class CanonIonico < Defensa
   # INSTANCE METHODS
 
   def cumple_requisitos?
-    propietario.hangar.nivel >= 4 && propietario.cuenta.tecnologia_ionica.nivel >= 4 && super
+    propietario.silo.nivel >= 2 && super
   end
 
   # ALIASES
@@ -28,7 +28,7 @@ class CanonIonico < Defensa
   private
   
   def configurar
-    establecer_caracteristicas estructura: 8000, escudo: 500, poder: 150
+    establecer_caracteristicas estructura: 8000, escudo: 1, poder: 1
   end
 
 end

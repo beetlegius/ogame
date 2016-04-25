@@ -42,41 +42,7 @@ ActiveRecord::Schema.define(version: 20140611015236) do
   add_index "cuentas", ["jugador_id"], name: "index_cuentas_on_jugador_id", using: :btree
   add_index "cuentas", ["universo_id"], name: "index_cuentas_on_universo_id", using: :btree
 
-  create_table "delayed_jobs", force: :cascade do |t|
-    t.integer  "priority",         default: 0, null: false
-    t.integer  "attempts",         default: 0, null: false
-    t.text     "handler",                      null: false
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.integer  "propietario_id"
-    t.string   "propietario_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
-  add_index "delayed_jobs", ["propietario_type", "propietario_id"], name: "index_delayed_jobs_on_propietario_type_and_propietario_id", using: :btree
-
-  create_table "jugadores", force: :cascade do |t|
-    t.string   "nombre"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "lunas", force: :cascade do |t|
-    t.string   "nombre"
-    t.integer  "planeta_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "lunas", ["planeta_id"], name: "index_lunas_on_planeta_id", using: :btree
-
-  create_table "planetas", force: :cascade do |t|
+  create_table "cuerpos_celestes", force: :cascade do |t|
     t.string   "nombre"
     t.integer  "temperatura_minima"
     t.integer  "temperatura_maxima"
@@ -131,14 +97,42 @@ ActiveRecord::Schema.define(version: 20140611015236) do
     t.integer  "cantidad_campos"
     t.datetime "ultima_actualizacion_recursos"
     t.boolean  "es_principal",                         default: false
+    t.string   "type"
     t.integer  "universo_id"
     t.integer  "cuenta_id"
+    t.integer  "planeta_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "planetas", ["cuenta_id"], name: "index_planetas_on_cuenta_id", using: :btree
-  add_index "planetas", ["universo_id"], name: "index_planetas_on_universo_id", using: :btree
+  add_index "cuerpos_celestes", ["cuenta_id"], name: "index_cuerpos_celestes_on_cuenta_id", using: :btree
+  add_index "cuerpos_celestes", ["planeta_id"], name: "index_cuerpos_celestes_on_planeta_id", using: :btree
+  add_index "cuerpos_celestes", ["universo_id"], name: "index_cuerpos_celestes_on_universo_id", using: :btree
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",         default: 0, null: false
+    t.integer  "attempts",         default: 0, null: false
+    t.text     "handler",                      null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.integer  "propietario_id"
+    t.string   "propietario_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  add_index "delayed_jobs", ["propietario_type", "propietario_id"], name: "index_delayed_jobs_on_propietario_type_and_propietario_id", using: :btree
+
+  create_table "jugadores", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "universos", force: :cascade do |t|
     t.string   "nombre"

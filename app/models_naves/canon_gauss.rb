@@ -1,4 +1,4 @@
-class CanonGauss < Defensa
+class CanonGauss < NaveDefensa
 
   # CONFIG
 
@@ -26,7 +26,7 @@ class CanonGauss < Defensa
   # PRIVATE METHODS
 
   private
-  
+
   def configurar
     establecer_caracteristicas estructura: 35000, escudo: 200, poder: 1100
   end

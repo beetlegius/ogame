@@ -1,4 +1,4 @@
-class Colonizador < Nave
+class Colonizador < NaveAtaque
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES

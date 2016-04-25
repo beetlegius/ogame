@@ -1,0 +1,36 @@
+Organización:
+  Realizar un diagrama de clases que describa la aplicación completa.
+Usuarios:
+  Implementar pantalla de login y de registro de jugadores y cuentas
+Naves:
+  Hacer la vista Flota
+  Hacer que se puedan enviar flotas
+  Programar Transportar
+  Programar Desplegar
+  Programar Colonizar
+  Programar Atacar
+  Programar Espiar
+Recursos:
+  OK --------- Que se tome en cuenta la energía generada por los satélites solares
+  OK --------- Que se tome en cuenta el deuterio consumido por la planta de fusión
+  Que se respeten los límites de los almacenes
+Jugadores
+  Crear alianzas
+  Permitir a los jugadores unirse a una alianza
+  Permitir a los jugadores enviar mensajes circulares
+  Permitir a los jugadores enviar mensajes personales
+  Implementar lista de amigos
+Galaxia
+  Hacer que navegar la galaxia consuma 10 de deuterio
+Misiles:
+  Implementar ataque con misiles
+Luna:
+  Implementar generación de lunas a partir de escombros de una batalla
+  Implementar naves
+  Implementar edificios
+General:
+  Generar reporte de batalla
+  Generar reporte de espionaje
+  Hacer vista de Ranking
+  Implementar actividad en los cuerpos celestes
+  Implementar notas

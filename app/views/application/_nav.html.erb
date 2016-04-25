@@ -15,11 +15,11 @@
       <tr><td><%= link_to t_menu(:edificios), edificios_path %></td></tr>
       <tr><td><%= link_to t_menu(:recursos), recursos_path %></td></tr>
       <tr><td><%= link_to t_menu(:investigacion), tecnologias_path %></td></tr>
-      <tr><td><%= link_to t_menu(:hangar), naves_path %></td></tr>
+      <tr><td><%= link_to t_menu(:hangar), hangar_path %></td></tr>
       <tr><td><%= link_to t_menu(:flota), '#', class: 'muted' %></td></tr>
       <tr><td><%= link_to t_menu(:tecnologia), '#', class: 'muted' %></td></tr>
       <tr><td><%= link_to t_menu(:galaxia), galaxias_path(numero_galaxia: current_planeta.numero_galaxia, numero_sistema: current_planeta.numero_sistema) %></td></tr>
-      <tr><td><%= link_to t_menu(:defensa), defensas_path %></td></tr>
+      <tr><td><%= link_to t_menu(:defensa), defensa_path %></td></tr>
 
       <tr><td class="info-menu"><%= image_tag 'skin/info-help.jpg' %></td></tr>
 

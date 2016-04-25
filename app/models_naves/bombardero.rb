@@ -1,4 +1,4 @@
-class Bombardero < Nave
+class Bombardero < NaveAtaque
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES

@@ -3,7 +3,7 @@
 <% else %>
   <%= simple_form_for :nave, url: fabricar_naves_path do |f| %>
     <table width="569">
-    	<tr><td class="c" colspan="3">Hangar</td></tr>
+    	<tr><td class="c" colspan="3"><%= @titulo %></td></tr>
     	<%= render @naves, f: f %>
       <tr><td class="c" colspan="3" align="center"><%= f.button :submit, 'Fabricar' %></td></tr>
     </table>

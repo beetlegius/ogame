@@ -38,12 +38,12 @@ Cuanto mayor sea el nivel desarrollado, más eficientes serán tus sistemas. Cie
       resumen: ""
       descripcion: "Las armas de plasma son incluso más peligrosas que cualquier otro sistema de armamento conocido, debido a la naturaleza agresiva del plasma. Es uno de los cuatro estados de la materia (sólido, líquido, gas, plasma), y consiste en un numero igual de partículas de gas cargadas positiva y negativamente. El plasma puede ser producido desde un gas si se añade la energía suficiente para provocar que los átomos eléctricamente neutrales se dividan en átomos cargados positivamente y electrones cargados negativamente. Esas partículas cargadas son embebidas en \"rayos\" usando tecnología magnética y pueden ser disparados."
     tecnologia_combustion:
-      resumen: ""
+      resumen: "El perfeccionamiento de esta tecnología hace que algunas naves se vuelvan más rápidas. Cada nivel aumenta la velocidad base de una nave en un 10%."
       descripcion: "Los motores de combustión pertenecen a los más antiguos en funcionamiento y se basan en la repulsión. Las partículas son aceleradas y abandonan el motor generando una fuerza de repuslión que mueve la nave en la dirección opuesta. La eficiencia de estos motores de combustión es baja, pero son de manufacturación barata y han demostrado ser fiables. Su tamaño es relativamente pequeño y no necesitan un proceso extenso de energía para controlar la operación.
 Investigar sobre niveles más altos proporciona siempre motores más rápidos ya que cada nivel aumenta un 10% la velocidad efectiva de viaje, basándose en la velocidad base.
 Dado que esta tecnología es una de las cosas más básicas para un imperio emergente, debería ser investigada tan pronto como sea posible."
     tecnologia_impulso:
-      resumen: ""
+      resumen: "El sistema del motor de impulso se basa en el principio de la repulsión de partículas. La materia repelida es basura generada por el reactor de fusión usado para proporcionar la energía necesaria para este tipo de motor de propulsión."
       descripcion: "El sistema del motor de impulso se basa en el principio de la repulsión de partículas. La materia repelida es basura generada por el reactor de fusión usado para proporcionar la energía necesaria para este tipo de motor de propulsión. Los motores de impulso son un desarrollo posterior a los simples motores de combustión, aumentan la eficienta y reducen el consumo de combustible en relación a su velocidad."
     tecnologia_propulsor_hiperespacial:
       resumen: ""
@@ -178,8 +178,6 @@ Sólo los imperios más grandes y avanzados tienen la suficiente mano de obra y 
     acorazado:
       resumen: ""
       descripcion: "Esta nave ha sido diseñada totalmente para la batalla contra grandes confederaciones de flotas. Con sus cañones láseres altamente desarrollados es capaz de combatir a un gran número de naves al mismo tiempo. Gracias a su forma de construcción alargada y a gran sistema de armamento, la capacidad de carga es limitada pero esto se compensa con un menor consumo."
-
-  defensas:
     lanzamisiles:
       resumen: "El lanzamisiles es un sistema de defensa sencillo, pero barato."
       descripcion: "El lanzamisiles es un sistema de defensa sencillo, pero barato. Puede ser muy efectivo si se construye en grandes números, no necesita tecnología alguna puesto que es una sencilla arma balística. Su bajo coste de producción lo hace util contra pequeñas flotas, pero pierde efectividad una vez que se dispone de sistemas de defensa más grandes. En desarrollos posteriores solo se usa como bulto.

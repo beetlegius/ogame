@@ -1,4 +1,4 @@
-class Acorazado < Nave
+class Acorazado < NaveAtaque
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES

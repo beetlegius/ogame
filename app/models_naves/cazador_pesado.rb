@@ -1,4 +1,4 @@
-class CazadorPesado < Nave
+class CazadorPesado < NaveAtaque
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES

@@ -1,7 +1,7 @@
 <tr>
 
 	<td class="l">
-		<%= image_tag "naves/nave_#{nave.tipo}.gif" %>
+		<%= image_tag "naves/#{nave.tipo}.gif" %>
 	</td>
 
 	<td class="l">
@@ -44,8 +44,10 @@
 
 	<td class="k">
 		<% if current_planeta.puede_fabricar?(nave) %>
-			<%= f.text_field nave.tipo, required: false, size: 10, id: nave.tipo %>
+			<%= f.text_field nave.tipo, required: false, size: 10, id: nave.tipo %><br />
 			<%= link_to "(Max: #{current_planeta.cantidad_maxima_fabricacion nave})", "#agregar", class: 'set-fabricacion', data: { target: "##{nave.tipo}", cantidad: current_planeta.cantidad_maxima_fabricacion(nave) } %>
+		<% else %>
+			-
 		<% end %>
 	</td>
 

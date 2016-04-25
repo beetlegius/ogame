@@ -46,8 +46,10 @@
 			<%= content_tag :span, 'Actualizando...', class: :violeta %>
 		<% elsif current_planeta.puede_investigar?(tecnologia) %>
 			<%= link_to tecnologia.nivel.zero? ? 'Investigar' : "Ampliar al nivel #{tecnologia.proximo_nivel}", expandir_tecnologias_path(tipo: tecnologia.tipo), method: :patch, class: :verde %>
+		<% elsif !current_cuenta.tecnologias.any?(&:esta_expandiendose?) %>
+			<%= content_tag :span, tecnologia.nivel.zero? ? 'Investigar' : "Ampliar al nivel #{tecnologia.proximo_nivel}", class: :rojo %>
 		<% else %>
-			<%= content_tag :span, tecnologia.nivel.zero? ? 'Investigar' : "Ampliar al nivel #{tecnologia.proximo_nivel}", class: :rojo unless current_cuenta.tecnologias.any?(&:esta_expandiendose?) %>
+			-
 		<% end %>
 	</td>
 </tr>

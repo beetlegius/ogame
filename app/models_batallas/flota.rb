@@ -43,6 +43,10 @@ class Flota
     end
   end
 
+  def post_batalla
+    # Actualizar cantidad restante en cada flota
+  end
+
   def destruido?
     unidades.empty?
   end

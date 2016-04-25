@@ -1,8 +1,8 @@
-class CupulaChica < Defensa
+class Lanzamisiles < NaveDefensa
 
   # CONFIG
 
-  establecer_costos metal: 10000, cristal: 10000
+  establecer_costos metal: 2000
   establecer_fuego_rapido
 
   # CALLBACKS
@@ -18,7 +18,7 @@ class CupulaChica < Defensa
   # INSTANCE METHODS
 
   def cumple_requisitos?
-    propietario.hangar.nivel >= 1 && propietario.cuenta.tecnologia_defensa.nivel >= 2 && super
+    propietario.hangar.nivel >= 1 && super
   end
 
   # ALIASES
@@ -28,7 +28,7 @@ class CupulaChica < Defensa
   private
   
   def configurar
-    establecer_caracteristicas estructura: 20000, escudo: 2000, poder: 1
+    establecer_caracteristicas estructura: 2000, escudo: 20, poder: 80
   end
 
 end

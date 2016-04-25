@@ -1,4 +1,4 @@
-class Reciclador < Nave
+class Reciclador < NaveAtaque
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES

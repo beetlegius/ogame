@@ -60,7 +60,8 @@ class Unidad
     # generar escombros
   end
 
-  def atacar(atacado)
+  def atacar(atacado, ronda)
+    # puts "#{nave.tipo} (#{object_id}) dispara a #{atacado.nave.tipo}"
     if atacado.escudo.zero?
 
       if poder >= atacado.estructura
@@ -78,26 +79,36 @@ class Unidad
 
       if atacado.escudo < (depleted * prc)
 
-        # Acumular daño absorbido
+        absorbido = atacado.escudo # Acumular daño absorbido
         poder_infligido_restante = poder - atacado.escudo
         if poder_infligido_restante >= atacado.estructura
           atacado.estructura = 0
         else
           atacado.estructura -= poder_infligido_restante
-          atacado.escudo = 0
         end
+
+        atacado.escudo = 0
 
       else
         atacado.escudo -= (depleted * prc)
-        # Acumular daño absorbido
+        absorbido = (depleted * prc) # Acumular daño absorbido
       end
 
       if atacado.podria_explotar? && (rand(100) >= atacado.porcentaje_estructura_sana)
         atacado.explotar!
       end
+      ronda.absorbido[flota.object_id] += absorbido
     end
 
     return poder
+  end
+
+  def debe_disparar_nuevamente?(atacado)
+    fuego_rapido = nave.class.fuego_rapido[atacado.nave.tipo.to_sym]
+    if fuego_rapido
+      probabilidad = 1.0 / fuego_rapido
+      rand >= probabilidad
+    end
   end
 
   # ALIASES

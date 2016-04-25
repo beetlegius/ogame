@@ -1,4 +1,4 @@
-class SateliteSolar < Nave
+class SateliteSolar < NaveAtaque
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES
@@ -18,6 +18,10 @@ class SateliteSolar < Nave
 
   def cumple_requisitos?
     propietario.hangar.nivel >= 1 && super
+  end
+
+  def produccion
+    [(propietario.temperatura_maxima.to_f / 4 + 20).floor, 1].max * cantidad
   end
 
   ##############################################################################

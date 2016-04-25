@@ -1,38 +1,33 @@
 # Las lunas son generadas con cierta probabilidad tras una batalla que deja muchos escombros.
-class Luna < ActiveRecord::Base
+class Luna < CuerpoCeleste
 
   # CONFIG
 
-  delegate :cuenta, :coordenadas_completas, to: :planeta
+  delegate :coordenadas_completas, to: :planeta
+
+  include Modulos::Edificios::Luna
+  include Modulos::Naves
 
   # CALLBACKS
 
   # RELATIONS
 
   belongs_to :planeta, required: true
-  has_many :procesos, class_name: '::Delayed::Job', as: :propietario
 
   # SCOPES
 
   # VALIDATIONS
 
+  validates :nombre, presence: true
+
   # CLASS METHODS
 
   # INSTANCE METHODS
 
-  def subir_nivel!(edificio)
-    increment! edificio.metodo_nivel
+  # :reek:FeatureEnvy: { enabled: false }
+  def puede_expandir?(elemento)
+    return elemento.puede_expandirse? if elemento.is_a?(Edificio)
   end
-
-  def edificios
-    [ fabrica_robots, hangar, base_lunar, sensor_phalanx, salto_cuantico ]
-  end
-
-  def fabrica_robots ;    FabricaRobots.new     propietario: self, nivel: nivel_fabrica_robots    ; end
-  def hangar ;            Hangar.new            propietario: self, nivel: nivel_hangar            ; end
-  def base_lunar ;        BaseLunar.new         propietario: self, nivel: nivel_base_lunar        ; end
-  def sensor_phalanx ;    SensorPhalanx.new     propietario: self, nivel: nivel_sensor_phalanx    ; end
-  def salto_cuantico ;    SaltoCuantico.new     propietario: self, nivel: nivel_salto_cuantico    ; end
 
   # ALIASES
 
@@ -40,10 +35,17 @@ class Luna < ActiveRecord::Base
     "#{planeta.nombre} [#{coordenadas_completas}] (Luna)"
   end
 
-  alias_method :to_s, :coordenadas_completas
-
   # PRIVATE METHODS
 
   private
+
+  def inicializar
+    self.nombre ||= 'Luna'
+    super
+  end
+
+  def configurar
+    update! cantidad_metal: 0, cantidad_cristal: 0, cantidad_deuterio: 0
+  end
 
 end

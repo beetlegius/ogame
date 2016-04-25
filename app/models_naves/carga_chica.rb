@@ -1,4 +1,4 @@
-class CargaChica < Nave
+class CargaChica < NaveAtaque
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES

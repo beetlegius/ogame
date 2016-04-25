@@ -69,10 +69,20 @@
 				</th>
 			</tr>
 			<tr>
+				<th style="text-align:right" height="22">Satélites solares (<%= pluralize current_planeta.satelite_solar.cantidad, 'disponible' %>) </th>
+				<th>0</th>
+				<th>0</th>
+				<th>0</th>
+				<th><%= number_with_delimiter current_planeta.satelite_solar.produccion %></th>
+				<th>
+					<%#= f.input :porcentaje_produccion_satelite_solar, collection: Edificio::PORCENTAJES_PRODUCCION, label: false, include_blank: false, label_method: proc { |porcentaje| number_to_percentage porcentaje } %>
+				</th>
+			</tr>
+			<tr>
 				<th style="text-align:right" height="22">Capacidad de los almacenes</th>
-				<th>100k</th>
-				<th>100k</th>
-				<th>100k</th>
+				<th><%= number_with_delimiter current_planeta.almacen_metal.capacidad %></th>
+				<th><%= number_with_delimiter current_planeta.almacen_cristal.capacidad %></th>
+				<th><%= number_with_delimiter current_planeta.almacen_deuterio.capacidad %></th>
 				<td class="k">-</td>
 				<th><%= f.button :submit, 'Calcular' %></th>
 			</tr>
@@ -80,15 +90,12 @@
 				<th style="text-align:right" height="22">Suma</th>
 				<th class="verde"><%= number_with_delimiter (current_planeta.produccion_metal_base + current_planeta.mina_metal.produccion_activa_por_hora).round %></th>
 				<th class="verde"><%= number_with_delimiter (current_planeta.produccion_cristal_base + current_planeta.mina_cristal.produccion_activa_por_hora).round %></th>
-				<th class="verde"><%= number_with_delimiter (current_planeta.produccion_deuterio_base + current_planeta.mina_deuterio.produccion_activa_por_hora).round %></th>
+				<th class="verde"><%= number_with_delimiter (current_planeta.produccion_deuterio_base + current_planeta.mina_deuterio.produccion_activa_por_hora - current_planeta.planta_fusion.consumo_deuterio_hora).round %></th>
 				<th class="<%= current_planeta.recurso_energia_disponible >= 0 ? :verde : :rojo %>"><%= number_with_delimiter current_planeta.recurso_energia_disponible %></th>
 			</tr>
 		</tbody>
 	</table>
 
-	<p>
-		Falta agregar la producción de los satélites solares
-	</p>
 	<!--
 	<br />
 	<table width="600">

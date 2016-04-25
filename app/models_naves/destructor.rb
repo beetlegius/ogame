@@ -1,4 +1,4 @@
-class Destructor < Nave
+class Destructor < NaveAtaque
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES

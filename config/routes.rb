@@ -13,8 +13,11 @@ Rails.application.routes.draw do
 	get 'galaxias/:numero_galaxia::numero_sistema', to: 'galaxias#index', as: :galaxias
 	post 'galaxias/navegar', to: 'galaxias#navegar', as: :navegar
 
-	resources :defensas, only: :index, concerns: :fabricable # defensas
-	resources :naves, path: :hangar, only: :index, concerns: :fabricable # naves
+	# resources :defensas, only: :index, concerns: :fabricable # defensas
+	resources :naves, only: [], concerns: :fabricable # naves
+	get :hangar, to: 'naves#hangar'
+	get :defensa, to: 'naves#defensa'
+
 	resources :tecnologias, only: :index, concerns: :expandible # investigación
   resources :edificios, only: :index, concerns: :expandible # edificios
 

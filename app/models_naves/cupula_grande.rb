@@ -1,4 +1,4 @@
-class CupulaGrande < Defensa
+class CupulaGrande < NaveDefensa
 
   # CONFIG
 
@@ -26,7 +26,7 @@ class CupulaGrande < Defensa
   # PRIVATE METHODS
 
   private
-  
+
   def configurar
     establecer_caracteristicas estructura: 100000, escudo: 10000, poder: 1
   end

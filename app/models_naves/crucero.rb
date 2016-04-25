@@ -1,4 +1,4 @@
-class Crucero < Nave
+class Crucero < NaveAtaque
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES

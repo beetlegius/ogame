@@ -14,8 +14,9 @@ class Cuenta < ActiveRecord::Base
   belongs_to :universo, required: true
   belongs_to :jugador, required: true
 
+  has_many :cuerpos_celestes
   has_many :planetas
-  has_many :lunas, through: :planetas
+  has_many :lunas
   has_one :planeta_principal, -> { where es_principal: true }, class_name: 'Planeta'
 
   has_many :procesos, class_name: '::Delayed::Job', as: :propietario
@@ -31,9 +32,8 @@ class Cuenta < ActiveRecord::Base
 
   # INSTANCE METHODS
 
-  # Queda a revisión
-  def planetas_disponibles
-    planetas + lunas
+  def puede_investigar?
+    !planetas.any? { |planeta| planeta.laboratorio.esta_expandiendose? }
   end
 
   def puede_investigar_en_simultaneo?
@@ -63,7 +63,7 @@ class Cuenta < ActiveRecord::Base
   end
 
   def puntos
-    planetas.to_a.sum(&:puntos) / 1000
+    cuerpos_celestes.to_a.sum(&:puntos) / 1000
   end
 
   def subir_nivel!(tecnologia)

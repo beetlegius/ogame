@@ -20,6 +20,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'universo', 'universos'
   inflect.irregular 'galaxia', 'galaxias'
   inflect.irregular 'sistema', 'sistemas'
+  inflect.irregular 'cuerpo_celeste', 'cuerpos_celestes'
   inflect.irregular 'planeta', 'planetas'
   inflect.irregular 'cuenta', 'cuentas'
   inflect.irregular 'jugador', 'jugadores'

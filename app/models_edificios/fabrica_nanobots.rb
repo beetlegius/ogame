@@ -16,6 +16,10 @@ class FabricaNanobots < Edificio
   #### MÉTODOS PÚBLICOS
   ##############################################################################
 
+  def puede_expandirse?
+    super && propietario.naves_ataque.fabricando.empty? && propietario.naves_defensa.fabricando.empty?
+  end
+  
   def cumple_requisitos?
     propietario.cuenta.tecnologia_computacion.nivel >= 10 && propietario.fabrica_robots.nivel >= 10 && super
   end

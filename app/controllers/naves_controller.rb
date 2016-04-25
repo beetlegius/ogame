@@ -1,10 +1,20 @@
 # Naves Controller
 class NavesController < ApplicationController
 
-  def index
-    @naves = current_planeta.naves_disponibles
-    @naves_construyendo = current_planeta.naves_en_fabricacion
-    @procesos = current_planeta.procesos_de_naves
+  def hangar
+    @titulo = 'Hangar'
+    @naves = current_planeta.naves_ataque.disponible
+    @naves_construyendo = current_planeta.naves_ataque.fabricando
+    @procesos = current_planeta.naves_ataque.procesos
+    render :index
+  end
+
+  def defensa
+    @titulo = 'Defensa'
+    @naves = current_planeta.naves_defensa.disponible
+    @naves_construyendo = current_planeta.naves_defensa.fabricando
+    @procesos = current_planeta.naves_defensa.procesos
+    render :index
   end
 
   def fabricar
@@ -12,7 +22,7 @@ class NavesController < ApplicationController
       @nave = current_planeta.send nave
       @nave.fabricar! cantidad
     end
-  	redirect_to naves_path, notice: notice
+    redirect_to :back, notice: notice
   end
 
 end

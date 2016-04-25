@@ -1,22 +1,19 @@
 class Nave
 
-  ##############################################################################
-  #### CONFIGURACIONES Y RELACIONES
-  ##############################################################################
+  # CONFIG
 
   include ActiveModel::Model
   include Costeable
 
-  attr_accessor :propietario, :cantidad, :estructura, :escudo, :poder, :velocidad, :carga, :consumo
+  # CALLBACKS
 
-  ##############################################################################
-  #### SCOPES Y VALIDACIONES
-  ##############################################################################
+  # RELATIONS
 
+  # SCOPES
 
-  ##############################################################################
-  #### MÉTODOS PÚBLICOS
-  ##############################################################################
+  # VALIDATIONS
+
+  # CLASS METHODS
 
   class << self
 
@@ -29,9 +26,15 @@ class Nave
 
   end
 
-  def initialize(attributes = {})
+  # INSTANCE METHODS
+
+  def initialize(attributes)
     super(attributes)
     configurar
+  end
+
+  def esta_fabricandose?
+    proceso.present?
   end
 
   def fabricar!(cantidad)
@@ -58,11 +61,11 @@ class Nave
   end
 
   def duracion_expansion(planeta)
-    # if Rails.env.production?
-      # ( (metal.costo + cristal.costo).to_f / 5000 * (2 / (planeta.try(:hangar).try(:nivel).to_f + 1).to_f) * (0.5 ** planeta.try(:fabrica_nanobots).try(:nivel).to_f) * 3600 ).to_f.floor
-    # else
-      100
-    # end
+    if Rails.env.production?
+      ( (metal.costo + cristal.costo).to_f / 5000 * (2 / (planeta.try(:hangar).try(:nivel).to_f + 1).to_f) * (0.5 ** planeta.try(:fabrica_nanobots).try(:nivel).to_f) * 3600 ).to_f.floor
+    else
+      10
+    end
   end
 
   def tiempo_restante
@@ -83,31 +86,19 @@ class Nave
     false
   end
 
-  def establecer_caracteristicas(*args)
-    atributos = args.extract_options!
-    @estructura = atributos[:estructura] || 0
-    @escudo     = atributos[:escudo]     || 0
-    @poder      = atributos[:poder]      || 0
-    @velocidad  = atributos[:velocidad]  || 0
-    @carga      = atributos[:carga]      || 0
-    @consumo    = atributos[:consumo]    || 0
-  end
-
   def cumple_requisitos?
     true
   end
 
   def metodo_cantidad
-    "cantidad_nave_#{tipo}".to_sym
+    "cantidad_#{tipo}".to_sym
   end
 
   def to_partial_path
     "naves/nave"
   end
 
-  ##############################################################################
-  #### ALIAS E IMPRESIONES
-  ##############################################################################
+  # ALIASES
 
   def tipo
     self.class.model_name.to_s.underscore
@@ -119,9 +110,7 @@ class Nave
 
   alias_method :to_label, :to_s
 
-  ##############################################################################
-  #### MÉTODOS PRIVADOS
-  ##############################################################################
+  # PRIVATE METHODS
 
   private
 

@@ -8,7 +8,7 @@
 							<td class="header"><%= image_tag "planetas/#{current_planeta.imagen_name}.jpg", class: :planeta %></td>
 							<td class="header" align="right">
 								<%= form_tag seleccionar_planetas_path, class: :seleccionar do %>
-									<%= select_tag :id, options_from_collection_for_select(current_cuenta.planetas_disponibles, :id, :to_label, current_planeta.id) %>
+									<%= select_tag :id, options_from_collection_for_select(current_cuenta.cuerpos_celestes, :id, :to_label, current_planeta.id) %>
 								<% end %>
 							</td>
 						</tr>

@@ -1,4 +1,4 @@
-class CanonPlasma < Defensa
+class CanonPlasma < NaveDefensa
 
   # CONFIG
 

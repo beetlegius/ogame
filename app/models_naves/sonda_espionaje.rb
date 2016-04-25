@@ -1,4 +1,4 @@
-class SondaEspionaje < Nave
+class SondaEspionaje < NaveAtaque
 
   ##############################################################################
   #### CONFIGURACIONES Y RELACIONES

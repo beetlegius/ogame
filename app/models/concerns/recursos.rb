@@ -25,7 +25,7 @@ module Recursos
   def actualizar_recursos!
     increment :cantidad_metal, produccion_metal + mina_metal.produccion
     increment :cantidad_cristal, produccion_cristal + mina_cristal.produccion
-    increment :cantidad_deuterio, produccion_deuterio + mina_deuterio.produccion
+    increment :cantidad_deuterio, produccion_deuterio + mina_deuterio.produccion - consumo_deuterio_planta_fusion
     self.ultima_actualizacion_recursos = Time.now
     save!
   end
@@ -44,11 +44,11 @@ module Recursos
   end
 
   def recurso_deuterio
-    @recurso_deuterio ||= (cantidad_deuterio + produccion_deuterio + mina_deuterio.produccion).round
+    @recurso_deuterio ||= (cantidad_deuterio + produccion_deuterio + mina_deuterio.produccion - consumo_deuterio_planta_fusion).round
   end
 
   def recurso_energia
-    @recurso_energia ||= (produccion_energia + planta_energia.produccion).round # en un futuro incluirá la energía generada por satélites solares
+    @recurso_energia ||= (produccion_energia + planta_energia.produccion + planta_fusion.produccion + satelite_solar.produccion).floor
   end
 
   def recurso_energia_consumida
@@ -73,6 +73,10 @@ module Recursos
 
   def produccion_deuterio
     produccion_deuterio_base.to_f / 3600 * (Time.now - ultima_actualizacion_recursos).round
+  end
+
+  def consumo_deuterio_planta_fusion
+    planta_fusion.consumo_deuterio_hora.to_f / 3600 * (Time.now - ultima_actualizacion_recursos).round
   end
 
   def produccion_energia
