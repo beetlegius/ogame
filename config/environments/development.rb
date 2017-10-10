@@ -39,6 +39,6 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
-  config.x.dominio = 'ogame.xaver.com.ar'
+  config.x.dominio = 'ogame.beetlegius.com.ar'
 
 end

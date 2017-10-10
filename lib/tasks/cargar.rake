@@ -23,14 +23,10 @@ task cuentas: :environment do
 	universo = Universo.first
 	holyman = crear_jugador 'Holyman'
 	gius = crear_jugador 'Gius'
-	sxadvi = crear_jugador 'Sxadvi'
-	vassili = crear_jugador 'Vassili'
 
 	universo.cuentas.create! [
 		{ jugador: holyman },
-		{ jugador: gius },
-		{ jugador: sxadvi },
-		{ jugador: vassili }
+		{ jugador: gius }
 	]
 
 end

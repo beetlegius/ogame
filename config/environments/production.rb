@@ -77,5 +77,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.x.dominio = 'ogame.xaver.com.ar'
+  config.x.dominio = 'ogame.beetlegius.com.ar'
 end
